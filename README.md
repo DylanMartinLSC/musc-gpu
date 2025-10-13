@@ -134,6 +134,67 @@ The superior performance on the challenging MVTec AD and VisA datasets demonstra
 - CUDA 11.7
 - PyTorch 2.0.1
 
+### 🛰️ Streaming inference backend
+
+The repository now ships with a production-ready backend for batch anomaly localization on RTSP camera feeds. The solution is split into two deployable services under `services/`:
+
+1. **Orchestrator API** (`services/orchestrator/app.py`) – authorizes RTSP streams, tracks camera assignments, and forwards workloads to GPU workers.
+2. **GPU Worker** (`services/worker/app.py`) – captures batched frames, runs MuSc inferences, renders heatmap overlays, and persists results to S3.
+
+Install the additional dependencies and export the required environment variables for each component:
+
+```bash
+pip install -r requirements.txt
+
+# Orchestrator configuration
+export MUSC_API_HOST=0.0.0.0
+export MUSC_API_PORT=8080
+export MUSC_S3_BUCKET=<results-bucket>
+export MUSC_AWS_REGION=<aws-region>
+export MUSC_ORCHESTRATOR_EXTERNAL_URL="http://<public-host>:8080/"
+export MUSC_ORCHESTRATOR_CALLBACK_SECRET="<shared-secret>"
+
+# Worker configuration
+export MUSC_WORKER_ENDPOINT="http://<worker-host>:9000/"
+export MUSC_WORKER_ORCHESTRATOR_URL="http://<orchestrator-host>:8080/"
+export MUSC_WORKER_WORKER_ID="gpu-worker-1"
+export MUSC_WORKER_MAX_STREAMS=1   # one camera per GPU by design
+export MUSC_WORKER_DEFAULT_S3_BUCKET=<results-bucket>
+export MUSC_WORKER_DEFAULT_S3_REGION=<aws-region>
+```
+
+Launch the services with Uvicorn (one process per component):
+
+```bash
+# Terminal 1 – orchestrator
+uvicorn services.orchestrator.app:app --host $MUSC_API_HOST --port $MUSC_API_PORT
+
+# Terminal 2 – GPU worker
+uvicorn services.worker.app:app --host 0.0.0.0 --port 9000
+```
+
+Workers register automatically with the orchestrator and emit heartbeats so capacity can be tracked. Cameras can then be attached through the orchestrator REST API:
+
+```bash
+curl -X POST "http://<orchestrator-host>:8080/streams" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "camera_id": "line-3-camera-1",
+        "config": {
+          "rtsp_url": "rtsp://user:pass@10.0.0.5:554/stream1",
+          "backbone_name": "ViT-B-16",
+          "image_size": 224,
+          "fps": 5,
+          "duration": 4,
+          "feature_layers": [0,1,2,3],
+          "r_list": [1,3,5],
+          "pretrained": "laion400m_e31"
+        }
+      }'
+```
+
+The orchestrator enforces one active stream per camera and computes batch sizes from the requested frame-rate and duration. Once the GPU worker processes a batch, the resulting anomaly scores and heatmap URIs are pushed back to `/streams/{id}/results`, enabling downstream dashboards to surface the anomalies in near real time.
+
 Clone the repository locally:
 
 ```
