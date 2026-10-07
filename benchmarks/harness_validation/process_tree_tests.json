@@ -1,0 +1,20 @@
+[
+  {
+    "case": "normal_completion",
+    "pass": true,
+    "worker_pid": 41456,
+    "descendant_pid": 44004,
+    "worker_alive_after": false,
+    "descendant_alive_after": false,
+    "cuda_work": false
+  },
+  {
+    "case": "timeout",
+    "pass": true,
+    "worker_pid": 31648,
+    "descendant_pid": 46944,
+    "worker_alive_after": false,
+    "descendant_alive_after": false,
+    "cuda_work": false
+  }
+]

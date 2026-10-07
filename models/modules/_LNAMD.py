@@ -69,7 +69,7 @@ class LNAMD(torch.nn.Module):
         self.patch_maker = PatchMaker(r, stride=patchstride)
         self.LNA = Preprocessing(feature_layer, feature_dim)
 
-    def _embed(self, features):
+    def _embed(self, features, return_cpu=True):
         B = features[0].shape[0]
 
         features_layers = []
@@ -125,7 +125,8 @@ class LNAMD(torch.nn.Module):
         features_layers = self.LNA(features_layers)
         features_layers = features_layers.reshape(B, -1, *features_layers.shape[-2:])   # (B, L, layer, C)
 
-        return features_layers.detach().cpu()
+        features_layers = features_layers.detach()
+        return features_layers.cpu() if return_cpu else features_layers
 
 
 if __name__ == "__main__":

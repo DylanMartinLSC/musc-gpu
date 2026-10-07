@@ -1,10 +1,11 @@
 datasets:
   dataset_name: 'mvtec_ad'  # choice ['mvtec_ad', 'visa']
-  data_path: ./data/mvtec_anomaly_detection/
-  class_name: 'ALL'
+  data_path: ./data/mvtec_anomaly_detection
+  class_name: ['bottle']
   img_resize: 518
   divide_num: 1
 models:
+  inference_backend: 'gpu'  # use 'original' for the unchanged comparison pipeline
   backbone_name: 'ViT-L-14-336'
   pretrained: 'openai'
   batch_size: 4

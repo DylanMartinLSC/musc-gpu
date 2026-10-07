@@ -26,6 +26,8 @@ def get_args():
     parser.add_argument('--img_resize', type=int, default=None, help='image size')
     parser.add_argument('--batch_size', type=int, default=None, help='batch size')
     parser.add_argument('--divide_num', type=int, default=None, help='the number of divided subsets')
+    parser.add_argument('--inference_backend', choices=['original','gpu'], default=None,
+                        help='original pipeline or optimized GPU pipeline; both score the entire image group')
     args = parser.parse_args()
     return args
 
@@ -75,6 +77,8 @@ def load_args(cfg, args):
         cfg['models']['batch_size'] = args.batch_size
     if args.divide_num is not None:
         cfg['datasets']['divide_num'] = args.divide_num
+    if args.inference_backend is not None:
+        cfg['models']['inference_backend'] = args.inference_backend
     return cfg
 
 if __name__ == "__main__":

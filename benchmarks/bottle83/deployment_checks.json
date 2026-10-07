@@ -1,0 +1,15 @@
+{
+  "kernel_source_identical": true,
+  "attention_function_ast_identical": true,
+  "qualified_candidate_hash_unchanged": true,
+  "cpu_fallback_identical": true,
+  "aggregation_factory_preserved": true,
+  "cuda_work": false,
+  "hashes": {
+    "C:\\Users\\dylan\\local_code\\MuSc\\models\\modules\\_attention_gpu.py": "763b2a1a8722f7908983c837c0c4b34e7c68135752f2a6cdc077320b63657468",
+    "C:\\Users\\dylan\\local_code\\MuSc\\experiments\\parallel_20261004\\round6\\encoder_candidate\\virtual_aligned\\before_deployment\\_attention_gpu.py": "62e7f6a5ea795ccde4087e31ba025e910d04dae189c900f3b781fd6717ecfd32",
+    "C:\\Users\\dylan\\local_code\\MuSc\\experiments\\parallel_20261004\\round6\\encoder_candidate\\virtual_aligned\\candidate.py": "58d6b8efc150d51960981674b43aba8c051f2b5821053bfb14b109e02a5faa88",
+    "C:\\Users\\dylan\\local_code\\MuSc\\models\\modules\\_encoder_gpu.py": "553a6f937dd2dfd2afcd7a24355e776ea71cfe39ae1452251d1dd8e8d21c0f9a"
+  },
+  "full_report_sha256": "9658eead902a63f79a05128eee44077510fcceec31805ca429c493682ec394f5"
+}

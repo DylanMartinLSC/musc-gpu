@@ -1,0 +1,227 @@
+{
+  "scope": "actual MuSc.make_category_data through pre-metric predictions; model load and metrics excluded; no discarded image warmup",
+  "images": 83,
+  "command": [
+    "experiments/parallel_20261004/round2/trial.py",
+    "--candidate",
+    "experiments/parallel_20261004/round6/encoder_candidate/virtual_aligned/adapter.py",
+    "--images",
+    "83",
+    "--original",
+    "--output",
+    "experiments/parallel_20261004/round6/encoder_candidate/virtual_aligned/bottle83"
+  ],
+  "unload_evidence": {
+    "api": "empty"
+  },
+  "pairs": [
+    {
+      "order": [
+        "original",
+        "best",
+        "candidate"
+      ],
+      "original": {
+        "seconds": 37.61915520008188,
+        "peak_allocated_mb": 6443.1201171875
+      },
+      "best": {
+        "seconds": 10.325767500093207,
+        "peak_allocated_mb": 7310.1484375
+      },
+      "candidate": {
+        "seconds": 9.756999699980952,
+        "peak_allocated_mb": 7309.4599609375,
+        "diagnostics": {
+          "fused_softmax_calls": 504,
+          "reused_casts": 504,
+          "softmax_calls": 504,
+          "half_only_calls": 483,
+          "dispatch": {
+            "rows": 65760,
+            "columns": 1370,
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "output_dtype": "torch.float16",
+            "input_stride": [
+              1876900,
+              1370,
+              1
+            ]
+          },
+          "first_use_setup_seconds": 0.11630580003838986
+        }
+      },
+      "speedup_vs_incumbent": 1.0582933091730407,
+      "best_map_error": 0.0,
+      "best_score_error": 0.0,
+      "best_labels_agree": true,
+      "original_map_error": 4.3149542527098905e-06,
+      "original_score_error": 2.086162567138672e-07,
+      "original_labels_agree": true,
+      "speedup_vs_original": 3.85560688293916
+    },
+    {
+      "order": [
+        "candidate",
+        "best",
+        "original"
+      ],
+      "candidate": {
+        "seconds": 9.599305700045079,
+        "peak_allocated_mb": 7309.4599609375,
+        "diagnostics": {
+          "fused_softmax_calls": 504,
+          "reused_casts": 504,
+          "softmax_calls": 504,
+          "half_only_calls": 483,
+          "dispatch": {
+            "rows": 65760,
+            "columns": 1370,
+            "block": [
+              256,
+              1,
+              1
+            ],
+            "output_dtype": "torch.float16",
+            "input_stride": [
+              1876900,
+              1370,
+              1
+            ]
+          },
+          "first_use_setup_seconds": 0.11630580003838986
+        }
+      },
+      "best": {
+        "seconds": 10.43277269997634,
+        "peak_allocated_mb": 7309.4599609375
+      },
+      "original": {
+        "seconds": 36.64644959999714,
+        "peak_allocated_mb": 6454.8388671875
+      },
+      "speedup_vs_incumbent": 1.086825758651206,
+      "best_map_error": 0.0,
+      "best_score_error": 0.0,
+      "best_labels_agree": true,
+      "original_map_error": 4.3149542527098905e-06,
+      "original_score_error": 2.086162567138672e-07,
+      "original_labels_agree": true,
+      "speedup_vs_original": 3.8176146010044296
+    }
+  ],
+  "status": "pass",
+  "model_load_seconds": 4.294504899997264,
+  "environment": {
+    "torch": "2.7.1+cu118",
+    "cuda": "11.8",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "python": "C:\\Users\\dylan\\myenv\\myenv\\Scripts\\python.exe",
+    "threads": 12
+  },
+  "image_paths": [
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\000.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\001.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\002.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\003.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\004.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\005.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\006.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\007.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\008.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\009.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\010.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\011.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\012.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\013.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\014.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\015.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\016.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\017.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\018.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_large\\019.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\000.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\001.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\002.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\003.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\004.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\005.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\006.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\007.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\008.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\009.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\010.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\011.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\012.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\013.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\014.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\015.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\016.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\017.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\018.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\019.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\020.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\broken_small\\021.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\000.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\001.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\002.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\003.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\004.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\005.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\006.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\007.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\008.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\009.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\010.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\011.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\012.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\013.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\014.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\015.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\016.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\017.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\018.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\019.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\contamination\\020.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\000.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\001.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\002.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\003.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\004.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\005.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\006.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\007.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\008.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\009.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\010.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\011.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\012.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\013.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\014.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\015.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\016.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\017.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\018.png",
+    "C:/Users/dylan/mvtec_anomaly_detection\\bottle\\test\\good\\019.png"
+  ],
+  "median_seconds": {
+    "original": 37.13280240003951,
+    "best": 10.379270100034773,
+    "candidate": 9.678152700013015
+  },
+  "speedup_vs_incumbent": 1.0724433083206897,
+  "speedup_vs_original": 3.8367655017459654,
+  "hashes": {
+    "C:\\Users\\dylan\\local_code\\MuSc\\models\\musc.py": "fd26657079f2c7f3d4b5bb475c367b89d091eafc78ddf120e1dda5d186b2efc7",
+    "C:\\Users\\dylan\\local_code\\MuSc\\models\\modules\\_loader.py": "7cb951e92fe77273e9fe053c95ffb7e9f42077e5294fcda88764178eed6ec8a7",
+    "C:\\Users\\dylan\\local_code\\MuSc\\models\\modules\\_MSM_gpu.py": "7fca26cfce5af50e468731e9245896b30fc9def567a37fd91f3b669608b04232",
+    "C:\\Users\\dylan\\local_code\\MuSc\\models\\modules\\_encoder_gpu.py": "553a6f937dd2dfd2afcd7a24355e776ea71cfe39ae1452251d1dd8e8d21c0f9a",
+    "C:\\Users\\dylan\\local_code\\MuSc\\models\\modules\\_aggregation_cache.py": "41cbd5521bdc27e476e102a00b2e4dbdb402acca729661e219290889d22bb829",
+    "C:\\Users\\dylan\\local_code\\MuSc\\experiments\\parallel_20261004\\round2\\trial.py": "993b5d094ba0531ffd01f26fba8656c672124621ba25490d07dfe71843a84d8a",
+    "C:\\Users\\dylan\\local_code\\MuSc\\experiments\\parallel_20261004\\round6\\encoder_candidate\\virtual_aligned\\adapter.py": "fa99443af28a15b4c8456e2142e108d32a615a17cee7bef844c0b915ea80eea5"
+  }
+}

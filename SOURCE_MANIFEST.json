@@ -1,0 +1,720 @@
+{
+  "models/backbone/_backbones.py": {
+    "source": "models/backbone/_backbones.py",
+    "source_sha256": "f24223f624de5ab346b7b0f3ceb2a459fc4d78b31f6bf6442988041364d45653",
+    "packaged_sha256": "f24223f624de5ab346b7b0f3ceb2a459fc4d78b31f6bf6442988041364d45653"
+  },
+  "models/backbone/dino_vision_transformer.py": {
+    "source": "models/backbone/dino_vision_transformer.py",
+    "source_sha256": "38cc433d006fd6e94b117ff513b6cd4968728b9202a7bf6de547df148451e459",
+    "packaged_sha256": "38cc433d006fd6e94b117ff513b6cd4968728b9202a7bf6de547df148451e459"
+  },
+  "models/backbone/dinov2/__init__.py": {
+    "source": "models/backbone/dinov2/__init__.py",
+    "source_sha256": "34312c0841b7ab254915b34b197072ade6984e28e2c718315793bdbaa34339bc",
+    "packaged_sha256": "34312c0841b7ab254915b34b197072ade6984e28e2c718315793bdbaa34339bc"
+  },
+  "models/backbone/dinov2/attention.py": {
+    "source": "models/backbone/dinov2/attention.py",
+    "source_sha256": "f7c67d57b0871fce8517dd50b55c02f33aa24c20493eff26971d3ec4cca0ec12",
+    "packaged_sha256": "f7c67d57b0871fce8517dd50b55c02f33aa24c20493eff26971d3ec4cca0ec12"
+  },
+  "models/backbone/dinov2/block.py": {
+    "source": "models/backbone/dinov2/block.py",
+    "source_sha256": "a7218ff8350794efce37a010ac7d58d212e10a5b84b43a214a7b682cac656a62",
+    "packaged_sha256": "a7218ff8350794efce37a010ac7d58d212e10a5b84b43a214a7b682cac656a62"
+  },
+  "models/backbone/dinov2/dino_head.py": {
+    "source": "models/backbone/dinov2/dino_head.py",
+    "source_sha256": "5e1ca23565a0bcfd2ac1d79bfbe67c845e50582f4efe0bb1df2324bf4d4d98a8",
+    "packaged_sha256": "5e1ca23565a0bcfd2ac1d79bfbe67c845e50582f4efe0bb1df2324bf4d4d98a8"
+  },
+  "models/backbone/dinov2/drop_path.py": {
+    "source": "models/backbone/dinov2/drop_path.py",
+    "source_sha256": "27abed4dd9dafa14157c9c7717bdca15fedb62702066f627b314bc91c06a1d53",
+    "packaged_sha256": "27abed4dd9dafa14157c9c7717bdca15fedb62702066f627b314bc91c06a1d53"
+  },
+  "models/backbone/dinov2/layer_scale.py": {
+    "source": "models/backbone/dinov2/layer_scale.py",
+    "source_sha256": "a79f5b673c3f1fa60173b1905501ecfeb7fe77bed9b5e35881390c12baecbdfa",
+    "packaged_sha256": "a79f5b673c3f1fa60173b1905501ecfeb7fe77bed9b5e35881390c12baecbdfa"
+  },
+  "models/backbone/dinov2/mlp.py": {
+    "source": "models/backbone/dinov2/mlp.py",
+    "source_sha256": "9856d7274ca32428ff05dacf7adf8ad10fa81d7bb4e5d299ab57cf421dcc7620",
+    "packaged_sha256": "9856d7274ca32428ff05dacf7adf8ad10fa81d7bb4e5d299ab57cf421dcc7620"
+  },
+  "models/backbone/dinov2/patch_embed.py": {
+    "source": "models/backbone/dinov2/patch_embed.py",
+    "source_sha256": "2d949ea0eff33185d829995373c963cac6eaebf77b4808478a72934d89587e42",
+    "packaged_sha256": "2d949ea0eff33185d829995373c963cac6eaebf77b4808478a72934d89587e42"
+  },
+  "models/backbone/dinov2/swiglu_ffn.py": {
+    "source": "models/backbone/dinov2/swiglu_ffn.py",
+    "source_sha256": "e1744aa9d29610c57d4fa153ec0aa545ef60da565d2aaac754d318fea0e30d7c",
+    "packaged_sha256": "e1744aa9d29610c57d4fa153ec0aa545ef60da565d2aaac754d318fea0e30d7c"
+  },
+  "models/backbone/open_clip/__init__.py": {
+    "source": "models/backbone/open_clip/__init__.py",
+    "source_sha256": "cd75fdcab2924d1a6ff4486c23e1c114485ca4a5f3d9578aba85b110088ab87e",
+    "packaged_sha256": "cd75fdcab2924d1a6ff4486c23e1c114485ca4a5f3d9578aba85b110088ab87e"
+  },
+  "models/backbone/open_clip/bpe_simple_vocab_16e6.txt.gz": {
+    "source": "models/backbone/open_clip/bpe_simple_vocab_16e6.txt.gz",
+    "source_sha256": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a",
+    "packaged_sha256": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a"
+  },
+  "models/backbone/open_clip/coca_model.py": {
+    "source": "models/backbone/open_clip/coca_model.py",
+    "source_sha256": "b84e02b0df9bec828528c7ac0848a2b55a4d137fcd3c73219b92cbf260156e61",
+    "packaged_sha256": "b84e02b0df9bec828528c7ac0848a2b55a4d137fcd3c73219b92cbf260156e61"
+  },
+  "models/backbone/open_clip/constants.py": {
+    "source": "models/backbone/open_clip/constants.py",
+    "source_sha256": "3ca8ebaa471da492bf3109a74ec676a318712079fd02523ecb66a9f3b0674754",
+    "packaged_sha256": "3ca8ebaa471da492bf3109a74ec676a318712079fd02523ecb66a9f3b0674754"
+  },
+  "models/backbone/open_clip/factory.py": {
+    "source": "models/backbone/open_clip/factory.py",
+    "source_sha256": "377cfdd045b6eb7fc935a814d4de3ca71bcb95da8df4940405a7f4cb650a3387",
+    "packaged_sha256": "377cfdd045b6eb7fc935a814d4de3ca71bcb95da8df4940405a7f4cb650a3387"
+  },
+  "models/backbone/open_clip/generation_utils.py": {
+    "source": "models/backbone/open_clip/generation_utils.py",
+    "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "models/backbone/open_clip/hf_configs.py": {
+    "source": "models/backbone/open_clip/hf_configs.py",
+    "source_sha256": "5115244c0c204dfe4d8ef8b79956d1c617a7aa4004c9eef9bda52671a3905c01",
+    "packaged_sha256": "5115244c0c204dfe4d8ef8b79956d1c617a7aa4004c9eef9bda52671a3905c01"
+  },
+  "models/backbone/open_clip/hf_model.py": {
+    "source": "models/backbone/open_clip/hf_model.py",
+    "source_sha256": "1c70050313293c5a8e7e6a145ea0f098e5c0c5f69895a4927b9050db3043301c",
+    "packaged_sha256": "1c70050313293c5a8e7e6a145ea0f098e5c0c5f69895a4927b9050db3043301c"
+  },
+  "models/backbone/open_clip/loss.py": {
+    "source": "models/backbone/open_clip/loss.py",
+    "source_sha256": "f327ee000e74b693cb4790e90395ba1114b542cb5682d4f1c5e3da177d3ab9bf",
+    "packaged_sha256": "f327ee000e74b693cb4790e90395ba1114b542cb5682d4f1c5e3da177d3ab9bf"
+  },
+  "models/backbone/open_clip/model.py": {
+    "source": "models/backbone/open_clip/model.py",
+    "source_sha256": "2a52b92e1b0d90b98df7aafc9b1088f2d4de00c53e0e271af6e3e1d9f453f91c",
+    "packaged_sha256": "2a52b92e1b0d90b98df7aafc9b1088f2d4de00c53e0e271af6e3e1d9f453f91c"
+  },
+  "models/backbone/open_clip/model_configs/coca_base.json": {
+    "source": "models/backbone/open_clip/model_configs/coca_base.json",
+    "source_sha256": "845f78b584be2baa98c242b25e462736877386dcb218045ae20e00f5fab89448",
+    "packaged_sha256": "845f78b584be2baa98c242b25e462736877386dcb218045ae20e00f5fab89448"
+  },
+  "models/backbone/open_clip/model_configs/coca_roberta-ViT-B-32.json": {
+    "source": "models/backbone/open_clip/model_configs/coca_roberta-ViT-B-32.json",
+    "source_sha256": "4d54816398a541f5cd253d66070c62e0c3a06eaa758c50788aa01dfe4fc1decf",
+    "packaged_sha256": "4d54816398a541f5cd253d66070c62e0c3a06eaa758c50788aa01dfe4fc1decf"
+  },
+  "models/backbone/open_clip/model_configs/coca_ViT-B-32.json": {
+    "source": "models/backbone/open_clip/model_configs/coca_ViT-B-32.json",
+    "source_sha256": "23778133bea128244176ef14dd5b8e35a469c0e28f52e97e69ff4d395b660dc0",
+    "packaged_sha256": "23778133bea128244176ef14dd5b8e35a469c0e28f52e97e69ff4d395b660dc0"
+  },
+  "models/backbone/open_clip/model_configs/coca_ViT-L-14.json": {
+    "source": "models/backbone/open_clip/model_configs/coca_ViT-L-14.json",
+    "source_sha256": "991ede91a3b52cb2bd6c68af15cd31494f805278ee72596b49e078e305c9d9df",
+    "packaged_sha256": "991ede91a3b52cb2bd6c68af15cd31494f805278ee72596b49e078e305c9d9df"
+  },
+  "models/backbone/open_clip/model_configs/convnext_base.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_base.json",
+    "source_sha256": "d6b4dc0b852fb24994f22b83c70a68a919b4acd849a531b03c88216836633487",
+    "packaged_sha256": "d6b4dc0b852fb24994f22b83c70a68a919b4acd849a531b03c88216836633487"
+  },
+  "models/backbone/open_clip/model_configs/convnext_base_w.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_base_w.json",
+    "source_sha256": "5cc7efe6bc377a71c47dad18aa7a59bed951a7e0b4a918be927291cf7cfe3c8b",
+    "packaged_sha256": "5cc7efe6bc377a71c47dad18aa7a59bed951a7e0b4a918be927291cf7cfe3c8b"
+  },
+  "models/backbone/open_clip/model_configs/convnext_base_w_320.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_base_w_320.json",
+    "source_sha256": "3e9581125bad0051cb003582e28b7e5468150e9a48041ff45ab999e52b2917e3",
+    "packaged_sha256": "3e9581125bad0051cb003582e28b7e5468150e9a48041ff45ab999e52b2917e3"
+  },
+  "models/backbone/open_clip/model_configs/convnext_large.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_large.json",
+    "source_sha256": "3c457676002497abc758baa8cc2cc6504546a276ea78add3f8da0b4357169442",
+    "packaged_sha256": "3c457676002497abc758baa8cc2cc6504546a276ea78add3f8da0b4357169442"
+  },
+  "models/backbone/open_clip/model_configs/convnext_large_d.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_large_d.json",
+    "source_sha256": "66b184953f9e9b87b54fc956572ff6e239ae1a0aef87682de9ad971b591bde47",
+    "packaged_sha256": "66b184953f9e9b87b54fc956572ff6e239ae1a0aef87682de9ad971b591bde47"
+  },
+  "models/backbone/open_clip/model_configs/convnext_large_d_320.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_large_d_320.json",
+    "source_sha256": "19b9562d40b35a298aa932c475efa46a46a494a9cce5b00bd2a70f89e3349bde",
+    "packaged_sha256": "19b9562d40b35a298aa932c475efa46a46a494a9cce5b00bd2a70f89e3349bde"
+  },
+  "models/backbone/open_clip/model_configs/convnext_small.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_small.json",
+    "source_sha256": "90a80c2685369c2dbf04b07027a0484f051e0e47c36bb9ba8f62bc1d82a9b8c5",
+    "packaged_sha256": "90a80c2685369c2dbf04b07027a0484f051e0e47c36bb9ba8f62bc1d82a9b8c5"
+  },
+  "models/backbone/open_clip/model_configs/convnext_tiny.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_tiny.json",
+    "source_sha256": "bbe28de7d3b3199b6334ef3d18ac3aae01d269a96c01c89aec0695267df8ef1b",
+    "packaged_sha256": "bbe28de7d3b3199b6334ef3d18ac3aae01d269a96c01c89aec0695267df8ef1b"
+  },
+  "models/backbone/open_clip/model_configs/convnext_xlarge.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_xlarge.json",
+    "source_sha256": "00626430876b91b4fc026103d312a7e3a25771697e18d0861c6de41321c07418",
+    "packaged_sha256": "00626430876b91b4fc026103d312a7e3a25771697e18d0861c6de41321c07418"
+  },
+  "models/backbone/open_clip/model_configs/convnext_xxlarge.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_xxlarge.json",
+    "source_sha256": "70f74aad6e2ed25d398bba3644c08ab96d1458827e8d173833560cb97ca57214",
+    "packaged_sha256": "70f74aad6e2ed25d398bba3644c08ab96d1458827e8d173833560cb97ca57214"
+  },
+  "models/backbone/open_clip/model_configs/convnext_xxlarge_320.json": {
+    "source": "models/backbone/open_clip/model_configs/convnext_xxlarge_320.json",
+    "source_sha256": "942e44277758564c21b5c05c8528bc43836a2e9dba22f8b7c8dc55d5e36cd2f8",
+    "packaged_sha256": "942e44277758564c21b5c05c8528bc43836a2e9dba22f8b7c8dc55d5e36cd2f8"
+  },
+  "models/backbone/open_clip/model_configs/mt5-base-ViT-B-32.json": {
+    "source": "models/backbone/open_clip/model_configs/mt5-base-ViT-B-32.json",
+    "source_sha256": "d30f4a0fb5f427de8edd97c9651f385f43e26de5f480c4ce2f0074a9a8b14fc6",
+    "packaged_sha256": "d30f4a0fb5f427de8edd97c9651f385f43e26de5f480c4ce2f0074a9a8b14fc6"
+  },
+  "models/backbone/open_clip/model_configs/mt5-xl-ViT-H-14.json": {
+    "source": "models/backbone/open_clip/model_configs/mt5-xl-ViT-H-14.json",
+    "source_sha256": "27ab249db8b442da85398ab2cc54c5f7f58c9998fc56d109f530a9c049012cb7",
+    "packaged_sha256": "27ab249db8b442da85398ab2cc54c5f7f58c9998fc56d109f530a9c049012cb7"
+  },
+  "models/backbone/open_clip/model_configs/RN101-quickgelu.json": {
+    "source": "models/backbone/open_clip/model_configs/RN101-quickgelu.json",
+    "source_sha256": "1895e4421bf7542c352c33c95c227a8bf9ddb1c3c20990aadb3f06a32acc5e41",
+    "packaged_sha256": "1895e4421bf7542c352c33c95c227a8bf9ddb1c3c20990aadb3f06a32acc5e41"
+  },
+  "models/backbone/open_clip/model_configs/RN101.json": {
+    "source": "models/backbone/open_clip/model_configs/RN101.json",
+    "source_sha256": "d390d7fcde3fb20a8ce08644be16436d792d4607975438cd2821bc3a6186fd1a",
+    "packaged_sha256": "d390d7fcde3fb20a8ce08644be16436d792d4607975438cd2821bc3a6186fd1a"
+  },
+  "models/backbone/open_clip/model_configs/RN50-quickgelu.json": {
+    "source": "models/backbone/open_clip/model_configs/RN50-quickgelu.json",
+    "source_sha256": "30862c227260adb2b1ca7bca5e5f2859bc0da426d8e439df8fc1ab06d82a3416",
+    "packaged_sha256": "30862c227260adb2b1ca7bca5e5f2859bc0da426d8e439df8fc1ab06d82a3416"
+  },
+  "models/backbone/open_clip/model_configs/RN50.json": {
+    "source": "models/backbone/open_clip/model_configs/RN50.json",
+    "source_sha256": "42c9eff3beb3a3647281052aebb34d26f0a83728c68292dbfbf545467d1f4496",
+    "packaged_sha256": "42c9eff3beb3a3647281052aebb34d26f0a83728c68292dbfbf545467d1f4496"
+  },
+  "models/backbone/open_clip/model_configs/RN50x16.json": {
+    "source": "models/backbone/open_clip/model_configs/RN50x16.json",
+    "source_sha256": "982df3e887b54cf6aca01653f9e36a3910f01d9f1f26152ed44eb51ee93c84bc",
+    "packaged_sha256": "982df3e887b54cf6aca01653f9e36a3910f01d9f1f26152ed44eb51ee93c84bc"
+  },
+  "models/backbone/open_clip/model_configs/RN50x4.json": {
+    "source": "models/backbone/open_clip/model_configs/RN50x4.json",
+    "source_sha256": "571a23e419a6394d516f54fc14e7293193b6fb78995cc538edc3048a519a881d",
+    "packaged_sha256": "571a23e419a6394d516f54fc14e7293193b6fb78995cc538edc3048a519a881d"
+  },
+  "models/backbone/open_clip/model_configs/RN50x64.json": {
+    "source": "models/backbone/open_clip/model_configs/RN50x64.json",
+    "source_sha256": "ae4462a8a043e10d80d0425318fb06c21d620305f39eff10cd0eed9c688a6255",
+    "packaged_sha256": "ae4462a8a043e10d80d0425318fb06c21d620305f39eff10cd0eed9c688a6255"
+  },
+  "models/backbone/open_clip/model_configs/roberta-ViT-B-32.json": {
+    "source": "models/backbone/open_clip/model_configs/roberta-ViT-B-32.json",
+    "source_sha256": "9c689fc6e16c740e7e3555ea28675bc43a0e2b54589ae26ddc8b389c5f62b414",
+    "packaged_sha256": "9c689fc6e16c740e7e3555ea28675bc43a0e2b54589ae26ddc8b389c5f62b414"
+  },
+  "models/backbone/open_clip/model_configs/swin_base_patch4_window7_224.json": {
+    "source": "models/backbone/open_clip/model_configs/swin_base_patch4_window7_224.json",
+    "source_sha256": "3e7aab3a3a0154b3167dbdffb229dfbe6f3d28eaecd89e4aaa122bd1020784db",
+    "packaged_sha256": "3e7aab3a3a0154b3167dbdffb229dfbe6f3d28eaecd89e4aaa122bd1020784db"
+  },
+  "models/backbone/open_clip/model_configs/ViT-B-16-plus-240.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-B-16-plus-240.json",
+    "source_sha256": "7d1fe400810cffb2297dd4818518c11e0d5d9f8c863cd721b9230a2682f8728d",
+    "packaged_sha256": "7d1fe400810cffb2297dd4818518c11e0d5d9f8c863cd721b9230a2682f8728d"
+  },
+  "models/backbone/open_clip/model_configs/ViT-B-16-plus.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-B-16-plus.json",
+    "source_sha256": "bffc7adff78cd5e4d6ef5584dabaa7a256207777843027a117e8f3e700a07c3f",
+    "packaged_sha256": "bffc7adff78cd5e4d6ef5584dabaa7a256207777843027a117e8f3e700a07c3f"
+  },
+  "models/backbone/open_clip/model_configs/ViT-B-16.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-B-16.json",
+    "source_sha256": "c7ff171b1300a7bdb49f47145bab4811cd360b60864235c07524a672e28fedf3",
+    "packaged_sha256": "c7ff171b1300a7bdb49f47145bab4811cd360b60864235c07524a672e28fedf3"
+  },
+  "models/backbone/open_clip/model_configs/ViT-B-32-plus-256.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-B-32-plus-256.json",
+    "source_sha256": "b1d67cf7bbb87a736a0117cf4f5dedc709e735a265b10193535495886e8e3029",
+    "packaged_sha256": "b1d67cf7bbb87a736a0117cf4f5dedc709e735a265b10193535495886e8e3029"
+  },
+  "models/backbone/open_clip/model_configs/ViT-B-32-quickgelu.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-B-32-quickgelu.json",
+    "source_sha256": "6821a4d6fc6e2a60925dc170e828b700e9fd51a461ce12fcd1f3863623e94b16",
+    "packaged_sha256": "6821a4d6fc6e2a60925dc170e828b700e9fd51a461ce12fcd1f3863623e94b16"
+  },
+  "models/backbone/open_clip/model_configs/ViT-B-32.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-B-32.json",
+    "source_sha256": "1248b16441adaa5eb719c4376c9e2f59435fbc13a7d730c1867a2e639cfe8866",
+    "packaged_sha256": "1248b16441adaa5eb719c4376c9e2f59435fbc13a7d730c1867a2e639cfe8866"
+  },
+  "models/backbone/open_clip/model_configs/ViT-bigG-14.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-bigG-14.json",
+    "source_sha256": "5b6fb994e09f75a9f934bde0343aeebd00d156565c24befb9d8508708ea00940",
+    "packaged_sha256": "5b6fb994e09f75a9f934bde0343aeebd00d156565c24befb9d8508708ea00940"
+  },
+  "models/backbone/open_clip/model_configs/ViT-e-14.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-e-14.json",
+    "source_sha256": "4462d30fab4d13eef11e72ea4cad651696bf25b6c1b3913b2ac7ea8c30d7396a",
+    "packaged_sha256": "4462d30fab4d13eef11e72ea4cad651696bf25b6c1b3913b2ac7ea8c30d7396a"
+  },
+  "models/backbone/open_clip/model_configs/ViT-g-14.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-g-14.json",
+    "source_sha256": "97003fcaf39f72ae09c7b311a9a8a6cd5f19bd26d258da38477109db9e389c11",
+    "packaged_sha256": "97003fcaf39f72ae09c7b311a9a8a6cd5f19bd26d258da38477109db9e389c11"
+  },
+  "models/backbone/open_clip/model_configs/ViT-H-14.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-H-14.json",
+    "source_sha256": "63f6653068b7b913ccf6c2043d8a1b1b8f043751e0714e5ce1f593e0977e9b09",
+    "packaged_sha256": "63f6653068b7b913ccf6c2043d8a1b1b8f043751e0714e5ce1f593e0977e9b09"
+  },
+  "models/backbone/open_clip/model_configs/ViT-H-16.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-H-16.json",
+    "source_sha256": "82a2c20c9fb3d597e363132fa8d83526dbf35bf8f2e997504a4aeb658bba8d26",
+    "packaged_sha256": "82a2c20c9fb3d597e363132fa8d83526dbf35bf8f2e997504a4aeb658bba8d26"
+  },
+  "models/backbone/open_clip/model_configs/ViT-L-14-280.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-L-14-280.json",
+    "source_sha256": "c5f5464432b05059d932d3039e6bee123523ca3ac01ec8a3691ca570f7bff4c7",
+    "packaged_sha256": "c5f5464432b05059d932d3039e6bee123523ca3ac01ec8a3691ca570f7bff4c7"
+  },
+  "models/backbone/open_clip/model_configs/ViT-L-14-336.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-L-14-336.json",
+    "source_sha256": "2918beaa3b5844eeb08c316b69f62e30b7a04c42dcb3cc629f36c74405f045bd",
+    "packaged_sha256": "2918beaa3b5844eeb08c316b69f62e30b7a04c42dcb3cc629f36c74405f045bd"
+  },
+  "models/backbone/open_clip/model_configs/ViT-L-14.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-L-14.json",
+    "source_sha256": "171cfafd089dfcdcec7df80b6628582e6e78937932799bf748b32503d6a5fa8b",
+    "packaged_sha256": "171cfafd089dfcdcec7df80b6628582e6e78937932799bf748b32503d6a5fa8b"
+  },
+  "models/backbone/open_clip/model_configs/ViT-L-16-320.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-L-16-320.json",
+    "source_sha256": "c4cad9300d8be2a02fccc385172a71f4c344ff5fa9075a2c49224cc435708785",
+    "packaged_sha256": "c4cad9300d8be2a02fccc385172a71f4c344ff5fa9075a2c49224cc435708785"
+  },
+  "models/backbone/open_clip/model_configs/ViT-L-16.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-L-16.json",
+    "source_sha256": "b5cc42c848a4e4215de720274575bd10f91cfde12a783e7ef6b623dc7ba15b89",
+    "packaged_sha256": "b5cc42c848a4e4215de720274575bd10f91cfde12a783e7ef6b623dc7ba15b89"
+  },
+  "models/backbone/open_clip/model_configs/ViT-M-16-alt.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-M-16-alt.json",
+    "source_sha256": "ad713c535112a4b29d0fd6a638509351abeab190cda4b641b85e437281a7b8d3",
+    "packaged_sha256": "ad713c535112a4b29d0fd6a638509351abeab190cda4b641b85e437281a7b8d3"
+  },
+  "models/backbone/open_clip/model_configs/ViT-M-16.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-M-16.json",
+    "source_sha256": "c50b27533412a95970c79ab69d23400981fbb16a84570436418f3eaf176c40cd",
+    "packaged_sha256": "c50b27533412a95970c79ab69d23400981fbb16a84570436418f3eaf176c40cd"
+  },
+  "models/backbone/open_clip/model_configs/ViT-M-32-alt.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-M-32-alt.json",
+    "source_sha256": "509668c186255371490f6819af7e51d99d75d09750610b43a01bacf2cf9f81b9",
+    "packaged_sha256": "509668c186255371490f6819af7e51d99d75d09750610b43a01bacf2cf9f81b9"
+  },
+  "models/backbone/open_clip/model_configs/ViT-M-32.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-M-32.json",
+    "source_sha256": "37a13ee1497b4d60f97c0ee9874e27330a42c3dcde6f4b9a4130a5e21284a078",
+    "packaged_sha256": "37a13ee1497b4d60f97c0ee9874e27330a42c3dcde6f4b9a4130a5e21284a078"
+  },
+  "models/backbone/open_clip/model_configs/ViT-S-16-alt.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-S-16-alt.json",
+    "source_sha256": "aea2d0fabee4a1b5e64486b8d674330a57d2678bb6c005d3e55cde865ef89760",
+    "packaged_sha256": "aea2d0fabee4a1b5e64486b8d674330a57d2678bb6c005d3e55cde865ef89760"
+  },
+  "models/backbone/open_clip/model_configs/ViT-S-16.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-S-16.json",
+    "source_sha256": "33768dc11cdda576f52e9b59631ee0a06be1363ffde11f672130392de7445ca5",
+    "packaged_sha256": "33768dc11cdda576f52e9b59631ee0a06be1363ffde11f672130392de7445ca5"
+  },
+  "models/backbone/open_clip/model_configs/ViT-S-32-alt.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-S-32-alt.json",
+    "source_sha256": "f2925f2ef0b1bd6f8a876e121e107c54fe7b426db23d022f67fe1c39afcd516f",
+    "packaged_sha256": "f2925f2ef0b1bd6f8a876e121e107c54fe7b426db23d022f67fe1c39afcd516f"
+  },
+  "models/backbone/open_clip/model_configs/ViT-S-32.json": {
+    "source": "models/backbone/open_clip/model_configs/ViT-S-32.json",
+    "source_sha256": "5445bdef9948e7bccc14c6970457911aa354bc40b26395dcdf0f212e4a3481b3",
+    "packaged_sha256": "5445bdef9948e7bccc14c6970457911aa354bc40b26395dcdf0f212e4a3481b3"
+  },
+  "models/backbone/open_clip/model_configs/vit_medium_patch16_gap_256.json": {
+    "source": "models/backbone/open_clip/model_configs/vit_medium_patch16_gap_256.json",
+    "source_sha256": "7944237ff600d62a1ce396123f9ecb3f38a17780d6c818840cd283afe9565f67",
+    "packaged_sha256": "7944237ff600d62a1ce396123f9ecb3f38a17780d6c818840cd283afe9565f67"
+  },
+  "models/backbone/open_clip/model_configs/vit_relpos_medium_patch16_cls_224.json": {
+    "source": "models/backbone/open_clip/model_configs/vit_relpos_medium_patch16_cls_224.json",
+    "source_sha256": "54554cc8d87c5f5ab0608d36bf505d4f375d0db22caa31ebc7cd76b7a305c38b",
+    "packaged_sha256": "54554cc8d87c5f5ab0608d36bf505d4f375d0db22caa31ebc7cd76b7a305c38b"
+  },
+  "models/backbone/open_clip/model_configs/xlm-roberta-base-ViT-B-32.json": {
+    "source": "models/backbone/open_clip/model_configs/xlm-roberta-base-ViT-B-32.json",
+    "source_sha256": "11e9eb0192ec3cd65fe5faa733246349b55911a2893004a443b3f6d0d11bd5fa",
+    "packaged_sha256": "11e9eb0192ec3cd65fe5faa733246349b55911a2893004a443b3f6d0d11bd5fa"
+  },
+  "models/backbone/open_clip/model_configs/xlm-roberta-large-ViT-H-14.json": {
+    "source": "models/backbone/open_clip/model_configs/xlm-roberta-large-ViT-H-14.json",
+    "source_sha256": "c1644b154e649e56df4836043e87517dd041d95b2c35f43be31d4bd89936240e",
+    "packaged_sha256": "c1644b154e649e56df4836043e87517dd041d95b2c35f43be31d4bd89936240e"
+  },
+  "models/backbone/open_clip/modified_resnet.py": {
+    "source": "models/backbone/open_clip/modified_resnet.py",
+    "source_sha256": "46d3ae03bd33c34094d8374d1f6facf164ab28fa5984ce2833893e4f7a5295ab",
+    "packaged_sha256": "46d3ae03bd33c34094d8374d1f6facf164ab28fa5984ce2833893e4f7a5295ab"
+  },
+  "models/backbone/open_clip/openai.py": {
+    "source": "models/backbone/open_clip/openai.py",
+    "source_sha256": "6ff98884e627fe6f9c22b29a34459ef1feb5b2f2148335a1a22be7699945cea1",
+    "packaged_sha256": "6ff98884e627fe6f9c22b29a34459ef1feb5b2f2148335a1a22be7699945cea1"
+  },
+  "models/backbone/open_clip/pretrained.py": {
+    "source": "models/backbone/open_clip/pretrained.py",
+    "source_sha256": "934ab36893b4842022f6a935876125475117b22e1fad1989126d4b0d47c3c8c4",
+    "packaged_sha256": "934ab36893b4842022f6a935876125475117b22e1fad1989126d4b0d47c3c8c4"
+  },
+  "models/backbone/open_clip/push_to_hf_hub.py": {
+    "source": "models/backbone/open_clip/push_to_hf_hub.py",
+    "source_sha256": "60dae9720c0b00b07498d8d68e678c098a215df349d1327ae574d3ad109b81f7",
+    "packaged_sha256": "60dae9720c0b00b07498d8d68e678c098a215df349d1327ae574d3ad109b81f7"
+  },
+  "models/backbone/open_clip/timm_model.py": {
+    "source": "models/backbone/open_clip/timm_model.py",
+    "source_sha256": "28eb2ef0de9c99f462d59223a79cd083569267a7e78c991d5bbe2120938c6334",
+    "packaged_sha256": "28eb2ef0de9c99f462d59223a79cd083569267a7e78c991d5bbe2120938c6334"
+  },
+  "models/backbone/open_clip/tokenizer.py": {
+    "source": "models/backbone/open_clip/tokenizer.py",
+    "source_sha256": "9db02c592fd058641b527f7eb4c4de562e5ca0dbd6120e98f449a7bbef251e6c",
+    "packaged_sha256": "9db02c592fd058641b527f7eb4c4de562e5ca0dbd6120e98f449a7bbef251e6c"
+  },
+  "models/backbone/open_clip/transform.py": {
+    "source": "models/backbone/open_clip/transform.py",
+    "source_sha256": "1e328bb2888e2b70f7f01629d274acfffd189c100f77861b4d3d03c2b3bcd63c",
+    "packaged_sha256": "1e328bb2888e2b70f7f01629d274acfffd189c100f77861b4d3d03c2b3bcd63c"
+  },
+  "models/backbone/open_clip/transformer.py": {
+    "source": "models/backbone/open_clip/transformer.py",
+    "source_sha256": "dbbd3b54d26265f1183a85a0621b7642af1ff8b7a13598eedea40f1f8186ed95",
+    "packaged_sha256": "dbbd3b54d26265f1183a85a0621b7642af1ff8b7a13598eedea40f1f8186ed95"
+  },
+  "models/backbone/open_clip/utils.py": {
+    "source": "models/backbone/open_clip/utils.py",
+    "source_sha256": "6d294e71cc14a01ad19771dbf227d511854d774ea8ddba4d03d5b85feb905213",
+    "packaged_sha256": "6d294e71cc14a01ad19771dbf227d511854d774ea8ddba4d03d5b85feb905213"
+  },
+  "models/backbone/open_clip/version.py": {
+    "source": "models/backbone/open_clip/version.py",
+    "source_sha256": "62f53f28c1ca8c83b44bc2d4cc4df49c161fe369fa4bff1d0d879157832098ae",
+    "packaged_sha256": "62f53f28c1ca8c83b44bc2d4cc4df49c161fe369fa4bff1d0d879157832098ae"
+  },
+  "models/backbone/vision_transformer.py": {
+    "source": "models/backbone/vision_transformer.py",
+    "source_sha256": "6327f18145511b35af61497d0c3c64213a74c2608e9b9a08e8652fa1d6500b46",
+    "packaged_sha256": "6327f18145511b35af61497d0c3c64213a74c2608e9b9a08e8652fa1d6500b46"
+  },
+  "models/modules/_aggregation_cache.py": {
+    "source": "models/modules/_aggregation_cache.py",
+    "source_sha256": "41cbd5521bdc27e476e102a00b2e4dbdb402acca729661e219290889d22bb829",
+    "packaged_sha256": "41cbd5521bdc27e476e102a00b2e4dbdb402acca729661e219290889d22bb829"
+  },
+  "models/modules/_attention_gpu.py": {
+    "source": "models/modules/_attention_gpu.py",
+    "source_sha256": "763b2a1a8722f7908983c837c0c4b34e7c68135752f2a6cdc077320b63657468",
+    "packaged_sha256": "28eaa3cdbbc638c7e0cb727a25cb399a668fd6d3fd0bc0294f8faaa5a1aaa242",
+    "normalized_ast_sha256": "e4a0b42a28bdc7b5f9d92a13c5d04d39dd4ce1dfe6fe50c6e46db056be1285ce",
+    "allowed_change": "CUDA runtime import relocation only"
+  },
+  "models/modules/_encoder_gpu.py": {
+    "source": "models/modules/_encoder_gpu.py",
+    "source_sha256": "553a6f937dd2dfd2afcd7a24355e776ea71cfe39ae1452251d1dd8e8d21c0f9a",
+    "packaged_sha256": "553a6f937dd2dfd2afcd7a24355e776ea71cfe39ae1452251d1dd8e8d21c0f9a"
+  },
+  "models/modules/_LNAMD.py": {
+    "source": "models/modules/_LNAMD.py",
+    "source_sha256": "86971fbfc31c898eea92e2c0790184a4121b9aa01aad473b247ccca820b8c612",
+    "packaged_sha256": "86971fbfc31c898eea92e2c0790184a4121b9aa01aad473b247ccca820b8c612"
+  },
+  "models/modules/_loader.py": {
+    "source": "models/modules/_loader.py",
+    "source_sha256": "7cb951e92fe77273e9fe053c95ffb7e9f42077e5294fcda88764178eed6ec8a7",
+    "packaged_sha256": "7cb951e92fe77273e9fe053c95ffb7e9f42077e5294fcda88764178eed6ec8a7"
+  },
+  "models/modules/_MSM.py": {
+    "source": "models/modules/_MSM.py",
+    "source_sha256": "1834e84c3a7eec5049d06900f12924f97f4fa8dbc95ad2d2dc30ccf3b3159eab",
+    "packaged_sha256": "1834e84c3a7eec5049d06900f12924f97f4fa8dbc95ad2d2dc30ccf3b3159eab"
+  },
+  "models/modules/_MSM_gpu.py": {
+    "source": "models/modules/_MSM_gpu.py",
+    "source_sha256": "7fca26cfce5af50e468731e9245896b30fc9def567a37fd91f3b669608b04232",
+    "packaged_sha256": "39684c5b7999f5d962442f0568d9dbc8334f2625cbaf9aa91e320a54e367a254",
+    "normalized_ast_sha256": "3414eb45686f11726b1b10e026bb3fe171f922baff11089f3bb26e34e4c0a190",
+    "allowed_change": "CUDA runtime import relocation only"
+  },
+  "models/modules/_RsCIN.py": {
+    "source": "models/modules/_RsCIN.py",
+    "source_sha256": "12073ea07839637ddc70a93303a952d610a6f285e4b32d07e52f8c28c0756d33",
+    "packaged_sha256": "12073ea07839637ddc70a93303a952d610a6f285e4b32d07e52f8c28c0756d33"
+  },
+  "models/musc.py": {
+    "source": "models/musc.py",
+    "source_sha256": "fd26657079f2c7f3d4b5bb475c367b89d091eafc78ddf120e1dda5d186b2efc7",
+    "packaged_sha256": "60eab8c910bb72152e1a8f6ba1a5c26de9a490d9d94b6ea59957d0512754060c"
+  },
+  "models/RsCIN_features/cls_process.py": {
+    "source": "models/RsCIN_features/cls_process.py",
+    "source_sha256": "316c6b6b4a6ec452b1589987308cbdec576bb959965161573201e04a12de0b29",
+    "packaged_sha256": "316c6b6b4a6ec452b1589987308cbdec576bb959965161573201e04a12de0b29"
+  },
+  "models/RsCIN_features/RsCIN.py": {
+    "source": "models/RsCIN_features/RsCIN.py",
+    "source_sha256": "9e4f663cfd8b33bfd16dafee85151eb16a209cbdb90316a06b83b87740a18f91",
+    "packaged_sha256": "9e4f663cfd8b33bfd16dafee85151eb16a209cbdb90316a06b83b87740a18f91"
+  },
+  "datasets/btad.py": {
+    "source": "datasets/btad.py",
+    "source_sha256": "4b997dcfc374581aa44ffcfa95170cda15b4e23da35c0163ebd9f2cc543aa9ce",
+    "packaged_sha256": "4b997dcfc374581aa44ffcfa95170cda15b4e23da35c0163ebd9f2cc543aa9ce"
+  },
+  "datasets/mvtec.py": {
+    "source": "datasets/mvtec.py",
+    "source_sha256": "79db5e4132fc8a70a28c98bc413efff967bdb65aa1d366c1d744cc240200c104",
+    "packaged_sha256": "79db5e4132fc8a70a28c98bc413efff967bdb65aa1d366c1d744cc240200c104"
+  },
+  "datasets/visa.py": {
+    "source": "datasets/visa.py",
+    "source_sha256": "fcb95676482a07948c3273cd92f5e332c9cc6daa72d3f068a3b2e3572bee8bde",
+    "packaged_sha256": "fcb95676482a07948c3273cd92f5e332c9cc6daa72d3f068a3b2e3572bee8bde"
+  },
+  "datasets/visa_preprocess.py": {
+    "source": "datasets/visa_preprocess.py",
+    "source_sha256": "24c143c436c07e196321265b30503528b7492f0f6bd7f048b79f251a7878c163",
+    "packaged_sha256": "24c143c436c07e196321265b30503528b7492f0f6bd7f048b79f251a7878c163"
+  },
+  "utils/load_config.py": {
+    "source": "utils/load_config.py",
+    "source_sha256": "1879b2904bae82272d6d2f4566e53731168e84813d1c8eba70e76ec7f8c0ae45",
+    "packaged_sha256": "1879b2904bae82272d6d2f4566e53731168e84813d1c8eba70e76ec7f8c0ae45"
+  },
+  "utils/metrics.py": {
+    "source": "utils/metrics.py",
+    "source_sha256": "b5ec3ce3fb7cd63d7a3230cc1d1bbe597bb054b6c08926ff8d61d9e751bda955",
+    "packaged_sha256": "b5ec3ce3fb7cd63d7a3230cc1d1bbe597bb054b6c08926ff8d61d9e751bda955"
+  },
+  "LICENSE": {
+    "source": "LICENSE",
+    "source_sha256": "4e69810512d6a32605df2f94f40c1b968d41a3b84153829922ae472793c093a2",
+    "packaged_sha256": "4e69810512d6a32605df2f94f40c1b968d41a3b84153829922ae472793c093a2"
+  },
+  "examples/musc_main.py": {
+    "source": "examples/musc_main.py",
+    "source_sha256": "fa75d8d779d893ec2049558e715a48f896e74384c102be4be6eb5cf1dfc179cc",
+    "packaged_sha256": "fa75d8d779d893ec2049558e715a48f896e74384c102be4be6eb5cf1dfc179cc"
+  },
+  "configs/musc.yaml": {
+    "source": "configs/musc.yaml",
+    "source_sha256": "a7370e59763a8eed61e3e5be5cdd1e7e857ca5848591492957a2c4fce6f961d0",
+    "packaged_sha256": "ce123ed29bd1f47ab7fef7bf9544b357713131ffa13dd0b5dde3e289af296eb4"
+  },
+  "models/modules/_cuda_runtime.py": {
+    "source": "experiments/research/cuda_runtime.py",
+    "source_sha256": "3f5b98bd41b1eb9af647f4291d79b3c0b7a17e95e33bbb463037e62f914e2acd",
+    "packaged_sha256": "3f5b98bd41b1eb9af647f4291d79b3c0b7a17e95e33bbb463037e62f914e2acd"
+  },
+  "benchmarks/bottle83/results.json": {
+    "source": "experiments/parallel_20261004/round6/encoder_candidate/virtual_aligned/bottle83/results.json",
+    "source_sha256": "9658eead902a63f79a05128eee44077510fcceec31805ca429c493682ec394f5",
+    "packaged_sha256": "9658eead902a63f79a05128eee44077510fcceec31805ca429c493682ec394f5"
+  },
+  "benchmarks/bottle83/deployment_checks.json": {
+    "source": "experiments/parallel_20261004/round6/encoder_candidate/virtual_aligned/deployment_checks.json",
+    "source_sha256": "0afe84fd1ed3b6b6ac4c0fdb28ca5fc115eab4e7179f6776ed017c03fd4c0453",
+    "packaged_sha256": "0afe84fd1ed3b6b6ac4c0fdb28ca5fc115eab4e7179f6776ed017c03fd4c0453"
+  },
+  "benchmarks/bottle83/qualification_report.md": {
+    "source": "experiments/parallel_20261004/round6/encoder_candidate/virtual_aligned/REPORT.md",
+    "source_sha256": "c746fc961e7e9c2d833e6f0f4ac26aceb59b66a72966f1a181779da876ef7dad",
+    "packaged_sha256": "c746fc961e7e9c2d833e6f0f4ac26aceb59b66a72966f1a181779da876ef7dad"
+  },
+  ".gitignore": {
+    "source": "release addition",
+    "packaged_sha256": "4b57c890c7f90e817d380ded5c8b101f2f3f75bb89e9fc3cebb4679daeb0b5ca"
+  },
+  "README.md": {
+    "source": "release addition",
+    "packaged_sha256": "a66a2152b3df637353acbc2cc6d6b1e7a2ec9021be22b08a38e2c2f35fc092c7"
+  },
+  "requirements-dev.txt": {
+    "source": "release addition",
+    "packaged_sha256": "791463bc0975bb271648b0ebc4848e88a2f70ea4e24c94d31322bf3b77103e95"
+  },
+  "requirements.txt": {
+    "source": "release addition",
+    "packaged_sha256": "eab23884d62ec98ad817b4290a2f0b3086795b67c10f6badb13a214fb623438d"
+  },
+  "THIRD_PARTY_NOTICES.md": {
+    "source": "release addition",
+    "packaged_sha256": "5cb7d3e157ff58ba1898ab33a9fca7de1519150a8715ca50119de5c5fa4ac22f"
+  },
+  "licenses/DINO-Apache-2.0.txt": {
+    "source": "release addition",
+    "packaged_sha256": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a"
+  },
+  "licenses/DINOv2-Apache-2.0.txt": {
+    "source": "release addition",
+    "packaged_sha256": "600cc67cc4cb2f5ea317dcfc687ad1c74dc4bec8782bbe9db0afd83513b935b7"
+  },
+  "licenses/OpenAI-CLIP-MIT.txt": {
+    "source": "release addition",
+    "packaged_sha256": "987e63b32f6c89ff5160e429458a872ff048e6860b590a3912e938f9da8f14db"
+  },
+  "licenses/OpenCLIP-MIT.txt": {
+    "source": "release addition",
+    "packaged_sha256": "4a5b4f13ea4792a8211a69f32d2b460b6d520e57cd23c6301e707c76a6e97a55"
+  },
+  "tools/plot_benchmarks.py": {
+    "source": "release addition",
+    "packaged_sha256": "f00eeab4fda1f41b4f1ee60c5cb7f9318c95e72d2ac715ae980a096820d71e3c"
+  },
+  "tools/verify_release.py": {
+    "source": "release addition",
+    "packaged_sha256": "f54860ecb812f457ad407a863c08d4d7b4ebb17fe323e450b60518c54fadf84b"
+  },
+  "models/modules/_backend.py": {
+    "source": "release addition",
+    "packaged_sha256": "bc37d235be1e5566001f0634aff255b679e0624f43137cd511a38e89c07d589e"
+  },
+  "docs/figures/agreement.png": {
+    "source": "release addition",
+    "packaged_sha256": "65bf6a737eefd5aaaf31a550bcbd43b652dd6089205233495dc51ab2961ea941"
+  },
+  "docs/figures/agreement.svg": {
+    "source": "release addition",
+    "packaged_sha256": "a5c9a85264d7d4ac6f917a50a8e8164f3acd4597b724733b37cb31b06ad5ce60"
+  },
+  "docs/figures/latency.png": {
+    "source": "release addition",
+    "packaged_sha256": "e846b2ffcfc06a65b887d26b75474c3ef7fcd2cece797f99c0aabaa59adcdf81"
+  },
+  "docs/figures/latency.svg": {
+    "source": "release addition",
+    "packaged_sha256": "4898a5e7654e3c8a0306d6f0c555470515d5744c6578b52d8be796879652b55b"
+  },
+  "docs/figures/memory.png": {
+    "source": "release addition",
+    "packaged_sha256": "a76a8f47a21363803063bc9100a88dbcbd1645d6855006492164881e0368372b"
+  },
+  "docs/figures/memory.svg": {
+    "source": "release addition",
+    "packaged_sha256": "daf4a007de4cae5e2ab8cf223fcd1c28cc412ebf7c92fe308f47df35d35429e1"
+  },
+  "docs/BENCHMARK.md": {
+    "source": "release addition",
+    "packaged_sha256": "d6078d74eee4c960648b9a6e570c4ed74bd932ae5fb9fa00514d34922cee0448"
+  },
+  "tools/benchmark.py": {
+    "source": "release addition",
+    "packaged_sha256": "bf7a271002155d147a8019bbf09e9604179e84ecd0736d080dbf746fcf3ce4fe"
+  },
+  "tools/benchmark_process.py": {
+    "source": "release addition",
+    "packaged_sha256": "77388b85c2d360683efa7f143d39940d1c3d4f42d8b2b79dbc80f81590d8d6d7"
+  },
+  "tools/benchmark_support.py": {
+    "source": "release addition",
+    "packaged_sha256": "b03268e4606730eaf1cc8a427676ec11df725d5f4f6a528e93bb6102a595e862"
+  },
+  "tools/report_benchmark.py": {
+    "source": "release addition",
+    "packaged_sha256": "961ec0af35f58d354ecb0fee5dd92985df60c874b3f67737be3cadd3f319d2ed"
+  },
+  "tools/test_benchmark.py": {
+    "source": "release addition",
+    "packaged_sha256": "350714543281c26e006fa31b7968d33b81b20e3eeff18c1f91e14a781445e679"
+  },
+  "tools/test_worker_process.py": {
+    "source": "release addition",
+    "packaged_sha256": "4fc4555ecab78bbbe8db04945f3de2ddb2db2b3f0e0b19ce670da7a718f232e3"
+  },
+  "benchmarks/harness_validation/process_tree_tests.json": {
+    "source": "release addition",
+    "packaged_sha256": "e1787992d7ff1e78958d48f2990399ece775db4d1ee335ae8920bb2f17cc8008"
+  },
+  "benchmarks/harness_validation/small_pool_results.json": {
+    "source": "release addition",
+    "packaged_sha256": "43ff615715d6a087fc9b473d3bb139fdf1fe36585a19a9b71487c0fdc2ff45aa"
+  },
+  "benchmarks/representative/agreement.png": {
+    "source": "release addition",
+    "packaged_sha256": "9aa76bd7e8fe7cb6b2f27b1c6eea5463910843e26ec961fbaeb14b7be44b8ed0"
+  },
+  "benchmarks/representative/agreement.svg": {
+    "source": "release addition",
+    "packaged_sha256": "4fa4e5cb054412e14b2051a3a21c9491cea1fe5341beaaf38fa9cec09b8583e1"
+  },
+  "benchmarks/representative/environment_packages.json": {
+    "source": "release addition",
+    "packaged_sha256": "e2d8d27bc7acc1e04874571701079ec1f7c7cfa327ffbcad9c6069d26373527a"
+  },
+  "benchmarks/representative/latency.png": {
+    "source": "release addition",
+    "packaged_sha256": "3bf0fc94e861493c6bd237a072ce9dae97c5cc801da7b28bbac23f986fec3610"
+  },
+  "benchmarks/representative/latency.svg": {
+    "source": "release addition",
+    "packaged_sha256": "9ab2ce4d8cb000bee0788bfacc2a41dd08ef2e8e6c89d5db0747b65b2c63e82f"
+  },
+  "benchmarks/representative/memory.png": {
+    "source": "release addition",
+    "packaged_sha256": "b3d68528ea589f0d28408eea0f937f91263c1ae02a7969c927b7f02a1485ab06"
+  },
+  "benchmarks/representative/memory.svg": {
+    "source": "release addition",
+    "packaged_sha256": "fd2ef7c4314d92158a7b61619bd985abd5504b46a25ea3f2d844e4f038fc38ff"
+  },
+  "benchmarks/representative/quality.png": {
+    "source": "release addition",
+    "packaged_sha256": "4b0e22c5c5b01c40d771d4060405874b9151c6b1c893c05a4aa09b718d098475"
+  },
+  "benchmarks/representative/quality.svg": {
+    "source": "release addition",
+    "packaged_sha256": "8cabe82a81b8f5cb28f6a7db5680a289856fbeb92a41770e48f658396850c072"
+  },
+  "benchmarks/representative/REPORT.md": {
+    "source": "release addition",
+    "packaged_sha256": "c78174d635241c299d5936e6106b772ea25894a2fd2407b52e5d91982f503f46"
+  },
+  "benchmarks/representative/results.json": {
+    "source": "release addition",
+    "packaged_sha256": "e736b67d01c7881362b9c1443f9ed772dcac0aecbfde5aa6b8e50e5eaaa57479"
+  },
+  "benchmarks/representative/speedup.png": {
+    "source": "release addition",
+    "packaged_sha256": "defd02cafc61532fa9c436597097e2cb06061746a5f624f6b21989a30e5897da"
+  },
+  "benchmarks/representative/speedup.svg": {
+    "source": "release addition",
+    "packaged_sha256": "4a3536c07f36eef1615847f8c92a82cf23cba0b12aeb40eb0293dc72d6765ebd"
+  },
+  "benchmarks/representative/summary.csv": {
+    "source": "release addition",
+    "packaged_sha256": "4dfd1e035f4e8c958e561af4de15ee4c53c6e675ad0e7cb3e9bc65e476ddb379"
+  }
+}

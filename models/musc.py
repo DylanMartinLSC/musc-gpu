@@ -59,6 +59,9 @@ class MuSc():
         self.features_list = [l+1 for l in cfg['models']['feature_layers']]
         self.divide_num = cfg['datasets']['divide_num']
         self.r_list = cfg['models']['r_list']
+        self.inference_backend = cfg['models'].get('inference_backend', 'original')
+        if self.inference_backend not in ('original', 'gpu'):
+            raise ValueError('inference_backend must be original or gpu')
         self.output_dir = os.path.join(cfg['testing']['output_dir'], self.dataset, self.model_name, 'imagesize{}'.format(self.image_size))
         os.makedirs(self.output_dir, exist_ok=True)
         self.load_backbone()
@@ -126,6 +129,23 @@ class MuSc():
 
     def make_category_data(self, category):
         print(category)
+        from models.modules._backend import select_backend
+        selected_backend, fallback_reason = select_backend(self.inference_backend, self.device.type)
+        gpu_pipeline = selected_backend == 'gpu'
+        if fallback_reason:
+            print('MuSc: using original backend (' + fallback_reason + ').')
+        if gpu_pipeline:
+            from models.modules._MSM_gpu import MSM as gpu_msm
+            from models.modules._encoder_gpu import encode_image as gpu_encode
+            scoring = getattr(self, 'msm_override', gpu_msm)
+            encoding = getattr(self, 'encode_image_override', gpu_encode)
+            aggregation = getattr(encoding, 'aggregate_features', None)
+            aggregation_factory = getattr(encoding, 'new_aggregation', None)
+            if aggregation_factory is not None:
+                aggregation = aggregation_factory()
+        else:
+            scoring = MSM
+        aggregation_device = self.device if gpu_pipeline else torch.device('cpu')
 
         # divide sub-datasets
         divide_num = self.divide_num
@@ -135,16 +155,25 @@ class MuSc():
         class_tokens = []
         image_path_list = []
         start_time_all = time.time()
+        if gpu_pipeline:
+            begin_inference = getattr(encoding, 'begin_inference', None)
+            if begin_inference is not None:
+                begin_inference()
         dataset_num = 0
         for divide_iter in range(divide_num):
             test_dataset = self.load_datasets(category, divide_num=divide_num, divide_iter=divide_iter)
-            test_dataloader = torch.utils.data.DataLoader(
-                test_dataset,
-                batch_size=self.batch_size,
-                shuffle=False,
-                num_workers=0,
-                pin_memory=True,
-            )
+            if gpu_pipeline:
+                from models.modules._loader import ThreadedDatasetLoader
+                test_dataloader = ThreadedDatasetLoader(
+                    test_dataset, batch_size=self.batch_size, pin_memory=True)
+            else:
+                test_dataloader = torch.utils.data.DataLoader(
+                    test_dataset,
+                    batch_size=self.batch_size,
+                    shuffle=False,
+                    num_workers=0,
+                    pin_memory=True,
+                )
             
             # extract features
             patch_tokens_list = []
@@ -163,17 +192,23 @@ class MuSc():
                     if 'dinov2' in self.model_name:
                         patch_tokens = self.dino_model.get_intermediate_layers(x=input_image, n=[l-1 for l in self.features_list], return_class_token=False)
                         image_features = self.dino_model(input_image)
-                        patch_tokens = [patch_tokens[l].cpu() for l in range(len(self.features_list))]
+                        patch_tokens = [patch_tokens[l] if gpu_pipeline else patch_tokens[l].cpu()
+                                        for l in range(len(self.features_list))]
                         fake_cls = [torch.zeros_like(p)[:, 0:1, :] for p in patch_tokens]
                         patch_tokens = [torch.cat([fake_cls[i], patch_tokens[i]], dim=1) for i in range(len(patch_tokens))]
                     elif 'dino' in self.model_name:
                         patch_tokens_all = self.dino_model.get_intermediate_layers(x=input_image, n=max(self.features_list))
                         image_features = self.dino_model(input_image)
-                        patch_tokens = [patch_tokens_all[l-1].cpu() for l in self.features_list]
+                        patch_tokens = [patch_tokens_all[l-1] if gpu_pipeline else patch_tokens_all[l-1].cpu()
+                                        for l in self.features_list]
                     else: # clip
-                        image_features, patch_tokens = self.clip_model.encode_image(input_image, self.features_list)
+                        if gpu_pipeline:
+                            image_features, patch_tokens = encoding(self.clip_model, input_image, self.features_list)
+                        else:
+                            image_features, patch_tokens = self.clip_model.encode_image(input_image, self.features_list)
                         image_features /= image_features.norm(dim=-1, keepdim=True)
-                        patch_tokens = [patch_tokens[l].cpu() for l in range(len(self.features_list))]
+                        patch_tokens = [patch_tokens[l] if gpu_pipeline else patch_tokens[l].cpu()
+                                        for l in range(len(self.features_list))]
                 image_features = [image_features[bi].squeeze().cpu().numpy() for bi in range(image_features.shape[0])]
                 class_tokens.extend(image_features)
                 patch_tokens_list.append(patch_tokens)  # (B, L+1, C)
@@ -182,7 +217,7 @@ class MuSc():
             
             # LNAMD
             feature_dim = patch_tokens_list[0][0].shape[-1]
-            anomaly_maps_r = torch.tensor([]).double()
+            anomaly_maps_r = torch.empty(0, dtype=torch.float64, device=aggregation_device)
             for r in self.r_list:
                 start_time = time.time()
                 print('aggregation degree: {}'.format(r))
@@ -191,7 +226,9 @@ class MuSc():
                 for im in range(len(patch_tokens_list)):
                     patch_tokens = [p.to(self.device) for p in patch_tokens_list[im]]
                     with torch.no_grad(), torch.cuda.amp.autocast():
-                        features = LNAMD_r._embed(patch_tokens)
+                        features = (aggregation(LNAMD_r, patch_tokens, return_cpu=False)
+                                    if gpu_pipeline and aggregation is not None else
+                                    LNAMD_r._embed(patch_tokens, return_cpu=not gpu_pipeline))
                         features /= features.norm(dim=-1, keepdim=True)
                         for l in range(len(self.features_list)):
                             # save the aggregated features
@@ -202,22 +239,25 @@ class MuSc():
                 print('LNAMD-{}: {}ms per image'.format(r, (end_time-start_time)*1000/subset_num))
 
                 # MSM
-                anomaly_maps_l = torch.tensor([]).double()
+                anomaly_maps_l = torch.empty(0, dtype=torch.float64, device=aggregation_device)
                 start_time = time.time()
                 for l in Z_layers.keys():
                     # different layers
                     Z = torch.cat(Z_layers[l], dim=0).to(self.device) # (N, L, C)
                     print('layer-{} mutual scoring...'.format(l))
-                    anomaly_maps_msm = MSM(Z=Z, device=self.device, topmin_min=0, topmin_max=0.3)
-                    anomaly_maps_l = torch.cat((anomaly_maps_l, anomaly_maps_msm.unsqueeze(0).cpu()), dim=0)
-                    torch.cuda.empty_cache()
+                    anomaly_maps_msm = scoring(Z=Z, device=self.device, topmin_min=0, topmin_max=0.3)
+                    maps_to_average = anomaly_maps_msm if gpu_pipeline else anomaly_maps_msm.cpu()
+                    anomaly_maps_l = torch.cat((anomaly_maps_l, maps_to_average.unsqueeze(0)), dim=0)
+                    if not gpu_pipeline:
+                        torch.cuda.empty_cache()
                 anomaly_maps_l = torch.mean(anomaly_maps_l, 0)
                 anomaly_maps_r = torch.cat((anomaly_maps_r, anomaly_maps_l.unsqueeze(0)), dim=0)
                 end_time = time.time()
                 print('MSM: {}ms per image'.format((end_time-start_time)*1000/subset_num))
             anomaly_maps_iter = torch.mean(anomaly_maps_r, 0).to(self.device)
             del anomaly_maps_r
-            torch.cuda.empty_cache()
+            if not gpu_pipeline:
+                torch.cuda.empty_cache()
 
             # interpolate
             B, L = anomaly_maps_iter.shape
@@ -225,6 +265,8 @@ class MuSc():
             anomaly_maps_iter = F.interpolate(anomaly_maps_iter.view(B, 1, H, H),
                                         size=self.image_size, mode='bilinear', align_corners=True)
             anomaly_maps = torch.cat((anomaly_maps, anomaly_maps_iter.cpu()), dim=0)
+            if gpu_pipeline and aggregation_factory is not None:
+                aggregation.clear()
 
         # save image features for optimizing classification
         # cls_save_path = os.path.join('./image_features/{}_{}.dat'.format(dataset, category))
