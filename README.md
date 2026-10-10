@@ -103,7 +103,7 @@ image warmup; OS filesystem caches are not flushed.
 
 The ratio of summed category medians is **4.13×**. This covers these three
 categories, not all of MVTec AD or other GPUs/backbones. Pool throughput is
-not independent single-image latency. No verified 10× result exists.
+not independent single-image latency.
 
 **Numerical agreement:** every full-resolution map and image score passes the
 **2e-5 absolute tolerance**. Maximum map errors are 4.315e-6 (bottle), 1.636e-6
