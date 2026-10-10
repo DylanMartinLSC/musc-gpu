@@ -156,6 +156,35 @@ percentage points, including differences too small to see on a conventional plot
 
 ![Original and musc-gpu accuracy scorecards with signed metric differences for each category](benchmarks/representative/quality.png)
 
+### Segmentation at a fixed threshold
+
+On saved GPU predictions, thresholds calibrated on reserved normal images give
+the pixel precision, recall and intersection-over-union (IoU) below. Bottle and
+cable have relatively precise masks but miss substantial defect area; grid has
+higher recall with more excess segmentation. Normal-image false alarms were
+**0/10** (bottle), **2/11** (grid) and **0/29** (cable).
+
+![Fixed-threshold segmentation: precision, recall and IoU for bottle, grid and cable](benchmarks/segmentation_usefulness/segmentation.png)
+
+The examples below compare input images, ground truth (green), and original/GPU
+predictions (orange) at the **same fixed category threshold**. Each category uses
+its median-IoU defective evaluation image, rather than a hand-picked best case.
+The near-identical backend outputs preserve the same segmentation limitations.
+
+![Input, ground truth, original MuSc and musc-gpu segmentation comparisons](benchmarks/segmentation_usefulness/examples.png)
+
+Example imagery: MVTec AD, MVTec Software GmbH; adapted under
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+See [image attribution](THIRD_PARTY_NOTICES.md#mvtec-ad-example-figure).
+
+These are **retrospective, shared-pool diagnostics**, not production qualification.
+Bottle and grid had only 10 normal calibration images each, insufficient for the
+requested 5% false-reject operating point; their thresholds use the calibration
+maximum for diagnosis only. No threshold was tuned on evaluation defects.
+See the [protocol](docs/SEGMENTATION_USEFULNESS.md) and
+[measured results](benchmarks/segmentation_usefulness/results.json) for counts,
+thresholds, region coverage and limitations.
+
 ### Memory tradeoff
 
 Acceleration uses more GPU memory. The chart below compares the maximum

@@ -23,5 +23,15 @@ Bundled backbone sources retain their original headers:
 MuSc upstream also acknowledges [PatchCore](https://github.com/amazon-science/patchcore-inspection)
 and [APRIL-GAN](https://github.com/ByChelsea/VAND-APRIL-GAN). That attribution is retained here.
 Model weights and datasets are downloaded separately and retain their own
-terms; none are distributed in this release. Third-party licenses are
+terms; complete datasets and model weights are not distributed here. Third-party licenses are
 included under `licenses/`; they do not become MIT merely because MuSc is MIT.
+
+## MVTec AD example figure
+
+`benchmarks/segmentation_usefulness/examples.png` adapts three images and their
+defect annotations from [MVTec AD](https://www.mvtec.com/research-teaching/datasets/mvtec-ad),
+MVTec Software GmbH. The dataset and this adapted figure are licensed under
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), separately
+from the code's MIT license. Changes: resizing, colored annotation/prediction
+overlays, labels, and montage layout. Original image identifiers are recorded
+in `benchmarks/segmentation_usefulness/examples.json`.

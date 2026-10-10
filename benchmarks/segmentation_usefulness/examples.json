@@ -1,0 +1,45 @@
+{
+  "selection": "Lower median held-out defective-image GPU IoU per category, path tie-break",
+  "display": "518px resized input with 50% alpha overlays; exact evaluation masks; no heatmap normalization",
+  "threshold": "Frozen GPU category calibration threshold applied unchanged to both backends",
+  "results_sha256": "99b2adaedbba779a06027b17658d35c2f02e8bf918231606a8655c85be911acc",
+  "script_sha256": "c9d17c0abebbda1c737db2cf9cc980522ae9fea2a6d80bd0735f1ed6b6d6df02",
+  "examples": [
+    {
+      "category": "bottle",
+      "path": "bottle/test/broken_large/002.png",
+      "threshold": 0.6521255729260165,
+      "selection_rank": 32,
+      "defective_images": 63,
+      "original_iou": 0.40943679720822024,
+      "gpu_iou": 0.40943679720822024,
+      "thresholded_pixel_disagreements": 0,
+      "image_sha256": "249813c6bccb58b9de711a6b7248f4fd8ba4136364cfad2e0577769db91353c2",
+      "original_trial_sha256": "4deb20fbe4409c82821ed24e3a12908dff3ef51f76be6e66dbdda4d11e1232fe"
+    },
+    {
+      "category": "grid",
+      "path": "grid/test/bent/010.png",
+      "threshold": 0.5838781769076983,
+      "selection_rank": 29,
+      "defective_images": 57,
+      "original_iou": 0.26553231345613487,
+      "gpu_iou": 0.26553231345613487,
+      "thresholded_pixel_disagreements": 0,
+      "image_sha256": "98f2e223559912c3cb783548def1c13d708155bc6fd2e22ba2051c2257020a33",
+      "original_trial_sha256": "aa559ad46e378144206e72218b3d1b434789b2917ef7d3b0bb79f497808d95e2"
+    },
+    {
+      "category": "cable",
+      "path": "cable/test/cut_inner_insulation/012.png",
+      "threshold": 0.6563770445604769,
+      "selection_rank": 46,
+      "defective_images": 92,
+      "original_iou": 0.2667838312829525,
+      "gpu_iou": 0.2667838312829525,
+      "thresholded_pixel_disagreements": 0,
+      "image_sha256": "8221d48235e1748e05b49bdd808f879ff6a357f21dfa312ce8e101bb7d3e2df6",
+      "original_trial_sha256": "cff9260361c23833f47069b1e2854c06fc4140f92e193f9af6079f72c65143be"
+    }
+  ]
+}
