@@ -1,191 +1,171 @@
 # musc-gpu
 
-An **unofficial GPU-optimized implementation of MuSc**, with **3.74×–4.35×
-measured inference speedup** across complete MVTec AD bottle, grid and cable
-pools on an NVIDIA RTX 3090. The original backend is included and selectable.
-This release contains the latest **qualified and deployed** acceleration code,
-its reproducible benchmark, and measured accuracy and resource comparisons.
+**GPU-accelerated MuSc for zero-shot industrial anomaly detection and segmentation.**
 
-MuSc is *Zero-Shot Industrial Anomaly Classification and Segmentation with
-Mutual Scoring of the Unlabeled Images* (ICLR 2024), by **Xurui Li, Ziming
-Huang, Feng Xue, and Yu Zhou**. See the [original repository](https://github.com/xrli-U/MuSc),
-[paper](https://arxiv.org/abs/2401.16753), and [attribution notices](THIRD_PARTY_NOTICES.md).
-This release is independently maintained and is not the official MuSc repo.
+Score a pool of unlabeled images and locate anomalies without task-specific
+training. This independently maintained implementation measures **3.74–4.35×
+faster complete-pool inference** than original MuSc on bottle, grid and cable
+from MVTec AD, using an NVIDIA RTX 3090. The original backend remains selectable.
 
-## Performance and capabilities
+[Quick start](#quick-start) · [Benchmarks](#measured-performance) ·
+[Implementation](docs/IMPLEMENTATION.md) · [Reproduce results](docs/BENCHMARK.md) ·
+[Releases](https://github.com/DylanMartinLSC/musc-gpu/releases)
 
-Each category uses its **entire test pool**, batch4, one reference division,
-518px CLIP ViT-L-14-336/OpenAI, feature indices 5/11/17/23 and radii 1/3/5.
-Two alternating pairs start each backend/pass in a fresh process, with
-first-use compilation included and no discarded image warmup. OS filesystem
-caches are not flushed. Model loading and quality evaluation are measured
-separately, outside inference.
+> **Accelerated platform: native Windows + NVIDIA CUDA.** Published results use
+> CLIP ViT-L-14-336/OpenAI at 518px. Linux, WSL and CPU select the original
+> backend; accelerated kernels are not implemented for those platforms.
 
-| Complete category | Images | Original median | musc-gpu median | Speedup |
-|---|---:|---:|---:|---:|
-| bottle | 83 | 35.01 s | 9.36 s | **3.74×** |
-| grid | 78 | 31.71 s | 8.05 s | **3.94×** |
-| cable | 150 | 102.34 s | 23.55 s | **4.35×** |
+Based on **MuSc (ICLR 2024)** by Xurui Li, Ziming Huang, Feng Xue and Yu Zhou.
+See the [original repository](https://github.com/xrli-U/MuSc),
+[paper](https://arxiv.org/abs/2401.16753) and
+[attribution notices](THIRD_PARTY_NOTICES.md). This is an unofficial project.
 
-The ratio of summed category medians is **4.13×** across these three
-validated categories. This is not a combined reference pool or a claim for
-all MVTec AD categories, backbones, or GPUs. Pool inference throughput is
+## Quick start
+
+Use PowerShell on native Windows with an NVIDIA GPU and a CUDA-compatible driver.
+The measured package pair is **PyTorch 2.7.1 / torchvision 0.22.1, CUDA 11.8**.
+Python 3.10 is a conservative setup choice, not a tested compatibility matrix.
+See the [recorded package versions](benchmarks/representative/environment_packages.json).
+
+```powershell
+git clone https://github.com/DylanMartinLSC/musc-gpu.git
+cd musc-gpu
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu118
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+```
+
+Obtain MVTec AD separately and point `--data_path` at the directory containing
+its category folders. Preserve the dataset layout, for example:
+
+```text
+mvtec_anomaly_detection/
+└── bottle/
+    ├── test/
+    │   ├── good/
+    │   └── broken_large/
+    └── ground_truth/
+        └── broken_large/
+```
+
+The tree shows only a few folders; keep the complete category test pool and
+its ground-truth masks. The example evaluates that pool together: MuSc uses
+other images as references, so changing the pool changes the task.
+
+```powershell
+.venv/Scripts/python.exe examples/musc_main.py --data_path C:/path/to/mvtec_anomaly_detection --class_name bottle --inference_backend gpu
+```
+
+The first model load downloads OpenAI weights if absent. The command prints
+image-level and pixel-level evaluation metrics. Add `--vis true --save_excel true`
+to save heatmaps and `results.xlsx` under `output/` (organized by dataset,
+model and image size). Metrics and visualization run after inference; they
+can add substantial time beyond the inference timings below.
+
+Defaults are in [configs/musc.yaml](configs/musc.yaml). The published comparison
+uses batch size 4, one complete reference pool, feature indices 5/11/17/23 and
+radii 1/3/5. No labels or masks enter anomaly scoring; evaluation uses them.
+
+### Original backend and troubleshooting
+
+To run the numerical reference implementation:
+
+```powershell
+.venv/Scripts/python.exe examples/musc_main.py --data_path C:/path/to/mvtec_anomaly_detection --class_name bottle --inference_backend original
+```
+
+| Situation | What to do |
+|---|---|
+| Linux, WSL or CUDA unavailable | The GPU request selects the original backend and prints a reason. These paths are not performance-qualified here. |
+| Missing NVRTC DLL or a Windows CUDA runtime error | Check the PyTorch/CUDA installation above, or explicitly use `--inference_backend original`. Runtime errors do not silently fall back. |
+| Insufficient GPU memory | Check the measured peaks below and leave room for reserved memory and other processes. Larger pools need a separate capacity assessment. |
+| Different backbone, weights or resolution | Use the original backend for unvalidated configurations; published speedups apply only to the stated configuration. |
+
+The custom runtime loads NVRTC DLLs supplied with Windows PyTorch and uses the
+caller's CUDA stream. The attention wrapper uses native PyTorch outside its
+supported dispatch. See [implementation details](docs/IMPLEMENTATION.md).
+
+## Measured performance
+
+**Complete category pools, RTX 3090, two alternating original/GPU pairs.** Each
+pass starts in a fresh process and includes first-use compilation, decoding,
+preprocessing, transfers, encoding, aggregation, scoring, interpolation and
+RsCIN. Model loading and metrics are measured separately. There is no discarded
+image warmup; OS filesystem caches are not flushed.
+
+| Category | Images | Original median | musc-gpu median | Speedup | GPU peak allocated |
+|---|---:|---:|---:|---:|---:|
+| bottle | 83 | 35.01 s | 9.36 s | **3.74×** | 7.14 GiB |
+| grid | 78 | 31.71 s | 8.05 s | **3.94×** | 6.80 GiB |
+| cable | 150 | 102.34 s | 23.55 s | **4.35×** | 11.64 GiB |
+
+![Original versus musc-gpu inference latency for the complete bottle, grid and cable pools](benchmarks/representative/latency.png)
+
+The ratio of summed category medians is **4.13×**. This covers these three
+categories, not all of MVTec AD or other GPUs/backbones. Pool throughput is
 not independent single-image latency. No verified 10× result exists.
 
-![Complete pool inference latency](benchmarks/representative/latency.png)
-![Paired speedup](benchmarks/representative/speedup.png)
+**Numerical agreement:** every full-resolution map and image score passes the
+**2e-5 absolute tolerance**. Maximum map errors are 4.315e-6 (bottle), 1.636e-6
+(grid) and 1.738e-6 (cable). Image AUROC/AP/F1 agree in these runs; pixel
+AUROC/AP/F1/AUPRO remain close, with exact deltas in the raw JSON. Agreement
+within tolerance does not imply bitwise identity or accuracy guarantees elsewhere.
 
-Image AUROC/AP/F1 agree with the original results in these runs. Pixel
-AUROC/AP/F1/AUPRO remain close; exact deltas are retained in raw JSON. All
-full-resolution maps and image scores pass the **2e-5** agreement gate.
-Maximum map errors are 4.315e-6 (bottle), 1.636e-6 (grid), and 1.738e-6
-(cable). The measurements establish agreement on these workloads, rather
-than bitwise identity with the original or accuracy guarantees elsewhere.
+**Memory tradeoff:** original peak allocations are 6.29, 6.26 and 6.64 GiB,
+respectively. The accelerated peaks above are tensor allocations, not total
+device usage or minimum VRAM requirements. Reserved memory is recorded separately.
 
+[Full report](benchmarks/representative/REPORT.md) ·
+[Raw JSON](benchmarks/representative/results.json) ·
+[CSV](benchmarks/representative/summary.csv)
+
+<details>
+<summary>More charts: paired speedup, quality, numerical agreement and memory</summary>
+
+![Paired inference speedup](benchmarks/representative/speedup.png)
 ![Classification and segmentation quality](benchmarks/representative/quality.png)
-![Numerical agreement](benchmarks/representative/agreement.png)
+![Numerical agreement with original MuSc](benchmarks/representative/agreement.png)
+![Peak allocated GPU memory by category and backend](benchmarks/representative/memory.png)
 
-Acceleration costs memory: peak allocated GPU memory is **7.14 GiB** for
-bottle, **6.80 GiB** for grid, and **11.64 GiB** for cable; original peaks
-are 6.29, 6.26 and 6.64 GiB respectively. These are allocated tensor peaks,
-not total device usage. The benchmark separately records reserved memory
-and assesses capacity before larger pools.
+</details>
 
-![Measured GPU memory](benchmarks/representative/memory.png)
+## Reproduce and verify
 
-See the [complete benchmark report](benchmarks/representative/REPORT.md),
-[authoritative raw JSON](benchmarks/representative/results.json),
-[CSV](benchmarks/representative/summary.csv), and
-[measured package versions](benchmarks/representative/environment_packages.json).
-Image/pixel AP and F1 are included alongside AUROC; optional AUPRO was enabled
-for this run. These are newly measured metrics, not capture placeholders.
-
-An earlier [bottle83 qualification](benchmarks/bottle83/results.json) measured
-**3.836766×**, 37.13 s → 9.68 s, under the historical shared-process protocol.
-Its [report](benchmarks/bottle83/qualification_report.md) and
-[deployment receipt](benchmarks/bottle83/deployment_checks.json) preserve the
-accepted implementation lineage. The fresh-process benchmark above is a
-distinct protocol; cross-run differences do not establish a new optimization.
-Historical workspace paths are provenance, not required release paths.
-
-## Changes from the original implementation
-
-- **GPU mutual scoring:** symmetric tiled dot products reuse work in both
-  image directions. Centered distance certificates screen candidates, and
-  original FP32 features refine distances. Per-reference-image Euclidean
-  minima, self exclusion, and trimmed ranks are preserved; scores are FP64.
-- **Direct spatial pooling:** replaces expanded Unfold intermediates while
-  preserving normalization and padding behavior.
-- **Ordered threaded loading:** four workers preserve image order and batch4
-  assembly while overlapping decoding and preprocessing.
-- **Normalization reuse:** reuses radius-independent spatial normalization
-  only within one inference division. Features are recomputed on every call;
-  no persistent image-feature cache is used. This mechanism adds about
-  1.76 GiB peak allocation in the accepted bottle83 comparison.
-- **Attention:** alignment-aware FP32 softmax retains 1024 logical lanes on
-  256 physical threads and exact FP16 probabilities. Block12 retains both
-  probability stores; the other 23 omit discarded FP32 stores.
-
-The trained weights, resolution, requested layers, radii, reference pool and
-scoring contract remain intact. Full-image agreement tolerance is 2e-5;
-the protected scoring gate uses 3e-5 absolute / 1e-5 relative tolerance.
-Numerical equivalence means agreement within these tolerances, not bitwise
-identity with the original pipeline. No labels or masks enter scoring.
-
-## Installation and use
-
-Run commands from the release root. Python 3.10 is a conservative environment
-choice; the supplied measurements establish the PyTorch/CUDA combination
-above, not a compatibility matrix for every Python release.
+Run the complete comparison from the repository root. Use a **new output
+directory** for each run and an exclusive GPU slot. Allow several GiB of disk
+space for prediction arrays. The benchmark has a fixed backbone/configuration;
+editing `configs/musc.yaml` does not change it.
 
 ```powershell
-python -m venv .venv
-.venv/Scripts/Activate.ps1
-python -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu118
-python -m pip install -r requirements.txt
-python examples/musc_main.py --data_path C:/path/to/mvtec_anomaly_detection --class_name bottle --inference_backend gpu
+.venv/Scripts/python.exe tools/benchmark.py --data-path C:/path/to/mvtec_anomaly_detection --plan-only
+.venv/Scripts/python.exe tools/benchmark.py --data-path C:/path/to/mvtec_anomaly_detection --categories bottle grid cable --pairs 2 --include-pro --output benchmarks/runs/representative
 ```
 
-Obtain MVTec AD separately, with its existing category/test/ground_truth
-layout. The first model load downloads OpenAI weights if they are absent.
-Change the dataset path in the command or `configs/musc.yaml`. Outputs go
-to `output/`; optional upstream metrics and heatmaps run after inference.
+See the [benchmark guide](docs/BENCHMARK.md) for timing boundaries, report
+commands, smaller-pool tests, capacity checks and failure handling.
+`--categories all` requests all 15 categories; only successful complete-pool
+runs support category-level claims.
 
-### Original backend and fallback
+Check release integrity without weights, torch imports or CUDA trials:
 
 ```powershell
-python examples/musc_main.py --data_path C:/path/to/mvtec_anomaly_detection --class_name bottle --inference_backend original
+.venv/Scripts/python.exe tools/verify_release.py
+.venv/Scripts/python.exe tools/test_benchmark.py
 ```
 
-The original path uses the original encoder, LNAMD aggregation, MSM scoring,
-and sequential loader. GPU kernels are imported only for the accelerated
-path. When CUDA is unavailable or the OS is not native Windows, a GPU request
-selects the original backend and prints the reason. CPU execution is an
-upstream fallback, not a newly performance-qualified configuration.
+## Project guide
 
-The custom runtime currently loads NVRTC DLLs shipped with Windows PyTorch
-and uses the caller's CUDA stream. Linux and WSL acceleration are not
-implemented in this release. Missing NVRTC or a CUDA runtime failure on
-Windows remains an explicit error: rerun with `--inference_backend original`.
-The attention wrapper uses native PyTorch outside its supported dispatch.
-Use the original backend for unvalidated model/configuration comparisons.
+| Resource | Contents |
+|---|---|
+| [Implementation and verification](docs/IMPLEMENTATION.md) | GPU scoring, pooling, loading, normalization reuse, attention and historical qualification |
+| [Benchmark protocol](docs/BENCHMARK.md) | Reproducible comparisons, timing scope and numerical gates |
+| [Representative results](benchmarks/representative/REPORT.md) | Measured speed, quality and memory for three complete pools |
+| [Source manifest](SOURCE_MANIFEST.json) | Packaged source and evidence hashes |
+| [Issue tracker](https://github.com/DylanMartinLSC/musc-gpu/issues) | Bug reports and feature requests |
 
-## Evidence and release verification
-
-The release includes a reproducible [benchmark suite](docs/BENCHMARK.md) for
-complete MVTec AD categories and explicitly labeled pool-size scaling tests.
-It measures original-vs-GPU latency, image/pixel AUROC, AP, F1 and optional
-AUPRO, numerical agreement, allocated/reserved memory, model loading and
-metric costs. Fresh-process trials include first-use compilation on every
-pass; failed agreement rejects speed claims.
-
-### Backbone scope
-
-The benchmark harness currently supports **only CLIP ViT-L-14-336 with
-OpenAI pretrained weights at 518px**, batch size 4, feature indices
-5/11/17/23 and radii 1/3/5. It sets these values explicitly; changing
-`configs/musc.yaml` does not change the benchmark model, and there is no
-backbone-selection CLI option. `--categories all` means all 15 MVTec AD
-categories with this same backbone.
-
-The upstream inference code retains other backbone configuration paths,
-but they are not covered by this harness or the published speedup and
-accuracy results. Use `--inference_backend original` for those unvalidated
-configurations. Supporting another backbone in the comparison harness
-requires adapting its model/layer configuration, output-shape checks,
-memory estimates and accelerated-dispatch validation, then qualifying
-numerical agreement and measuring it separately.
-
-```powershell
-python tools/benchmark.py --data-path C:/path/to/mvtec_anomaly_detection --categories bottle grid cable --pairs 2 --include-pro --output benchmarks/runs/representative
-python tools/report_benchmark.py benchmarks/runs/representative/results.json --output benchmarks/runs/representative/figures
-```
-
-```powershell
-python tools/verify_release.py
-python tools/test_benchmark.py
-python -m pip install -r requirements-dev.txt
-python tools/plot_benchmarks.py
-```
-
-Verification checks source integrity, Python syntax, backend selection and
-preservation of the deployed kernel source and aggregation factory. It runs
-on CPU without downloading weights or launching CUDA. Graphs regenerate
-from the retained raw JSON; SVG versions are included for editing.
-
-`SOURCE_MANIFEST.json` records original and packaged source hashes. Packaging
-changes only runtime import locations, platform fallback selection, and
-portable configuration defaults in inference sources. The qualified CUDA
-source and encoder aggregation hooks are preserved. The bottle83 qualification
-is historical evidence; the three-category
-benchmark is a new run of this packaged inference implementation.
-
-The release contains runtime models, upstream datasets/utilities, the latest
-qualified GPU modules, raw accepted evidence, and graph/verification tools.
-Old candidates, experiment supervisors, logs, caches, seeds, checkpoints,
-datasets and Git history are excluded. The development workspace remains
-available with its existing sources and evidence. Research can continue there
-independently of this release.
+For a useful bug report, include the command, OS, GPU/VRAM, Python and
+PyTorch/CUDA versions, backend, category/pool size and full error message.
+For benchmark discrepancies, include the result JSON and timing scope.
 
 ## Citation and license
 
@@ -200,5 +180,5 @@ Please cite the original MuSc paper when using its method:
 }
 ```
 
-Preserved MuSc [MIT license](LICENSE); bundled third-party sources retain
-their applicable licenses and notices. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Preserved MuSc [MIT license](LICENSE). Bundled third-party sources retain their
+applicable licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

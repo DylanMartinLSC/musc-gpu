@@ -559,7 +559,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "a66a2152b3df637353acbc2cc6d6b1e7a2ec9021be22b08a38e2c2f35fc092c7"
+    "packaged_sha256": "1ae2ccd3f1709ad590e5dc394dfea11afcd7772f237b1f3cd18727c6f6eab0d8"
   },
   "requirements-dev.txt": {
     "source": "release addition",
@@ -716,5 +716,9 @@
   "benchmarks/representative/summary.csv": {
     "source": "release addition",
     "packaged_sha256": "4dfd1e035f4e8c958e561af4de15ee4c53c6e675ad0e7cb3e9bc65e476ddb379"
+  },
+  "docs/IMPLEMENTATION.md": {
+    "source": "release addition",
+    "packaged_sha256": "ed9b25a804116d998c52e6ecfd8ee057dd9f5d6a9f15334088ef77cd09374d50"
   }
 }
