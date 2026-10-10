@@ -7,7 +7,8 @@ training. This independently maintained implementation measures **3.74–4.35×
 faster complete-pool inference** than original MuSc on bottle, grid and cable
 from MVTec AD, using an NVIDIA RTX 3090. The original backend remains selectable.
 
-[Quick start](#quick-start) · [Benchmarks](#measured-performance) ·
+[Quick start](#quick-start) · [What changed](#changes-from-original-musc) ·
+[Benchmarks](#measured-performance) ·
 [Implementation](docs/IMPLEMENTATION.md) · [Reproduce results](docs/BENCHMARK.md) ·
 [Releases](https://github.com/DylanMartinLSC/musc-gpu/releases)
 
@@ -19,6 +20,45 @@ Based on **MuSc (ICLR 2024)** by Xurui Li, Ziming Huang, Feng Xue and Yu Zhou.
 See the [original repository](https://github.com/xrli-U/MuSc),
 [paper](https://arxiv.org/abs/2401.16753) and
 [attribution notices](THIRD_PARTY_NOTICES.md). This is an unofficial project.
+
+## Changes from original MuSc
+
+The acceleration changes how inference is executed. It preserves the model
+weights, input resolution, selected feature layers, aggregation radii and
+complete reference pool used in the comparison.
+
+- **GPU mutual scoring:** replaces repeated per-image distance calculations
+  with tiled GPU matrix multiplications. Symmetric tiles serve both image
+  directions, avoiding duplicate dot products. Error bounds screen candidates;
+  distances that can determine a minimum are refined using the original FP32
+  features. Per-reference-image Euclidean minima, self exclusion and trimmed
+  ranks are preserved, with FP64 score outputs.
+- **Direct neighborhood pooling:** replaces expanded `Unfold` neighborhoods
+  and their subsequent averaging with spatial average pooling for supported
+  shapes. This avoids materializing large intermediate tensors while preserving
+  normalization and zero-padding behavior.
+- **Normalization reuse across radii:** computes the shared spatial
+  normalization once per feature tensor and reuses it for radii 1, 3 and 5
+  within an inference division. The cache is cleared between divisions;
+  image features are recomputed on every inference call.
+- **Fewer CPU/GPU transfers:** keeps patch features, aggregated features and
+  intermediate anomaly maps on the GPU through aggregation and scoring,
+  instead of repeatedly moving them to the CPU and back. This trades higher
+  GPU memory use for less transfer overhead.
+- **Ordered parallel image loading:** uses four loading threads with bounded
+  prefetching to overlap decoding and preprocessing. Dataset order and
+  batch-size-4 assembly are preserved.
+- **Specialized attention softmax:** uses an alignment-aware CUDA kernel for
+  the supported CLIP attention shape. It preserves FP32 softmax arithmetic
+  and the FP16 probabilities consumed by attention, reuses the FP16 result,
+  and omits discarded FP32 probability stores in 23 of 24 transformer blocks.
+  Block 12 retains both outputs because its attention weights are used later.
+
+The original backend remains selectable. The measured predictions agree
+within the **2e-5 full-image tolerance**; this is not a claim of bitwise
+identity. The reported speedups measure the combined pipeline, not separate
+speedup claims for each change. See [implementation details](docs/IMPLEMENTATION.md)
+for dispatch constraints, numerical safeguards and verification.
 
 ## Quick start
 
