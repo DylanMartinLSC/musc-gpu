@@ -99,7 +99,7 @@ image warmup; OS filesystem caches are not flushed.
 | grid | 78 | 31.71 s | 8.05 s | **3.94×** | 6.80 GiB |
 | cable | 150 | 102.34 s | 23.55 s | **4.35×** | 11.64 GiB |
 
-![Original versus musc-gpu inference latency for the complete bottle, grid and cable pools](benchmarks/representative/latency.png)
+![musc-gpu uses 23–27% of original inference time across bottle, grid and cable, with 3.74–4.35× speedup](benchmarks/representative/speedup.png)
 
 The ratio of summed category medians is **4.13×**. This covers these three
 categories, not all of MVTec AD or other GPUs/backbones. Pool throughput is
@@ -111,6 +111,11 @@ not independent single-image latency. No verified 10× result exists.
 AUROC/AP/F1/AUPRO remain close, with exact deltas in the raw JSON. Agreement
 within tolerance does not imply bitwise identity or accuracy guarantees elsewhere.
 
+The scorecards show both backends on a 0–100 scale and the signed change in
+percentage points, including differences too small to see on a conventional plot.
+
+![Original and musc-gpu accuracy scorecards with signed metric differences for each category](benchmarks/representative/quality.png)
+
 **Memory tradeoff:** original peak allocations are 6.29, 6.26 and 6.64 GiB,
 respectively. The accelerated peaks above are tensor allocations, not total
 device usage or minimum VRAM requirements. Reserved memory is recorded separately.
@@ -120,10 +125,9 @@ device usage or minimum VRAM requirements. Reserved memory is recorded separatel
 [CSV](benchmarks/representative/summary.csv)
 
 <details>
-<summary>More charts: paired speedup, quality, numerical agreement and memory</summary>
+<summary>More charts: absolute latency, numerical agreement and memory</summary>
 
-![Paired inference speedup](benchmarks/representative/speedup.png)
-![Classification and segmentation quality](benchmarks/representative/quality.png)
+![Absolute inference latency by category and backend](benchmarks/representative/latency.png)
 ![Numerical agreement with original MuSc](benchmarks/representative/agreement.png)
 ![Peak allocated GPU memory by category and backend](benchmarks/representative/memory.png)
 

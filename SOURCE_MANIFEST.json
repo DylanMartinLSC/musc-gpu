@@ -559,7 +559,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "1ae2ccd3f1709ad590e5dc394dfea11afcd7772f237b1f3cd18727c6f6eab0d8"
+    "packaged_sha256": "fa7643ee9f6447b10a32c82678c061fb4069585122fbfd015341cd7ca35c0670"
   },
   "requirements-dev.txt": {
     "source": "release addition",
@@ -643,7 +643,7 @@
   },
   "tools/report_benchmark.py": {
     "source": "release addition",
-    "packaged_sha256": "961ec0af35f58d354ecb0fee5dd92985df60c874b3f67737be3cadd3f319d2ed"
+    "packaged_sha256": "960ea273b13b79c1ed0fe2dc0962cc2a4662e49159ca039636a0587aa6328f2f"
   },
   "tools/test_benchmark.py": {
     "source": "release addition",
@@ -663,11 +663,11 @@
   },
   "benchmarks/representative/agreement.png": {
     "source": "release addition",
-    "packaged_sha256": "9aa76bd7e8fe7cb6b2f27b1c6eea5463910843e26ec961fbaeb14b7be44b8ed0"
+    "packaged_sha256": "216f4e1225460ec565129007fdc4fd6ed25f78d57e69afb5f98a676abd96444d"
   },
   "benchmarks/representative/agreement.svg": {
     "source": "release addition",
-    "packaged_sha256": "4fa4e5cb054412e14b2051a3a21c9491cea1fe5341beaaf38fa9cec09b8583e1"
+    "packaged_sha256": "31f5b25b3397df113b5bfc3a73f0850af55b2d9864fd51330bbd00e2cf519e82"
   },
   "benchmarks/representative/environment_packages.json": {
     "source": "release addition",
@@ -691,11 +691,11 @@
   },
   "benchmarks/representative/quality.png": {
     "source": "release addition",
-    "packaged_sha256": "4b0e22c5c5b01c40d771d4060405874b9151c6b1c893c05a4aa09b718d098475"
+    "packaged_sha256": "0286283c929b648b510b32c4218813080a96d0b94c46aebf8efc7fe8b23474bc"
   },
   "benchmarks/representative/quality.svg": {
     "source": "release addition",
-    "packaged_sha256": "8cabe82a81b8f5cb28f6a7db5680a289856fbeb92a41770e48f658396850c072"
+    "packaged_sha256": "5862cef064483c29ae48818caa8989772a7a346fd6d8fff815c28965cc145acc"
   },
   "benchmarks/representative/REPORT.md": {
     "source": "release addition",
@@ -707,11 +707,11 @@
   },
   "benchmarks/representative/speedup.png": {
     "source": "release addition",
-    "packaged_sha256": "defd02cafc61532fa9c436597097e2cb06061746a5f624f6b21989a30e5897da"
+    "packaged_sha256": "2d817f1fe52705aa887abce561de6477e806e9b4f79eef3cc4fc961c45d7d1cb"
   },
   "benchmarks/representative/speedup.svg": {
     "source": "release addition",
-    "packaged_sha256": "4a3536c07f36eef1615847f8c92a82cf23cba0b12aeb40eb0293dc72d6765ebd"
+    "packaged_sha256": "c056970d7e7b15263d311e8f9b1c052e346d6c19725ddfb96bade8419d021142"
   },
   "benchmarks/representative/summary.csv": {
     "source": "release addition",

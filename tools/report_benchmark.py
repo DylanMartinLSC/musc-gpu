@@ -26,10 +26,10 @@ def render(source, output):
         passed = summary['status'] == 'pass'
         scope = 'complete category' if w['complete_pool'] else 'explicit subset'
         times = summary.get('median_inference_seconds', {})
-        values = [f'{times[b]:.3f}' if passed else '—' for b in ('original','gpu')]
+        values = [f'{times[b]:.3f}' if passed else 'â€”' for b in ('original','gpu')]
         lines.append(f'| {w["id"]} | {w["images"]} | {scope} | {summary["status"]} | '
-                     + ' | '.join(values) + f' | {summary["speedup"]:.3f}× | {summary["minimum_paired_speedup"]:.3f}× |' if passed else
-                     f'| {w["id"]} | {w["images"]} | {scope} | {summary["status"]} | — | — | — | — |')
+                     + ' | '.join(values) + f' | {summary["speedup"]:.3f}Ã— | {summary["minimum_paired_speedup"]:.3f}Ã— |' if passed else
+                     f'| {w["id"]} | {w["images"]} | {scope} | {summary["status"]} | â€” | â€” | â€” | â€” |')
         for backend in ('original','gpu'):
             trials = [p[backend] for p in w['pairs']] if passed else []
             csv_rows.append({'pool': w['id'], 'images': w['images'], 'complete_pool': w['complete_pool'],
@@ -46,20 +46,20 @@ def render(source, output):
     if 'validated_full_category_aggregate' in data:
         aggregate = data['validated_full_category_aggregate']
         lines.extend(['', f'Aggregate speedup for validated full categories ({", ".join(aggregate["categories"])}): '
-                       f'**{aggregate["speedup"]:.3f}×**.', '', aggregate['note'] + '.'])
+                       f'**{aggregate["speedup"]:.3f}Ã—**.', '', aggregate['note'] + '.'])
     lines.extend(['', '## Quality and resource measurements', '',
-                  'Metric values below are medians across the measured trials (0–1 scale). '
+                  'Metric values below are medians across the measured trials (0â€“1 scale). '
                   'Undefined/not requested metrics remain blank. F1 is maximized over evaluation thresholds; '
                   'this does not establish a production threshold.', '',
                   '| Pool / backend | Image AUROC | Image AP | Pixel AUROC | Pixel AP | Pixel AUPRO | Peak allocated GiB | Model load (s) | Metrics (s) |',
                   '|---|---:|---:|---:|---:|---:|---:|---:|---:|'])
     for row in csv_rows:
         def fmt(key, decimals=4):
-            return f'{row[key]:.{decimals}f}' if row[key] is not None else '—'
+            return f'{row[key]:.{decimals}f}' if row[key] is not None else 'â€”'
         lines.append(f'| {row["pool"]} / {row["backend"]} | {fmt("image_auroc")} | {fmt("image_ap")} | '
             f'{fmt("pixel_auroc")} | {fmt("pixel_ap")} | {fmt("pixel_aupro")} | '
             f'{row["peak_allocated_mib"]/1024:.2f}' + f' | {fmt("median_model_load_seconds",2)} | {fmt("median_metric_seconds",2)} |'
-            if row['peak_allocated_mib'] is not None else f'| {row["pool"]} / {row["backend"]} | — | — | — | — | — | — | — | — |')
+            if row['peak_allocated_mib'] is not None else f'| {row["pool"]} / {row["backend"]} | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |')
     lines.extend(['', '## Numerical agreement', '',
                   '| Pool | Max map error | Max score error | Tolerance |', '|---|---:|---:|---:|'])
     for w in successful:
@@ -100,7 +100,10 @@ def plot(workloads, rows, output):
         fig.text(.5, .015, footer, ha='center', fontsize=9, color='#475467')
         fig.tight_layout(rect=(0,.09,1,1))
         for suffix in ('png','svg'):
-            fig.savefig(output/f'{name}.{suffix}', dpi=180)
+            target = output/f'{name}.{suffix}'
+            fig.savefig(target, dpi=180)
+            if suffix == 'svg':
+                target.write_bytes(('\n'.join(line.rstrip() for line in target.read_text(encoding='utf-8').splitlines())+'\n').encode('utf-8'))
         plt.close(fig)
     fig, ax = plt.subplots(figsize=(max(8, len(x)*1.8),5))
     for i,b in enumerate(('original','gpu')):
@@ -113,20 +116,36 @@ def plot(workloads, rows, output):
     ax.set_ylim(0, ax.get_ylim()[1]*1.13)
     ax.legend(frameon=False)
     save(fig,'latency','Median of alternating fresh-process trials; first-use setup included.\nModel loading and metric evaluation excluded. Complete pools and explicit subsets are labeled.')
-    fig, ax = plt.subplots(figsize=(max(8,len(x)*1.8),5))
-    values = [w['summary']['speedup'] for w in workloads]
-    bars = ax.bar(x, values, color=colors[1], width=.5)
-    ax.bar_label(bars, fmt='%.2f×', padding=5)
-    for index,w in enumerate(workloads):
+    fig, ax = plt.subplots(figsize=(10, max(4.8, len(x)*1.25+1.5)))
+    remaining = [100 / w['summary']['speedup'] for w in workloads]
+    annotation_x = max(100, max(remaining)) + 4
+    ax.barh(x, [100]*len(x), height=.55, color='#eaecf0', label='Original runtime = 100%')
+    bars = ax.barh(x, remaining, height=.55, color=colors[1], label='musc-gpu runtime')
+    for index, (w, value) in enumerate(zip(workloads, remaining)):
+        times = w['summary']['median_inference_seconds']
+        ax.text(value/2, index, f'{value:.1f}%', ha='center', va='center',
+                color='white', weight='bold', fontsize=12)
+        ax.text(value+2, index, f"{times['original']:.2f} s → {times['gpu']:.2f} s",
+                va='center', color='#344054', fontsize=11)
+        ax.text(annotation_x, index-.09, f"{w['summary']['speedup']:.2f}× faster",
+                va='center', weight='bold', color=colors[1], fontsize=13)
         ratios = w['summary']['paired_speedups']
-        ax.scatter([index]*len(ratios), ratios, color='white',edgecolor='#101828',zorder=3)
-    ax.set_xticks(x,labels)
-    ax.set_ylabel('Original / musc-gpu (higher is better)')
-    ax.set_title('Speedup with individual paired measurements')
-    ax.axhline(1,color='#667085',linestyle='--')
-    largest = max([*values, *(ratio for w in workloads for ratio in w['summary']['paired_speedups'])])
-    ax.set_ylim(0, largest*1.25)
-    save(fig,'speedup','Bars: ratio of median latency. Dots: individual paired speedups.\nTwo pairs describe repeatability; they do not establish a confidence interval.')
+        ax.text(annotation_x, index+.20, f'Pairs: {min(ratios):.3f}–{max(ratios):.3f}×',
+                va='center', fontsize=9, color='#667085')
+    ax.set_yticks(x, labels)
+    ax.invert_yaxis()
+    ax.set_xlim(0, 139)
+    ax.set_xticks([0,25,50,75,100], ['0%','25%','50%','75%','100%'])
+    ax.set_xlabel('Share of original inference time · lower is better')
+    ax.set_title('The same pool, in about a quarter of the time', loc='left', pad=20,
+                 weight='bold')
+    # Keep the headline valid for arbitrary successful reports, including slower runs.
+    if not all(3.5 <= w['summary']['speedup'] <= 4.5 for w in workloads):
+        ax.set_title('Inference time relative to original MuSc', loc='left', pad=20)
+    ax.set_xlim(0, max(139, max(remaining)*1.35))
+    ax.spines['left'].set_visible(False)
+    ax.tick_params(axis='y', length=0)
+    save(fig,'speedup','Bars and seconds: median latency; each original pool is normalized to 100%.\nPaired ranges show observed repeatability, not confidence intervals. Model loading and metrics excluded.')
     lookup = {(r['pool'],r['backend']):r for r in rows}
     fig, ax = plt.subplots(figsize=(max(8,len(x)*1.8),5))
     for i,b in enumerate(('original','gpu')):
@@ -139,32 +158,64 @@ def plot(workloads, rows, output):
     ax.set_ylim(0,ax.get_ylim()[1]*1.13)
     ax.legend(frameon=False)
     save(fig,'memory','Maximum recorded allocation across measured trials.\nReserved memory is reported separately in JSON/CSV; this is not total device usage.')
-    fig, axes = plt.subplots(2,2,figsize=(max(10,len(x)*2),8))
-    for ax,key,title in zip(axes.flat,('image_auroc','image_ap','pixel_auroc','pixel_ap'),
-                           ('Image classification AUROC','Image average precision',
-                            'Pixel segmentation AUROC','Pixel average precision')):
-        for i,b in enumerate(('original','gpu')):
-            values = [lookup[w['id'],b][key] for w in workloads]
-            ax.scatter(x+(i-.5)*.16,[v if v is not None else np.nan for v in values],
-                       color=colors[i],s=55,label='Original' if i==0 else 'musc-gpu',zorder=3)
-        ax.set_xticks(x,labels,fontsize=9)
-        ax.set_ylim(0,1.04)
-        ax.set_title(title)
-        ax.grid(axis='y',alpha=.2)
-        ax.legend(frameon=False,loc='lower right')
-    save(fig,'quality','Evaluation after inference, using the same image labels and resized masks.\nCompare marker heights; exact values and metric deltas are in the report.')
-    fig,ax=plt.subplots(figsize=(max(8,len(x)*1.8),5))
+    metrics = [('image_auroc','Image AUROC'), ('image_ap','Image AP'),
+               ('image_f1_max','Image F1'), ('pixel_auroc','Pixel AUROC'),
+               ('pixel_ap','Pixel AP'), ('pixel_f1_max','Pixel F1'),
+               ('pixel_aupro','Pixel AUPRO')]
+    # Numeric scorecards reveal tiny differences that overlapping markers conceal.
+    fig, axes = plt.subplots(len(workloads), 1,
+                             figsize=(10, 3.15*len(workloads)+1), squeeze=False)
+    for ax,w in zip(axes.flat,workloads):
+        ax.axis('off')
+        scope = 'complete pool' if w['complete_pool'] else 'explicit subset'
+        ax.set_title(f"{w['id']}  ·  {w['images']} images  ·  {scope}",
+                     loc='left', fontsize=13, weight='bold', pad=10)
+        cells=[]
+        for key,title in metrics:
+            original, gpu = (lookup[w['id'],b][key] for b in ('original','gpu'))
+            delta = None if original is None or gpu is None else (gpu-original)*100
+            cells.append([title,
+                          '—' if original is None else f'{original*100:.4f}',
+                          '—' if gpu is None else f'{gpu*100:.4f}',
+                          '—' if delta is None else ('0 (exact)' if delta == 0 else f'{delta:+.2e}')])
+        table=ax.table(cellText=cells,
+                       colLabels=['Metric (0–100)', 'Original', 'musc-gpu', 'Change (points)'],
+                       colWidths=[.31,.21,.21,.27], cellLoc='center', bbox=[0,0,1,1])
+        table.auto_set_font_size(False)
+        table.set_fontsize(11)
+        for (row,col),cell in table.get_celld().items():
+            cell.set_edgecolor('white')
+            cell.set_linewidth(2)
+            cell.set_facecolor('#f2f4f7' if row%2 else '#ffffff')
+            if row==0:
+                cell.set_facecolor('#1d2939')
+                cell.set_text_props(color='white',weight='bold')
+            elif col==2:
+                cell.set_facecolor('#e6f4f3')
+                cell.set_text_props(color='#086b70',weight='bold')
+            elif col==0:
+                cell.set_text_props(ha='left')
+    fig.suptitle('Accuracy, with the differences made explicit', x=.04, ha='left',
+                 fontsize=18, weight='bold', y=.995)
+    save(fig,'quality','Medians across measured trials; higher metric values are better. Change = musc-gpu − original.\nValues shown on a 0–100 scale; changes are percentage points, computed before rounding.\nF1 uses the best evaluation threshold; — means unavailable. Tiny nonzero changes are retained.')
+    fig,ax=plt.subplots(figsize=(10,max(4.8,len(x)*1.1+1.5)))
     for i,key in enumerate(('maps','scores')):
         values=[max(p['agreement'][key]['max_absolute_error'] for p in w['pairs']) for w in workloads]
-        ax.scatter(x+(i-.5)*.16,[max(v,1e-12) for v in values],s=55,label='Maps' if key=='maps' else 'Scores')
-    ax.set_yscale('log')
-    ax.set_ylim(1e-12,1e-4)
-    ax.axhline(2e-5,color='#be5a19',linestyle='--',label='Tolerance 2e-5')
-    ax.set_xticks(x,labels)
-    ax.set_ylabel('Maximum absolute error vs original')
-    ax.set_title('Numerical agreement across pools')
-    ax.legend(frameon=False)
-    save(fig,'agreement','Worst error across measured paired trials; exact zero is plotted at the 1e-12 display floor.\nNonfinite or out-of-tolerance outputs reject speed claims.')
+        positions=x+(i-.5)*.30
+        bars=ax.barh(positions,[v/2e-5*100 for v in values],height=.26,
+                     color=colors[i],label='Anomaly maps' if key=='maps' else 'Image scores')
+        for bar,value in zip(bars,values):
+            ax.text(bar.get_width()+1,bar.get_y()+bar.get_height()/2,
+                    f'{value:.2e}  ({value/2e-5*100:.2f}% of limit)',va='center',fontsize=10)
+    ax.axvline(100,color='#be5a19',linestyle='--',label='Agreement limit: 2e-5')
+    ax.set_xlim(0,140)
+    ax.set_xticks([0,25,50,75,100],['0%','25%','50%','75%','100%'])
+    ax.set_yticks(x,labels)
+    ax.invert_yaxis()
+    ax.set_xlabel('Share of the absolute-error limit · lower is better')
+    ax.set_title('Prediction differences stay below the agreement limit',loc='left',pad=20,weight='bold')
+    ax.legend(frameon=False,loc='lower right',fontsize=9)
+    save(fig,'agreement','Worst absolute error across measured pairs; labels include the unscaled error.\nThis is prediction agreement, separate from detection quality. Out-of-tolerance outputs reject speed claims.')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
