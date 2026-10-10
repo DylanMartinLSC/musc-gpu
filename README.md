@@ -156,6 +156,23 @@ percentage points, including differences too small to see on a conventional plot
 
 ![Original and musc-gpu accuracy scorecards with signed metric differences for each category](benchmarks/representative/quality.png)
 
+### Batch inspection capacity
+
+A resident-model replay measures **3.79× higher delivered throughput**:
+**8.93 images/s** for musc-gpu versus **2.36 images/s** for original MuSc on
+the RTX 3090. Each session processes three complete 83-image bottle pools,
+recomputing every image. Delivering all 249 results takes **27.9 seconds**
+with musc-gpu versus **105–106 seconds** with the original.
+
+![Measured batch-result deliveries and throughput for original MuSc and musc-gpu](benchmarks/deployment/deployment.png)
+
+Two alternating sessions per backend include first-use kernel setup and local
+score/map output writing; model loading is separate. All requests pass the
+2e-5 numerical agreement gate. This is a **finite workstation replay of the
+same pool**, not distinct production parts, a larger single reference pool,
+or measured factory-line capacity. See the [protocol](docs/DEPLOYMENT_BENCHMARK.md)
+and [results](benchmarks/deployment/REPORT.md).
+
 ### Segmentation at a fixed threshold
 
 On saved GPU predictions, thresholds calibrated on reserved normal images give

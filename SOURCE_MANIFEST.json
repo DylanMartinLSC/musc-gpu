@@ -559,7 +559,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "4b609d59c32dd998b78d08a08668b88331c07c90f13e734122722c1c89110fe7"
+    "packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
     "source": "release addition",
@@ -770,5 +770,45 @@
     "packaged_sha256": "b660db169a21c7cc291fc696ad19c34b4171e73be842ef18c47cda76b4fa0b53",
     "source": "benchmarks/segmentation_usefulness/examples.json",
     "source_sha256": "b660db169a21c7cc291fc696ad19c34b4171e73be842ef18c47cda76b4fa0b53"
+  },
+  "tools/benchmark_deployment.py": {
+    "source": "tools/benchmark_deployment.py",
+    "source_sha256": "6f0c627b54399b4e67455c730365250626fbc0b9c8999aa8785b24ae53f0db87",
+    "packaged_sha256": "6f0c627b54399b4e67455c730365250626fbc0b9c8999aa8785b24ae53f0db87"
+  },
+  "tools/test_deployment.py": {
+    "source": "tools/test_deployment.py",
+    "source_sha256": "754c811f98ffeb21c1a84059c64f5addbdd256546a1a6068757a3fb60e6d2b25",
+    "packaged_sha256": "754c811f98ffeb21c1a84059c64f5addbdd256546a1a6068757a3fb60e6d2b25"
+  },
+  "tools/report_deployment.py": {
+    "source": "tools/report_deployment.py",
+    "source_sha256": "88f708903ec76227f78a49362154bd5934f961ec51b044602ec652c6bd452e1c",
+    "packaged_sha256": "88f708903ec76227f78a49362154bd5934f961ec51b044602ec652c6bd452e1c"
+  },
+  "docs/DEPLOYMENT_BENCHMARK.md": {
+    "source": "docs/DEPLOYMENT_BENCHMARK.md",
+    "source_sha256": "169aa9eecab3c1ea850eb3d384b8d858f04e64055d39919d137f376d23323fc7",
+    "packaged_sha256": "169aa9eecab3c1ea850eb3d384b8d858f04e64055d39919d137f376d23323fc7"
+  },
+  "benchmarks/deployment/results.json": {
+    "source": "benchmarks/deployment/results.json",
+    "source_sha256": "7134be2a42f445c46cd6f476c750a4a198cd0e73514b0be6f7a3e70ac8b22209",
+    "packaged_sha256": "7134be2a42f445c46cd6f476c750a4a198cd0e73514b0be6f7a3e70ac8b22209"
+  },
+  "benchmarks/deployment/REPORT.md": {
+    "source": "benchmarks/deployment/REPORT.md",
+    "source_sha256": "829f13eb2b9d137a255973a5606ec94d844f2fae8f1a79a2389b7e05e6e86ca7",
+    "packaged_sha256": "829f13eb2b9d137a255973a5606ec94d844f2fae8f1a79a2389b7e05e6e86ca7"
+  },
+  "benchmarks/deployment/deployment.png": {
+    "source": "benchmarks/deployment/deployment.png",
+    "source_sha256": "79a383b6f56a6d6cefd82b961e431a3b3a75efdfd639e41505dcf772560fb45d",
+    "packaged_sha256": "79a383b6f56a6d6cefd82b961e431a3b3a75efdfd639e41505dcf772560fb45d"
+  },
+  "benchmarks/deployment/deployment.svg": {
+    "source": "benchmarks/deployment/deployment.svg",
+    "source_sha256": "975b4441ac9199e49275ad42f8c2e0b145ba0b4c45beba932dbf4167baa150e5",
+    "packaged_sha256": "975b4441ac9199e49275ad42f8c2e0b145ba0b4c45beba932dbf4167baa150e5"
   }
 }
