@@ -116,20 +116,28 @@ percentage points, including differences too small to see on a conventional plot
 
 ![Original and musc-gpu accuracy scorecards with signed metric differences for each category](benchmarks/representative/quality.png)
 
-**Memory tradeoff:** original peak allocations are 6.29, 6.26 and 6.64 GiB,
-respectively. The accelerated peaks above are tensor allocations, not total
-device usage or minimum VRAM requirements. Reserved memory is recorded separately.
+### Memory tradeoff
+
+Acceleration uses more GPU memory. The chart below compares the maximum
+allocated tensor memory across measured trials for each complete category pool:
+**bottle: 6.29 → 7.14 GiB**, **grid: 6.26 → 6.80 GiB**, and
+**cable: 6.64 → 11.64 GiB** (original → musc-gpu).
+
+![Peak allocated GPU memory: original versus musc-gpu for bottle, grid and cable](benchmarks/representative/memory.png)
+
+These are peak tensor allocations, not total device usage or minimum VRAM
+requirements. Reserved GPU memory is recorded separately in the linked JSON
+and CSV; allow additional headroom when assessing capacity.
 
 [Full report](benchmarks/representative/REPORT.md) ·
 [Raw JSON](benchmarks/representative/results.json) ·
 [CSV](benchmarks/representative/summary.csv)
 
 <details>
-<summary>More charts: absolute latency, numerical agreement and memory</summary>
+<summary>More charts: absolute latency and numerical agreement</summary>
 
 ![Absolute inference latency by category and backend](benchmarks/representative/latency.png)
 ![Numerical agreement with original MuSc](benchmarks/representative/agreement.png)
-![Peak allocated GPU memory by category and backend](benchmarks/representative/memory.png)
 
 </details>
 
