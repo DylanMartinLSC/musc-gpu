@@ -562,7 +562,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "70a84750365153f62c21a35a2e1716b045fad60da984950621dc644a7a67f70f",
+    "packaged_sha256": "bee97a7cec3e4e0a1efa00fef441cafd14a0e32c39d00e2ffeac7aba395207bb",
     "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
@@ -871,7 +871,7 @@
   "tools/report_measured_performance.py": {
     "source": "tools/report_measured_performance.py",
     "source_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3",
-    "packaged_sha256": "00c8c47f729b20ccd5e3fc6df5854c83d875e6c244a61ed51656b20eeed4bd24",
+    "packaged_sha256": "4017dd4bbce41122c6399683fd71a5774f33704fd0356d19d1edbf89d81d88e4",
     "previous_packaged_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3"
   },
   "benchmarks/super_fast/measured_performance.png": {
@@ -894,7 +894,7 @@
   "benchmarks/super_fast/CATEGORY_REPORT.md": {
     "source": "benchmarks/super_fast/CATEGORY_REPORT.md",
     "source_sha256": "8fbbb43342db8539587e7ef9310cd717e4e2e5a20e725d36fce8c792b5678dde",
-    "packaged_sha256": "8fbbb43342db8539587e7ef9310cd717e4e2e5a20e725d36fce8c792b5678dde"
+    "packaged_sha256": "1ba7b592c074add2590675fac528af648dc8d19ad2bee2a46e506c526322a74e"
   },
   "benchmarks/super_fast/category_results.json": {
     "source": "benchmarks/super_fast/category_results.json",
@@ -910,5 +910,15 @@
     "source": "benchmarks/super_fast/category_accuracy.svg",
     "source_sha256": "50d2473f2d326f11db427c9c64ecf77c1778f84b4cca260b48536c6d7b00012a",
     "packaged_sha256": "af24d9bec168a186612972bcb4e578c84ed3a62393dd9a36389d947d0bbce7ab"
+  },
+  "benchmarks/super_fast/backend_accuracy.png": {
+    "source": "benchmarks/super_fast/backend_accuracy.png",
+    "source_sha256": "f105a9bbb8c7c3b03b2f8ab5d7621fb8c7343b5941ad9c140cfb0b6c78171287",
+    "packaged_sha256": "f105a9bbb8c7c3b03b2f8ab5d7621fb8c7343b5941ad9c140cfb0b6c78171287"
+  },
+  "benchmarks/super_fast/backend_accuracy.svg": {
+    "source": "benchmarks/super_fast/backend_accuracy.svg",
+    "source_sha256": "8969f6352f7af16fa14915787fc75a522be851529286732f46c48a29ae5551ae",
+    "packaged_sha256": "8969f6352f7af16fa14915787fc75a522be851529286732f46c48a29ae5551ae"
   }
 }

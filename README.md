@@ -221,10 +221,15 @@ not independent single-image latency.
 AUROC/AP/F1/AUPRO remain close, with exact deltas in the raw JSON. Agreement
 within tolerance does not imply bitwise identity or accuracy guarantees elsewhere.
 
-The scorecards show both backends on a 0–100 scale and the signed change in
-percentage points, including differences too small to see on a conventional plot.
+The accuracy graph compares **all three backends** across all seven metrics.
+Original and super fast use the Oct 12 paired trials; default GPU uses its Oct 7
+measurements. Original and default GPU agree closely; super fast's grid and cable
+losses are visible alongside its pixel AP improvements on bottle and cable.
 
-![Original and musc-gpu accuracy scorecards with signed metric differences for each category](benchmarks/representative/quality.png)
+![All seven accuracy metrics for original MuSc, default GPU and super fast on bottle, grid and cable](benchmarks/super_fast/backend_accuracy.png)
+
+The [original/default scorecards](benchmarks/representative/quality.png) retain
+the signed differences, including those too small to see at this graph's scale.
 
 ### Batch inspection capacity
 

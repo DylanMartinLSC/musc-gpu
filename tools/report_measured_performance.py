@@ -1,6 +1,7 @@
 """Generate README charts from complete paired measurements, without CUDA."""
 import json
 from pathlib import Path
+import statistics
 
 import matplotlib
 matplotlib.use('Agg')
@@ -72,6 +73,47 @@ def main():
             path=out / 'measured_performance.svg'
             path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n',encoding='utf-8',newline='\n')
     plt.close(fig)
+    render_backend_accuracy(rows,historical,out)
+    render_accuracy_deltas(rows,out)
+
+def render_backend_accuracy(rows,historical,out):
+    keys=['image_auroc','image_ap','image_f1_max','pixel_auroc','pixel_ap','pixel_f1_max','pixel_aupro']
+    labels=['Image\nAUROC','Image\nAP','Image\nF1 max','Pixel\nAUROC','Pixel\nAP','Pixel\nF1 max','Region\nAUPRO']
+    x=np.arange(len(keys))
+    fig,axes=plt.subplots(3,1,figsize=(13,10.5),sharex=True,sharey=True)
+    for ax,w in zip(axes,rows):
+        for offset,backend,label,color in [(-.25,'original','Original MuSc (Oct 12)','#64748b'),
+                                          (0,'gpu','Default GPU (Oct 7)','#2563eb'),
+                                          (.25,'super_fast','Super fast (Oct 12, approximate)','#16a34a')]:
+            metrics=({key:statistics.median(p['gpu']['metrics']['values'][key]
+                       for p in historical[w['category']]['pairs']) for key in keys}
+                     if backend=='gpu' else w['summary']['metrics'][backend])
+            values=[100*metrics[key] for key in keys]
+            bars=ax.bar(x+offset,values,.23,color=color,label=label,
+                        hatch='//' if backend=='super_fast' else None)
+            ax.bar_label(bars,labels=[f'{v:.1f}' for v in values],padding=3,rotation=90,fontsize=8)
+        ax.set_title(f"{w['category']} · complete {w['images']}-image pool",loc='left',fontsize=12)
+        ax.set_ylim(0,118)
+        ax.set_yticks([0,20,40,60,80,100])
+        ax.set_ylabel('Accuracy (%)')
+        ax.yaxis.grid(True,alpha=.18)
+        ax.set_axisbelow(True)
+        ax.spines[['top','right']].set_visible(False)
+    axes[-1].set_xticks(x,labels)
+    handles,legend_labels=axes[0].get_legend_handles_labels()
+    fig.legend(handles,legend_labels,loc='upper center',bbox_to_anchor=(.5,.965),ncol=3,frameon=False)
+    fig.suptitle('Measured accuracy · all three backends · higher is better',fontsize=16,y=.995)
+    fig.text(.07,.035,'Medians from two repeated trials per backend and pool. Original / super fast: Oct 12; default GPU: Oct 7.\n'
+             'Labels rounded to 0.1%; original and default GPU agree closely. F1 maximized over evaluation thresholds; AUPRO at FPR < 0.3.',fontsize=9)
+    fig.tight_layout(rect=(0,.095,1,.93))
+    for extension in ('png','svg'):
+        path=out/f'backend_accuracy.{extension}'
+        fig.savefig(path,dpi=180,metadata={'Date':None} if extension=='svg' else None)
+        if extension=='svg':
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n',encoding='utf-8',newline='\n')
+    plt.close(fig)
+
+def render_accuracy_deltas(rows,out):
     keys = ['image_auroc','image_ap','image_f1_max','pixel_auroc','pixel_ap','pixel_f1_max','pixel_aupro']
     values = np.array([[w['summary']['metric_deltas_pp'][key] for key in keys] for w in rows])
     fig, ax = plt.subplots(figsize=(11,3.6))

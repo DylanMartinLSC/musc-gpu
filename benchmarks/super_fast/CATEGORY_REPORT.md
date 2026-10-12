@@ -22,6 +22,13 @@ The blue default-GPU bars come from the separate Oct 7 original/default benchmar
 
 ## Accuracy tradeoffs
 
+![All seven accuracy metrics for original MuSc, default GPU and super fast](backend_accuracy.png)
+
+This graph compares original and super fast from the Oct 12 trials with default
+GPU from the Oct 7 representative trials. Values are medians of two measurements
+per backend and pool; labels are rounded to 0.1 percentage points. Original and
+default GPU agree closely. The raw JSON retains full precision.
+
 Metric values are percentages; deltas are percentage points relative to the original backend in these same pairs. F1 is maximized over evaluation thresholds; no production decision threshold is established. Region AUPRO uses the upstream 200 global thresholds and FPR below 0.3, evaluated by exact sorted searches. Its CPU preflight agrees with upstream to below 1e-12. Labels and masks are only used after inference for evaluation.
 
 ![All seven measured metric changes](category_accuracy.png)
