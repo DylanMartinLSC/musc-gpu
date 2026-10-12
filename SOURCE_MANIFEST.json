@@ -562,7 +562,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "dc48b31bb9da3053f9774ff39be4cf524bb01650d77c38636a26574971d84a65",
+    "packaged_sha256": "4726ae4a0545b9c48af2a3620c8fa9c38324811b71090024f567041851348a69",
     "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
