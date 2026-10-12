@@ -1,6 +1,8 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import argparse
+from unittest.mock import patch
 
 HERE=Path(__file__).resolve().parent
 spec=importlib.util.spec_from_file_location('trial',HERE/'benchmark_super_fast.py')
@@ -9,6 +11,19 @@ spec.loader.exec_module(trial)
 
 
 class Tests(unittest.TestCase):
+    def test_category_plans_are_separate_complete_pools(self):
+        args=argparse.Namespace(categories=['grid','cable'],data_path=Path('unused'),plan_only=True)
+        plans=[{'category':'grid','images':78,'complete_pool':True},
+               {'category':'cable','images':150,'complete_pool':True}]
+        with patch.object(trial,'plan_pools',return_value=plans) as planner, patch('builtins.print') as output:
+            self.assertEqual(trial.run(args),0)
+        planner.assert_called_once_with(args.data_path,['grid','cable'],['full'],42)
+        report=trial.json.loads(output.call_args.args[0])
+        self.assertEqual(report['plans'],plans)
+        self.assertEqual(report['order'],[['original','super_fast'],['super_fast','original']])
+        args.categories=['grid','grid']
+        with self.assertRaises(ValueError):trial.run(args)
+
     def test_exact_pro(self):
         self.assertLess(trial.metric_preflight(),1e-12)
 

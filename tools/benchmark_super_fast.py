@@ -1,4 +1,4 @@
-"""Two fresh-process original/super_fast pairs; approximate accuracy tradeoffs."""
+"""Two fresh-process original/super_fast pairs per complete category pool."""
 import argparse
 import ctypes
 from ctypes import wintypes
@@ -16,7 +16,7 @@ PACKAGE=HERE.parent
 sys.path.insert(0,str(PACKAGE))
 sys.path.insert(0,str(PACKAGE/'tools'))
 import benchmark
-from benchmark_support import plan_pools,digest,dump,compare_arrays,SCOPE
+from benchmark_support import CATEGORIES,plan_pools,digest,dump,compare_arrays,SCOPE
 from benchmark_process import run_worker
 
 
@@ -115,16 +115,12 @@ def summarize(pairs):
     return result
 
 
-def run(args):
-    plans=plan_pools(args.data_path,['bottle'],['full'],42)
-    assert len(plans)==1 and plans[0]['images']==83
-    if args.plan_only:
-        print(json.dumps({'scope':SCOPE,'plan':plans[0],'order':[['original','super_fast'],['super_fast','original']]},indent=2))
-        return 0
+def run_plan(args,plan):
     out=args.output.resolve()
     out.mkdir(parents=True,exist_ok=False)
     report={'status':'running','command':sys.argv,'scope':SCOPE,'protocol':'fresh child process per backend per pair; original/super_fast then super_fast/original; no discarded warmup; metrics and model loading separate; OS file cache not flushed',
-            'approximate':True,'images':83,'complete_pool':True,'pairs':[],
+            'approximate':True,'category':plan['category'],'images':plan['images'],
+            'plan':plan,'complete_pool':True,'pairs':[],
             'adapter_sha256':digest(Path(__file__).resolve()),
             'source_sha256':{str(p.relative_to(PACKAGE)):digest(p) for folder in ('models','datasets','utils','tools','configs') for p in (PACKAGE/folder).rglob('*') if p.is_file() and p.suffix in ('.py','.json','.gz','.yaml')}}
     path=out/'results.json'
@@ -145,7 +141,7 @@ def run(args):
                     before=benchmark.check_idle(0,'http://127.0.0.1:11435/api/ps')
                     trial=out/f'pair{index}-{backend}'
                     trial.mkdir()
-                    job={'backend':backend,'data_path':str(args.data_path.resolve()),'device':0,'seed':42,'plan':plans[0],'include_pro':True,'output':str(trial),'source_sha256':report['source_sha256'],'comparison_adapter_sha256':report['adapter_sha256'],'worker_token':str(uuid.uuid4())}
+                    job={'backend':backend,'data_path':str(args.data_path.resolve()),'device':0,'seed':42,'plan':plan,'include_pro':True,'output':str(trial),'source_sha256':report['source_sha256'],'comparison_adapter_sha256':report['adapter_sha256'],'worker_token':str(uuid.uuid4())}
                     dump(trial/'job.json',job)
                     print(f'Pair{index}: {backend}',flush=True)
                     with (trial/'stdout.log').open('w',encoding='utf-8') as log:
@@ -180,10 +176,41 @@ def run(args):
     return 0 if report['status']=='complete approximate comparison' else 1
 
 
+def run(args):
+    categories=args.categories
+    if len(categories)!=len(set(categories)) or any(c not in CATEGORIES for c in categories):
+        raise ValueError('Choose distinct MVTec AD categories')
+    plans=plan_pools(args.data_path,categories,['full'],42)
+    if args.plan_only:
+        print(json.dumps({'scope':SCOPE,'plans':plans,
+                         'order':[['original','super_fast'],['super_fast','original']]},indent=2))
+        return 0
+    # Preserve the original single-category output layout for existing callers.
+    if len(plans)==1:
+        return run_plan(args,plans[0])
+    out=args.output.resolve()
+    out.mkdir(parents=True,exist_ok=False)
+    report={'status':'running','scope':SCOPE,'approximate':True,'plans':plans,'workloads':[]}
+    dump(out/'results.json',report)
+    for plan in plans:
+        child=argparse.Namespace(**vars(args))
+        child.output=out/plan['id']
+        code=run_plan(child,plan)
+        report['workloads'].append(json.loads((child.output/'results.json').read_text()))
+        dump(out/'results.json',report)
+    report['status']=('complete approximate comparison' if all(
+        w['status']=='complete approximate comparison' for w in report['workloads'])
+        else 'blocked_or_failed')
+    dump(out/'results.json',report)
+    return 0 if report['status']=='complete approximate comparison' else 1
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data-path',type=Path,default=PACKAGE/'data/mvtec_anomaly_detection')
     parser.add_argument('--output',type=Path,default=PACKAGE/'output/super_fast_benchmark')
+    parser.add_argument('--categories',nargs='+',default=['bottle'],choices=CATEGORIES,
+                        help='Complete pools; use bottle grid cable for the README comparison')
     parser.add_argument('--coordinator-status',type=Path,help='optional external research coordinator status JSON; must be stopped')
     parser.add_argument('--plan-only',action='store_true')
     parser.add_argument('--worker-job',type=Path)

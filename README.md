@@ -153,7 +153,7 @@ To reproduce the fresh-process original/super-fast comparison with normal
 benchmark permissions, use a new output directory:
 
 ```powershell
-.venv/Scripts/python.exe tools/benchmark_super_fast.py --data-path C:/path/to/mvtec_anomaly_detection --output output/super_fast_comparison
+.venv/Scripts/python.exe tools/benchmark_super_fast.py --data-path C:/path/to/mvtec_anomaly_detection --categories bottle grid cable --output output/super_fast_comparison
 ```
 
 This runs two alternating pairs on bottle83, recording full-resolution accuracy,

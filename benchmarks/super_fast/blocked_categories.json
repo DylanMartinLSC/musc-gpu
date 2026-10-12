@@ -1,0 +1,2223 @@
+{
+  "status": "blocked_or_failed",
+  "scope": "MuSc.make_category_data entry through synchronized pre-metric predictions; includes loading, decoding, preprocessing, transfers, encoding, aggregation, scoring, interpolation, RsCIN and first-use compilation; excludes imports, model loading, metric evaluation and artifact serialization",
+  "approximate": true,
+  "plans": [
+    {
+      "id": "grid-full",
+      "category": "grid",
+      "images": 78,
+      "full_category_images": 78,
+      "complete_pool": true,
+      "selection_seed": 42,
+      "image_manifest": [
+        {
+          "path": "grid/test/bent/000.png",
+          "bytes": 505732
+        },
+        {
+          "path": "grid/test/bent/001.png",
+          "bytes": 464326
+        },
+        {
+          "path": "grid/test/bent/002.png",
+          "bytes": 472471
+        },
+        {
+          "path": "grid/test/bent/003.png",
+          "bytes": 490765
+        },
+        {
+          "path": "grid/test/bent/004.png",
+          "bytes": 483591
+        },
+        {
+          "path": "grid/test/bent/005.png",
+          "bytes": 464851
+        },
+        {
+          "path": "grid/test/bent/006.png",
+          "bytes": 469401
+        },
+        {
+          "path": "grid/test/bent/007.png",
+          "bytes": 490016
+        },
+        {
+          "path": "grid/test/bent/008.png",
+          "bytes": 468245
+        },
+        {
+          "path": "grid/test/bent/009.png",
+          "bytes": 464648
+        },
+        {
+          "path": "grid/test/bent/010.png",
+          "bytes": 463692
+        },
+        {
+          "path": "grid/test/bent/011.png",
+          "bytes": 477234
+        },
+        {
+          "path": "grid/test/broken/000.png",
+          "bytes": 501835
+        },
+        {
+          "path": "grid/test/broken/001.png",
+          "bytes": 485372
+        },
+        {
+          "path": "grid/test/broken/002.png",
+          "bytes": 484637
+        },
+        {
+          "path": "grid/test/broken/003.png",
+          "bytes": 465865
+        },
+        {
+          "path": "grid/test/broken/004.png",
+          "bytes": 461224
+        },
+        {
+          "path": "grid/test/broken/005.png",
+          "bytes": 465303
+        },
+        {
+          "path": "grid/test/broken/006.png",
+          "bytes": 484387
+        },
+        {
+          "path": "grid/test/broken/007.png",
+          "bytes": 478186
+        },
+        {
+          "path": "grid/test/broken/008.png",
+          "bytes": 454024
+        },
+        {
+          "path": "grid/test/broken/009.png",
+          "bytes": 476257
+        },
+        {
+          "path": "grid/test/broken/010.png",
+          "bytes": 484701
+        },
+        {
+          "path": "grid/test/broken/011.png",
+          "bytes": 471399
+        },
+        {
+          "path": "grid/test/glue/000.png",
+          "bytes": 492123
+        },
+        {
+          "path": "grid/test/glue/001.png",
+          "bytes": 492565
+        },
+        {
+          "path": "grid/test/glue/002.png",
+          "bytes": 491460
+        },
+        {
+          "path": "grid/test/glue/003.png",
+          "bytes": 488325
+        },
+        {
+          "path": "grid/test/glue/004.png",
+          "bytes": 507112
+        },
+        {
+          "path": "grid/test/glue/005.png",
+          "bytes": 496160
+        },
+        {
+          "path": "grid/test/glue/006.png",
+          "bytes": 468762
+        },
+        {
+          "path": "grid/test/glue/007.png",
+          "bytes": 470238
+        },
+        {
+          "path": "grid/test/glue/008.png",
+          "bytes": 455836
+        },
+        {
+          "path": "grid/test/glue/009.png",
+          "bytes": 503144
+        },
+        {
+          "path": "grid/test/glue/010.png",
+          "bytes": 494103
+        },
+        {
+          "path": "grid/test/good/000.png",
+          "bytes": 470397
+        },
+        {
+          "path": "grid/test/good/001.png",
+          "bytes": 454784
+        },
+        {
+          "path": "grid/test/good/002.png",
+          "bytes": 439449
+        },
+        {
+          "path": "grid/test/good/003.png",
+          "bytes": 448536
+        },
+        {
+          "path": "grid/test/good/004.png",
+          "bytes": 493600
+        },
+        {
+          "path": "grid/test/good/005.png",
+          "bytes": 493825
+        },
+        {
+          "path": "grid/test/good/006.png",
+          "bytes": 494649
+        },
+        {
+          "path": "grid/test/good/007.png",
+          "bytes": 465422
+        },
+        {
+          "path": "grid/test/good/008.png",
+          "bytes": 442034
+        },
+        {
+          "path": "grid/test/good/009.png",
+          "bytes": 467426
+        },
+        {
+          "path": "grid/test/good/010.png",
+          "bytes": 470065
+        },
+        {
+          "path": "grid/test/good/011.png",
+          "bytes": 476228
+        },
+        {
+          "path": "grid/test/good/012.png",
+          "bytes": 478919
+        },
+        {
+          "path": "grid/test/good/013.png",
+          "bytes": 443742
+        },
+        {
+          "path": "grid/test/good/014.png",
+          "bytes": 466479
+        },
+        {
+          "path": "grid/test/good/015.png",
+          "bytes": 464413
+        },
+        {
+          "path": "grid/test/good/016.png",
+          "bytes": 458590
+        },
+        {
+          "path": "grid/test/good/017.png",
+          "bytes": 501036
+        },
+        {
+          "path": "grid/test/good/018.png",
+          "bytes": 471487
+        },
+        {
+          "path": "grid/test/good/019.png",
+          "bytes": 509303
+        },
+        {
+          "path": "grid/test/good/020.png",
+          "bytes": 503561
+        },
+        {
+          "path": "grid/test/metal_contamination/000.png",
+          "bytes": 459026
+        },
+        {
+          "path": "grid/test/metal_contamination/001.png",
+          "bytes": 452621
+        },
+        {
+          "path": "grid/test/metal_contamination/002.png",
+          "bytes": 460078
+        },
+        {
+          "path": "grid/test/metal_contamination/003.png",
+          "bytes": 464883
+        },
+        {
+          "path": "grid/test/metal_contamination/004.png",
+          "bytes": 494350
+        },
+        {
+          "path": "grid/test/metal_contamination/005.png",
+          "bytes": 482633
+        },
+        {
+          "path": "grid/test/metal_contamination/006.png",
+          "bytes": 473884
+        },
+        {
+          "path": "grid/test/metal_contamination/007.png",
+          "bytes": 467806
+        },
+        {
+          "path": "grid/test/metal_contamination/008.png",
+          "bytes": 475490
+        },
+        {
+          "path": "grid/test/metal_contamination/009.png",
+          "bytes": 491719
+        },
+        {
+          "path": "grid/test/metal_contamination/010.png",
+          "bytes": 477344
+        },
+        {
+          "path": "grid/test/thread/000.png",
+          "bytes": 469383
+        },
+        {
+          "path": "grid/test/thread/001.png",
+          "bytes": 464902
+        },
+        {
+          "path": "grid/test/thread/002.png",
+          "bytes": 456836
+        },
+        {
+          "path": "grid/test/thread/003.png",
+          "bytes": 449133
+        },
+        {
+          "path": "grid/test/thread/004.png",
+          "bytes": 464688
+        },
+        {
+          "path": "grid/test/thread/005.png",
+          "bytes": 449528
+        },
+        {
+          "path": "grid/test/thread/006.png",
+          "bytes": 454107
+        },
+        {
+          "path": "grid/test/thread/007.png",
+          "bytes": 454685
+        },
+        {
+          "path": "grid/test/thread/008.png",
+          "bytes": 456780
+        },
+        {
+          "path": "grid/test/thread/009.png",
+          "bytes": 474549
+        },
+        {
+          "path": "grid/test/thread/010.png",
+          "bytes": 476445
+        }
+      ],
+      "manifest_sha256": "45ee727dde5bc44e786a51bb5003c4f4ea8102fedce69688e72b3581cb2148f7",
+      "manifest_definition": "SHA256 of ordered relative image paths and byte sizes; not image-content hashes",
+      "estimated_gpu_gib": 9.32,
+      "estimated_output_disk_gib_per_trial": 0.15593522787094116
+    },
+    {
+      "id": "cable-full",
+      "category": "cable",
+      "images": 150,
+      "full_category_images": 150,
+      "complete_pool": true,
+      "selection_seed": 42,
+      "image_manifest": [
+        {
+          "path": "cable/test/bent_wire/000.png",
+          "bytes": 1342041
+        },
+        {
+          "path": "cable/test/bent_wire/001.png",
+          "bytes": 1343763
+        },
+        {
+          "path": "cable/test/bent_wire/002.png",
+          "bytes": 1346958
+        },
+        {
+          "path": "cable/test/bent_wire/003.png",
+          "bytes": 1348014
+        },
+        {
+          "path": "cable/test/bent_wire/004.png",
+          "bytes": 1352231
+        },
+        {
+          "path": "cable/test/bent_wire/005.png",
+          "bytes": 1371066
+        },
+        {
+          "path": "cable/test/bent_wire/006.png",
+          "bytes": 1339536
+        },
+        {
+          "path": "cable/test/bent_wire/007.png",
+          "bytes": 1367133
+        },
+        {
+          "path": "cable/test/bent_wire/008.png",
+          "bytes": 1335270
+        },
+        {
+          "path": "cable/test/bent_wire/009.png",
+          "bytes": 1360267
+        },
+        {
+          "path": "cable/test/bent_wire/010.png",
+          "bytes": 1342341
+        },
+        {
+          "path": "cable/test/bent_wire/011.png",
+          "bytes": 1382579
+        },
+        {
+          "path": "cable/test/bent_wire/012.png",
+          "bytes": 1361712
+        },
+        {
+          "path": "cable/test/cable_swap/000.png",
+          "bytes": 1376513
+        },
+        {
+          "path": "cable/test/cable_swap/001.png",
+          "bytes": 1338748
+        },
+        {
+          "path": "cable/test/cable_swap/002.png",
+          "bytes": 1346429
+        },
+        {
+          "path": "cable/test/cable_swap/003.png",
+          "bytes": 1366916
+        },
+        {
+          "path": "cable/test/cable_swap/004.png",
+          "bytes": 1358261
+        },
+        {
+          "path": "cable/test/cable_swap/005.png",
+          "bytes": 1375056
+        },
+        {
+          "path": "cable/test/cable_swap/006.png",
+          "bytes": 1334736
+        },
+        {
+          "path": "cable/test/cable_swap/007.png",
+          "bytes": 1336390
+        },
+        {
+          "path": "cable/test/cable_swap/008.png",
+          "bytes": 1359677
+        },
+        {
+          "path": "cable/test/cable_swap/009.png",
+          "bytes": 1369377
+        },
+        {
+          "path": "cable/test/cable_swap/010.png",
+          "bytes": 1350041
+        },
+        {
+          "path": "cable/test/cable_swap/011.png",
+          "bytes": 1358974
+        },
+        {
+          "path": "cable/test/combined/000.png",
+          "bytes": 1365753
+        },
+        {
+          "path": "cable/test/combined/001.png",
+          "bytes": 1336888
+        },
+        {
+          "path": "cable/test/combined/002.png",
+          "bytes": 1332151
+        },
+        {
+          "path": "cable/test/combined/003.png",
+          "bytes": 1302709
+        },
+        {
+          "path": "cable/test/combined/004.png",
+          "bytes": 1340488
+        },
+        {
+          "path": "cable/test/combined/005.png",
+          "bytes": 1326950
+        },
+        {
+          "path": "cable/test/combined/006.png",
+          "bytes": 1301368
+        },
+        {
+          "path": "cable/test/combined/007.png",
+          "bytes": 1313425
+        },
+        {
+          "path": "cable/test/combined/008.png",
+          "bytes": 1314227
+        },
+        {
+          "path": "cable/test/combined/009.png",
+          "bytes": 1312858
+        },
+        {
+          "path": "cable/test/combined/010.png",
+          "bytes": 1284777
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/000.png",
+          "bytes": 1378976
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/001.png",
+          "bytes": 1360601
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/002.png",
+          "bytes": 1344283
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/003.png",
+          "bytes": 1359654
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/004.png",
+          "bytes": 1326615
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/005.png",
+          "bytes": 1372316
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/006.png",
+          "bytes": 1338120
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/007.png",
+          "bytes": 1342419
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/008.png",
+          "bytes": 1337686
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/009.png",
+          "bytes": 1349665
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/010.png",
+          "bytes": 1368699
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/011.png",
+          "bytes": 1362603
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/012.png",
+          "bytes": 1362519
+        },
+        {
+          "path": "cable/test/cut_inner_insulation/013.png",
+          "bytes": 1371067
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/000.png",
+          "bytes": 1366475
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/001.png",
+          "bytes": 1357668
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/002.png",
+          "bytes": 1371990
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/003.png",
+          "bytes": 1374872
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/004.png",
+          "bytes": 1361808
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/005.png",
+          "bytes": 1373667
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/006.png",
+          "bytes": 1356558
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/007.png",
+          "bytes": 1349254
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/008.png",
+          "bytes": 1350331
+        },
+        {
+          "path": "cable/test/cut_outer_insulation/009.png",
+          "bytes": 1372459
+        },
+        {
+          "path": "cable/test/good/000.png",
+          "bytes": 1339489
+        },
+        {
+          "path": "cable/test/good/001.png",
+          "bytes": 1339388
+        },
+        {
+          "path": "cable/test/good/002.png",
+          "bytes": 1343402
+        },
+        {
+          "path": "cable/test/good/003.png",
+          "bytes": 1313136
+        },
+        {
+          "path": "cable/test/good/004.png",
+          "bytes": 1336121
+        },
+        {
+          "path": "cable/test/good/005.png",
+          "bytes": 1350665
+        },
+        {
+          "path": "cable/test/good/006.png",
+          "bytes": 1327922
+        },
+        {
+          "path": "cable/test/good/007.png",
+          "bytes": 1337882
+        },
+        {
+          "path": "cable/test/good/008.png",
+          "bytes": 1322167
+        },
+        {
+          "path": "cable/test/good/009.png",
+          "bytes": 1359414
+        },
+        {
+          "path": "cable/test/good/010.png",
+          "bytes": 1343411
+        },
+        {
+          "path": "cable/test/good/011.png",
+          "bytes": 1327723
+        },
+        {
+          "path": "cable/test/good/012.png",
+          "bytes": 1347460
+        },
+        {
+          "path": "cable/test/good/013.png",
+          "bytes": 1336432
+        },
+        {
+          "path": "cable/test/good/014.png",
+          "bytes": 1360511
+        },
+        {
+          "path": "cable/test/good/015.png",
+          "bytes": 1359687
+        },
+        {
+          "path": "cable/test/good/016.png",
+          "bytes": 1347175
+        },
+        {
+          "path": "cable/test/good/017.png",
+          "bytes": 1342837
+        },
+        {
+          "path": "cable/test/good/018.png",
+          "bytes": 1343223
+        },
+        {
+          "path": "cable/test/good/019.png",
+          "bytes": 1337172
+        },
+        {
+          "path": "cable/test/good/020.png",
+          "bytes": 1326354
+        },
+        {
+          "path": "cable/test/good/021.png",
+          "bytes": 1350245
+        },
+        {
+          "path": "cable/test/good/022.png",
+          "bytes": 1358650
+        },
+        {
+          "path": "cable/test/good/023.png",
+          "bytes": 1398179
+        },
+        {
+          "path": "cable/test/good/024.png",
+          "bytes": 1349735
+        },
+        {
+          "path": "cable/test/good/025.png",
+          "bytes": 1354451
+        },
+        {
+          "path": "cable/test/good/026.png",
+          "bytes": 1328252
+        },
+        {
+          "path": "cable/test/good/027.png",
+          "bytes": 1366190
+        },
+        {
+          "path": "cable/test/good/028.png",
+          "bytes": 1341515
+        },
+        {
+          "path": "cable/test/good/029.png",
+          "bytes": 1353481
+        },
+        {
+          "path": "cable/test/good/030.png",
+          "bytes": 1352039
+        },
+        {
+          "path": "cable/test/good/031.png",
+          "bytes": 1354602
+        },
+        {
+          "path": "cable/test/good/032.png",
+          "bytes": 1355253
+        },
+        {
+          "path": "cable/test/good/033.png",
+          "bytes": 1338988
+        },
+        {
+          "path": "cable/test/good/034.png",
+          "bytes": 1353106
+        },
+        {
+          "path": "cable/test/good/035.png",
+          "bytes": 1370499
+        },
+        {
+          "path": "cable/test/good/036.png",
+          "bytes": 1351769
+        },
+        {
+          "path": "cable/test/good/037.png",
+          "bytes": 1313945
+        },
+        {
+          "path": "cable/test/good/038.png",
+          "bytes": 1339030
+        },
+        {
+          "path": "cable/test/good/039.png",
+          "bytes": 1350751
+        },
+        {
+          "path": "cable/test/good/040.png",
+          "bytes": 1344509
+        },
+        {
+          "path": "cable/test/good/041.png",
+          "bytes": 1359739
+        },
+        {
+          "path": "cable/test/good/042.png",
+          "bytes": 1347612
+        },
+        {
+          "path": "cable/test/good/043.png",
+          "bytes": 1401074
+        },
+        {
+          "path": "cable/test/good/044.png",
+          "bytes": 1328859
+        },
+        {
+          "path": "cable/test/good/045.png",
+          "bytes": 1339566
+        },
+        {
+          "path": "cable/test/good/046.png",
+          "bytes": 1340431
+        },
+        {
+          "path": "cable/test/good/047.png",
+          "bytes": 1340580
+        },
+        {
+          "path": "cable/test/good/048.png",
+          "bytes": 1353466
+        },
+        {
+          "path": "cable/test/good/049.png",
+          "bytes": 1365478
+        },
+        {
+          "path": "cable/test/good/050.png",
+          "bytes": 1379730
+        },
+        {
+          "path": "cable/test/good/051.png",
+          "bytes": 1346312
+        },
+        {
+          "path": "cable/test/good/052.png",
+          "bytes": 1294492
+        },
+        {
+          "path": "cable/test/good/053.png",
+          "bytes": 1306810
+        },
+        {
+          "path": "cable/test/good/054.png",
+          "bytes": 1307136
+        },
+        {
+          "path": "cable/test/good/055.png",
+          "bytes": 1356054
+        },
+        {
+          "path": "cable/test/good/056.png",
+          "bytes": 1347109
+        },
+        {
+          "path": "cable/test/good/057.png",
+          "bytes": 1353117
+        },
+        {
+          "path": "cable/test/missing_cable/000.png",
+          "bytes": 1342005
+        },
+        {
+          "path": "cable/test/missing_cable/001.png",
+          "bytes": 1316270
+        },
+        {
+          "path": "cable/test/missing_cable/002.png",
+          "bytes": 1309179
+        },
+        {
+          "path": "cable/test/missing_cable/003.png",
+          "bytes": 1338318
+        },
+        {
+          "path": "cable/test/missing_cable/004.png",
+          "bytes": 1334417
+        },
+        {
+          "path": "cable/test/missing_cable/005.png",
+          "bytes": 1323197
+        },
+        {
+          "path": "cable/test/missing_cable/006.png",
+          "bytes": 1257359
+        },
+        {
+          "path": "cable/test/missing_cable/007.png",
+          "bytes": 1296566
+        },
+        {
+          "path": "cable/test/missing_cable/008.png",
+          "bytes": 1286781
+        },
+        {
+          "path": "cable/test/missing_cable/009.png",
+          "bytes": 1275507
+        },
+        {
+          "path": "cable/test/missing_cable/010.png",
+          "bytes": 1337757
+        },
+        {
+          "path": "cable/test/missing_cable/011.png",
+          "bytes": 1324895
+        },
+        {
+          "path": "cable/test/missing_wire/000.png",
+          "bytes": 1332993
+        },
+        {
+          "path": "cable/test/missing_wire/001.png",
+          "bytes": 1326593
+        },
+        {
+          "path": "cable/test/missing_wire/002.png",
+          "bytes": 1354756
+        },
+        {
+          "path": "cable/test/missing_wire/003.png",
+          "bytes": 1319119
+        },
+        {
+          "path": "cable/test/missing_wire/004.png",
+          "bytes": 1321215
+        },
+        {
+          "path": "cable/test/missing_wire/005.png",
+          "bytes": 1334920
+        },
+        {
+          "path": "cable/test/missing_wire/006.png",
+          "bytes": 1340990
+        },
+        {
+          "path": "cable/test/missing_wire/007.png",
+          "bytes": 1315321
+        },
+        {
+          "path": "cable/test/missing_wire/008.png",
+          "bytes": 1337177
+        },
+        {
+          "path": "cable/test/missing_wire/009.png",
+          "bytes": 1328727
+        },
+        {
+          "path": "cable/test/poke_insulation/000.png",
+          "bytes": 1348056
+        },
+        {
+          "path": "cable/test/poke_insulation/001.png",
+          "bytes": 1311247
+        },
+        {
+          "path": "cable/test/poke_insulation/002.png",
+          "bytes": 1341595
+        },
+        {
+          "path": "cable/test/poke_insulation/003.png",
+          "bytes": 1341778
+        },
+        {
+          "path": "cable/test/poke_insulation/004.png",
+          "bytes": 1344766
+        },
+        {
+          "path": "cable/test/poke_insulation/005.png",
+          "bytes": 1322857
+        },
+        {
+          "path": "cable/test/poke_insulation/006.png",
+          "bytes": 1327939
+        },
+        {
+          "path": "cable/test/poke_insulation/007.png",
+          "bytes": 1337133
+        },
+        {
+          "path": "cable/test/poke_insulation/008.png",
+          "bytes": 1331676
+        },
+        {
+          "path": "cable/test/poke_insulation/009.png",
+          "bytes": 1331514
+        }
+      ],
+      "manifest_sha256": "4229b40e1a131f6b3162e451692449fd0c20cfe6f8e649f21263fde1785ef6c5",
+      "manifest_definition": "SHA256 of ordered relative image paths and byte sizes; not image-content hashes",
+      "estimated_gpu_gib": 14.0,
+      "estimated_output_disk_gib_per_trial": 0.2998754382133484
+    }
+  ],
+  "workloads": [
+    {
+      "status": "blocked_or_failed",
+      "command": [
+        "tools/benchmark_super_fast.py",
+        "--data-path",
+        "C:/Users/dylan/mvtec_anomaly_detection",
+        "--categories",
+        "grid",
+        "cable",
+        "--output",
+        "C:/Users/dylan/local_code/MuSc/experiments/parallel_20261004/super_fast_categories_20261012/comparison",
+        "--coordinator-status",
+        "C:/Users/dylan/local_code/MuSc/experiments/parallel_20261004/staircase_20261011/status.json"
+      ],
+      "scope": "MuSc.make_category_data entry through synchronized pre-metric predictions; includes loading, decoding, preprocessing, transfers, encoding, aggregation, scoring, interpolation, RsCIN and first-use compilation; excludes imports, model loading, metric evaluation and artifact serialization",
+      "protocol": "fresh child process per backend per pair; original/super_fast then super_fast/original; no discarded warmup; metrics and model loading separate; OS file cache not flushed",
+      "approximate": true,
+      "category": "grid",
+      "images": 78,
+      "plan": {
+        "id": "grid-full",
+        "category": "grid",
+        "images": 78,
+        "full_category_images": 78,
+        "complete_pool": true,
+        "selection_seed": 42,
+        "image_manifest": [
+          {
+            "path": "grid/test/bent/000.png",
+            "bytes": 505732
+          },
+          {
+            "path": "grid/test/bent/001.png",
+            "bytes": 464326
+          },
+          {
+            "path": "grid/test/bent/002.png",
+            "bytes": 472471
+          },
+          {
+            "path": "grid/test/bent/003.png",
+            "bytes": 490765
+          },
+          {
+            "path": "grid/test/bent/004.png",
+            "bytes": 483591
+          },
+          {
+            "path": "grid/test/bent/005.png",
+            "bytes": 464851
+          },
+          {
+            "path": "grid/test/bent/006.png",
+            "bytes": 469401
+          },
+          {
+            "path": "grid/test/bent/007.png",
+            "bytes": 490016
+          },
+          {
+            "path": "grid/test/bent/008.png",
+            "bytes": 468245
+          },
+          {
+            "path": "grid/test/bent/009.png",
+            "bytes": 464648
+          },
+          {
+            "path": "grid/test/bent/010.png",
+            "bytes": 463692
+          },
+          {
+            "path": "grid/test/bent/011.png",
+            "bytes": 477234
+          },
+          {
+            "path": "grid/test/broken/000.png",
+            "bytes": 501835
+          },
+          {
+            "path": "grid/test/broken/001.png",
+            "bytes": 485372
+          },
+          {
+            "path": "grid/test/broken/002.png",
+            "bytes": 484637
+          },
+          {
+            "path": "grid/test/broken/003.png",
+            "bytes": 465865
+          },
+          {
+            "path": "grid/test/broken/004.png",
+            "bytes": 461224
+          },
+          {
+            "path": "grid/test/broken/005.png",
+            "bytes": 465303
+          },
+          {
+            "path": "grid/test/broken/006.png",
+            "bytes": 484387
+          },
+          {
+            "path": "grid/test/broken/007.png",
+            "bytes": 478186
+          },
+          {
+            "path": "grid/test/broken/008.png",
+            "bytes": 454024
+          },
+          {
+            "path": "grid/test/broken/009.png",
+            "bytes": 476257
+          },
+          {
+            "path": "grid/test/broken/010.png",
+            "bytes": 484701
+          },
+          {
+            "path": "grid/test/broken/011.png",
+            "bytes": 471399
+          },
+          {
+            "path": "grid/test/glue/000.png",
+            "bytes": 492123
+          },
+          {
+            "path": "grid/test/glue/001.png",
+            "bytes": 492565
+          },
+          {
+            "path": "grid/test/glue/002.png",
+            "bytes": 491460
+          },
+          {
+            "path": "grid/test/glue/003.png",
+            "bytes": 488325
+          },
+          {
+            "path": "grid/test/glue/004.png",
+            "bytes": 507112
+          },
+          {
+            "path": "grid/test/glue/005.png",
+            "bytes": 496160
+          },
+          {
+            "path": "grid/test/glue/006.png",
+            "bytes": 468762
+          },
+          {
+            "path": "grid/test/glue/007.png",
+            "bytes": 470238
+          },
+          {
+            "path": "grid/test/glue/008.png",
+            "bytes": 455836
+          },
+          {
+            "path": "grid/test/glue/009.png",
+            "bytes": 503144
+          },
+          {
+            "path": "grid/test/glue/010.png",
+            "bytes": 494103
+          },
+          {
+            "path": "grid/test/good/000.png",
+            "bytes": 470397
+          },
+          {
+            "path": "grid/test/good/001.png",
+            "bytes": 454784
+          },
+          {
+            "path": "grid/test/good/002.png",
+            "bytes": 439449
+          },
+          {
+            "path": "grid/test/good/003.png",
+            "bytes": 448536
+          },
+          {
+            "path": "grid/test/good/004.png",
+            "bytes": 493600
+          },
+          {
+            "path": "grid/test/good/005.png",
+            "bytes": 493825
+          },
+          {
+            "path": "grid/test/good/006.png",
+            "bytes": 494649
+          },
+          {
+            "path": "grid/test/good/007.png",
+            "bytes": 465422
+          },
+          {
+            "path": "grid/test/good/008.png",
+            "bytes": 442034
+          },
+          {
+            "path": "grid/test/good/009.png",
+            "bytes": 467426
+          },
+          {
+            "path": "grid/test/good/010.png",
+            "bytes": 470065
+          },
+          {
+            "path": "grid/test/good/011.png",
+            "bytes": 476228
+          },
+          {
+            "path": "grid/test/good/012.png",
+            "bytes": 478919
+          },
+          {
+            "path": "grid/test/good/013.png",
+            "bytes": 443742
+          },
+          {
+            "path": "grid/test/good/014.png",
+            "bytes": 466479
+          },
+          {
+            "path": "grid/test/good/015.png",
+            "bytes": 464413
+          },
+          {
+            "path": "grid/test/good/016.png",
+            "bytes": 458590
+          },
+          {
+            "path": "grid/test/good/017.png",
+            "bytes": 501036
+          },
+          {
+            "path": "grid/test/good/018.png",
+            "bytes": 471487
+          },
+          {
+            "path": "grid/test/good/019.png",
+            "bytes": 509303
+          },
+          {
+            "path": "grid/test/good/020.png",
+            "bytes": 503561
+          },
+          {
+            "path": "grid/test/metal_contamination/000.png",
+            "bytes": 459026
+          },
+          {
+            "path": "grid/test/metal_contamination/001.png",
+            "bytes": 452621
+          },
+          {
+            "path": "grid/test/metal_contamination/002.png",
+            "bytes": 460078
+          },
+          {
+            "path": "grid/test/metal_contamination/003.png",
+            "bytes": 464883
+          },
+          {
+            "path": "grid/test/metal_contamination/004.png",
+            "bytes": 494350
+          },
+          {
+            "path": "grid/test/metal_contamination/005.png",
+            "bytes": 482633
+          },
+          {
+            "path": "grid/test/metal_contamination/006.png",
+            "bytes": 473884
+          },
+          {
+            "path": "grid/test/metal_contamination/007.png",
+            "bytes": 467806
+          },
+          {
+            "path": "grid/test/metal_contamination/008.png",
+            "bytes": 475490
+          },
+          {
+            "path": "grid/test/metal_contamination/009.png",
+            "bytes": 491719
+          },
+          {
+            "path": "grid/test/metal_contamination/010.png",
+            "bytes": 477344
+          },
+          {
+            "path": "grid/test/thread/000.png",
+            "bytes": 469383
+          },
+          {
+            "path": "grid/test/thread/001.png",
+            "bytes": 464902
+          },
+          {
+            "path": "grid/test/thread/002.png",
+            "bytes": 456836
+          },
+          {
+            "path": "grid/test/thread/003.png",
+            "bytes": 449133
+          },
+          {
+            "path": "grid/test/thread/004.png",
+            "bytes": 464688
+          },
+          {
+            "path": "grid/test/thread/005.png",
+            "bytes": 449528
+          },
+          {
+            "path": "grid/test/thread/006.png",
+            "bytes": 454107
+          },
+          {
+            "path": "grid/test/thread/007.png",
+            "bytes": 454685
+          },
+          {
+            "path": "grid/test/thread/008.png",
+            "bytes": 456780
+          },
+          {
+            "path": "grid/test/thread/009.png",
+            "bytes": 474549
+          },
+          {
+            "path": "grid/test/thread/010.png",
+            "bytes": 476445
+          }
+        ],
+        "manifest_sha256": "45ee727dde5bc44e786a51bb5003c4f4ea8102fedce69688e72b3581cb2148f7",
+        "manifest_definition": "SHA256 of ordered relative image paths and byte sizes; not image-content hashes",
+        "estimated_gpu_gib": 9.32,
+        "estimated_output_disk_gib_per_trial": 0.15593522787094116
+      },
+      "complete_pool": true,
+      "pairs": [],
+      "adapter_sha256": "b18366e84aa00c7279ea599edf8fa2b16832f8ca56877c7d49b59851fa1dfb2f",
+      "source_sha256": {
+        "models\\musc.py": "d079ea4cfdee3b291802017ef72c3a259f63ad1e0596ac9d6de02cd3dd0c75f1",
+        "models\\backbone\\dino_vision_transformer.py": "38cc433d006fd6e94b117ff513b6cd4968728b9202a7bf6de547df148451e459",
+        "models\\backbone\\vision_transformer.py": "6327f18145511b35af61497d0c3c64213a74c2608e9b9a08e8652fa1d6500b46",
+        "models\\backbone\\_backbones.py": "f24223f624de5ab346b7b0f3ceb2a459fc4d78b31f6bf6442988041364d45653",
+        "models\\modules\\_aggregation_cache.py": "41cbd5521bdc27e476e102a00b2e4dbdb402acca729661e219290889d22bb829",
+        "models\\modules\\_attention_gpu.py": "28eaa3cdbbc638c7e0cb727a25cb399a668fd6d3fd0bc0294f8faaa5a1aaa242",
+        "models\\modules\\_backend.py": "814a7cb905ca3e9cd1a7092d48a46fd84167c72305857bb7e91c1e67a7278794",
+        "models\\modules\\_cuda_runtime.py": "3f5b98bd41b1eb9af647f4291d79b3c0b7a17e95e33bbb463037e62f914e2acd",
+        "models\\modules\\_encoder_gpu.py": "553a6f937dd2dfd2afcd7a24355e776ea71cfe39ae1452251d1dd8e8d21c0f9a",
+        "models\\modules\\_LNAMD.py": "86971fbfc31c898eea92e2c0790184a4121b9aa01aad473b247ccca820b8c612",
+        "models\\modules\\_loader.py": "7cb951e92fe77273e9fe053c95ffb7e9f42077e5294fcda88764178eed6ec8a7",
+        "models\\modules\\_MSM.py": "1834e84c3a7eec5049d06900f12924f97f4fa8dbc95ad2d2dc30ccf3b3159eab",
+        "models\\modules\\_MSM_gpu.py": "39684c5b7999f5d962442f0568d9dbc8334f2625cbaf9aa91e320a54e367a254",
+        "models\\modules\\_RsCIN.py": "12073ea07839637ddc70a93303a952d610a6f285e4b32d07e52f8c28c0756d33",
+        "models\\modules\\_super_fast.py": "c479b4bdab14510db1f365dbce278fe2cfa84f904eef21ac6a3ed6aa9b13a0fb",
+        "models\\RsCIN_features\\cls_process.py": "316c6b6b4a6ec452b1589987308cbdec576bb959965161573201e04a12de0b29",
+        "models\\RsCIN_features\\RsCIN.py": "9e4f663cfd8b33bfd16dafee85151eb16a209cbdb90316a06b83b87740a18f91",
+        "models\\backbone\\dinov2\\attention.py": "f7c67d57b0871fce8517dd50b55c02f33aa24c20493eff26971d3ec4cca0ec12",
+        "models\\backbone\\dinov2\\block.py": "a7218ff8350794efce37a010ac7d58d212e10a5b84b43a214a7b682cac656a62",
+        "models\\backbone\\dinov2\\dino_head.py": "5e1ca23565a0bcfd2ac1d79bfbe67c845e50582f4efe0bb1df2324bf4d4d98a8",
+        "models\\backbone\\dinov2\\drop_path.py": "27abed4dd9dafa14157c9c7717bdca15fedb62702066f627b314bc91c06a1d53",
+        "models\\backbone\\dinov2\\layer_scale.py": "a79f5b673c3f1fa60173b1905501ecfeb7fe77bed9b5e35881390c12baecbdfa",
+        "models\\backbone\\dinov2\\mlp.py": "9856d7274ca32428ff05dacf7adf8ad10fa81d7bb4e5d299ab57cf421dcc7620",
+        "models\\backbone\\dinov2\\patch_embed.py": "2d949ea0eff33185d829995373c963cac6eaebf77b4808478a72934d89587e42",
+        "models\\backbone\\dinov2\\swiglu_ffn.py": "e1744aa9d29610c57d4fa153ec0aa545ef60da565d2aaac754d318fea0e30d7c",
+        "models\\backbone\\dinov2\\__init__.py": "34312c0841b7ab254915b34b197072ade6984e28e2c718315793bdbaa34339bc",
+        "models\\backbone\\open_clip\\bpe_simple_vocab_16e6.txt.gz": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a",
+        "models\\backbone\\open_clip\\coca_model.py": "b84e02b0df9bec828528c7ac0848a2b55a4d137fcd3c73219b92cbf260156e61",
+        "models\\backbone\\open_clip\\constants.py": "3ca8ebaa471da492bf3109a74ec676a318712079fd02523ecb66a9f3b0674754",
+        "models\\backbone\\open_clip\\factory.py": "377cfdd045b6eb7fc935a814d4de3ca71bcb95da8df4940405a7f4cb650a3387",
+        "models\\backbone\\open_clip\\generation_utils.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "models\\backbone\\open_clip\\hf_configs.py": "5115244c0c204dfe4d8ef8b79956d1c617a7aa4004c9eef9bda52671a3905c01",
+        "models\\backbone\\open_clip\\hf_model.py": "1c70050313293c5a8e7e6a145ea0f098e5c0c5f69895a4927b9050db3043301c",
+        "models\\backbone\\open_clip\\loss.py": "f327ee000e74b693cb4790e90395ba1114b542cb5682d4f1c5e3da177d3ab9bf",
+        "models\\backbone\\open_clip\\model.py": "2a52b92e1b0d90b98df7aafc9b1088f2d4de00c53e0e271af6e3e1d9f453f91c",
+        "models\\backbone\\open_clip\\modified_resnet.py": "46d3ae03bd33c34094d8374d1f6facf164ab28fa5984ce2833893e4f7a5295ab",
+        "models\\backbone\\open_clip\\openai.py": "6ff98884e627fe6f9c22b29a34459ef1feb5b2f2148335a1a22be7699945cea1",
+        "models\\backbone\\open_clip\\pretrained.py": "934ab36893b4842022f6a935876125475117b22e1fad1989126d4b0d47c3c8c4",
+        "models\\backbone\\open_clip\\push_to_hf_hub.py": "60dae9720c0b00b07498d8d68e678c098a215df349d1327ae574d3ad109b81f7",
+        "models\\backbone\\open_clip\\timm_model.py": "28eb2ef0de9c99f462d59223a79cd083569267a7e78c991d5bbe2120938c6334",
+        "models\\backbone\\open_clip\\tokenizer.py": "9db02c592fd058641b527f7eb4c4de562e5ca0dbd6120e98f449a7bbef251e6c",
+        "models\\backbone\\open_clip\\transform.py": "1e328bb2888e2b70f7f01629d274acfffd189c100f77861b4d3d03c2b3bcd63c",
+        "models\\backbone\\open_clip\\transformer.py": "dbbd3b54d26265f1183a85a0621b7642af1ff8b7a13598eedea40f1f8186ed95",
+        "models\\backbone\\open_clip\\utils.py": "6d294e71cc14a01ad19771dbf227d511854d774ea8ddba4d03d5b85feb905213",
+        "models\\backbone\\open_clip\\version.py": "62f53f28c1ca8c83b44bc2d4cc4df49c161fe369fa4bff1d0d879157832098ae",
+        "models\\backbone\\open_clip\\__init__.py": "cd75fdcab2924d1a6ff4486c23e1c114485ca4a5f3d9578aba85b110088ab87e",
+        "models\\backbone\\open_clip\\model_configs\\coca_base.json": "845f78b584be2baa98c242b25e462736877386dcb218045ae20e00f5fab89448",
+        "models\\backbone\\open_clip\\model_configs\\coca_roberta-ViT-B-32.json": "4d54816398a541f5cd253d66070c62e0c3a06eaa758c50788aa01dfe4fc1decf",
+        "models\\backbone\\open_clip\\model_configs\\coca_ViT-B-32.json": "23778133bea128244176ef14dd5b8e35a469c0e28f52e97e69ff4d395b660dc0",
+        "models\\backbone\\open_clip\\model_configs\\coca_ViT-L-14.json": "991ede91a3b52cb2bd6c68af15cd31494f805278ee72596b49e078e305c9d9df",
+        "models\\backbone\\open_clip\\model_configs\\convnext_base.json": "d6b4dc0b852fb24994f22b83c70a68a919b4acd849a531b03c88216836633487",
+        "models\\backbone\\open_clip\\model_configs\\convnext_base_w.json": "5cc7efe6bc377a71c47dad18aa7a59bed951a7e0b4a918be927291cf7cfe3c8b",
+        "models\\backbone\\open_clip\\model_configs\\convnext_base_w_320.json": "3e9581125bad0051cb003582e28b7e5468150e9a48041ff45ab999e52b2917e3",
+        "models\\backbone\\open_clip\\model_configs\\convnext_large.json": "3c457676002497abc758baa8cc2cc6504546a276ea78add3f8da0b4357169442",
+        "models\\backbone\\open_clip\\model_configs\\convnext_large_d.json": "66b184953f9e9b87b54fc956572ff6e239ae1a0aef87682de9ad971b591bde47",
+        "models\\backbone\\open_clip\\model_configs\\convnext_large_d_320.json": "19b9562d40b35a298aa932c475efa46a46a494a9cce5b00bd2a70f89e3349bde",
+        "models\\backbone\\open_clip\\model_configs\\convnext_small.json": "90a80c2685369c2dbf04b07027a0484f051e0e47c36bb9ba8f62bc1d82a9b8c5",
+        "models\\backbone\\open_clip\\model_configs\\convnext_tiny.json": "bbe28de7d3b3199b6334ef3d18ac3aae01d269a96c01c89aec0695267df8ef1b",
+        "models\\backbone\\open_clip\\model_configs\\convnext_xlarge.json": "00626430876b91b4fc026103d312a7e3a25771697e18d0861c6de41321c07418",
+        "models\\backbone\\open_clip\\model_configs\\convnext_xxlarge.json": "70f74aad6e2ed25d398bba3644c08ab96d1458827e8d173833560cb97ca57214",
+        "models\\backbone\\open_clip\\model_configs\\convnext_xxlarge_320.json": "942e44277758564c21b5c05c8528bc43836a2e9dba22f8b7c8dc55d5e36cd2f8",
+        "models\\backbone\\open_clip\\model_configs\\mt5-base-ViT-B-32.json": "d30f4a0fb5f427de8edd97c9651f385f43e26de5f480c4ce2f0074a9a8b14fc6",
+        "models\\backbone\\open_clip\\model_configs\\mt5-xl-ViT-H-14.json": "27ab249db8b442da85398ab2cc54c5f7f58c9998fc56d109f530a9c049012cb7",
+        "models\\backbone\\open_clip\\model_configs\\RN101-quickgelu.json": "1895e4421bf7542c352c33c95c227a8bf9ddb1c3c20990aadb3f06a32acc5e41",
+        "models\\backbone\\open_clip\\model_configs\\RN101.json": "d390d7fcde3fb20a8ce08644be16436d792d4607975438cd2821bc3a6186fd1a",
+        "models\\backbone\\open_clip\\model_configs\\RN50-quickgelu.json": "30862c227260adb2b1ca7bca5e5f2859bc0da426d8e439df8fc1ab06d82a3416",
+        "models\\backbone\\open_clip\\model_configs\\RN50.json": "42c9eff3beb3a3647281052aebb34d26f0a83728c68292dbfbf545467d1f4496",
+        "models\\backbone\\open_clip\\model_configs\\RN50x16.json": "982df3e887b54cf6aca01653f9e36a3910f01d9f1f26152ed44eb51ee93c84bc",
+        "models\\backbone\\open_clip\\model_configs\\RN50x4.json": "571a23e419a6394d516f54fc14e7293193b6fb78995cc538edc3048a519a881d",
+        "models\\backbone\\open_clip\\model_configs\\RN50x64.json": "ae4462a8a043e10d80d0425318fb06c21d620305f39eff10cd0eed9c688a6255",
+        "models\\backbone\\open_clip\\model_configs\\roberta-ViT-B-32.json": "9c689fc6e16c740e7e3555ea28675bc43a0e2b54589ae26ddc8b389c5f62b414",
+        "models\\backbone\\open_clip\\model_configs\\swin_base_patch4_window7_224.json": "3e7aab3a3a0154b3167dbdffb229dfbe6f3d28eaecd89e4aaa122bd1020784db",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-16-plus-240.json": "7d1fe400810cffb2297dd4818518c11e0d5d9f8c863cd721b9230a2682f8728d",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-16-plus.json": "bffc7adff78cd5e4d6ef5584dabaa7a256207777843027a117e8f3e700a07c3f",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-16.json": "c7ff171b1300a7bdb49f47145bab4811cd360b60864235c07524a672e28fedf3",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-32-plus-256.json": "b1d67cf7bbb87a736a0117cf4f5dedc709e735a265b10193535495886e8e3029",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-32-quickgelu.json": "6821a4d6fc6e2a60925dc170e828b700e9fd51a461ce12fcd1f3863623e94b16",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-32.json": "1248b16441adaa5eb719c4376c9e2f59435fbc13a7d730c1867a2e639cfe8866",
+        "models\\backbone\\open_clip\\model_configs\\ViT-bigG-14.json": "5b6fb994e09f75a9f934bde0343aeebd00d156565c24befb9d8508708ea00940",
+        "models\\backbone\\open_clip\\model_configs\\ViT-e-14.json": "4462d30fab4d13eef11e72ea4cad651696bf25b6c1b3913b2ac7ea8c30d7396a",
+        "models\\backbone\\open_clip\\model_configs\\ViT-g-14.json": "97003fcaf39f72ae09c7b311a9a8a6cd5f19bd26d258da38477109db9e389c11",
+        "models\\backbone\\open_clip\\model_configs\\ViT-H-14.json": "63f6653068b7b913ccf6c2043d8a1b1b8f043751e0714e5ce1f593e0977e9b09",
+        "models\\backbone\\open_clip\\model_configs\\ViT-H-16.json": "82a2c20c9fb3d597e363132fa8d83526dbf35bf8f2e997504a4aeb658bba8d26",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-14-280.json": "c5f5464432b05059d932d3039e6bee123523ca3ac01ec8a3691ca570f7bff4c7",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-14-336.json": "2918beaa3b5844eeb08c316b69f62e30b7a04c42dcb3cc629f36c74405f045bd",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-14.json": "171cfafd089dfcdcec7df80b6628582e6e78937932799bf748b32503d6a5fa8b",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-16-320.json": "c4cad9300d8be2a02fccc385172a71f4c344ff5fa9075a2c49224cc435708785",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-16.json": "b5cc42c848a4e4215de720274575bd10f91cfde12a783e7ef6b623dc7ba15b89",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-16-alt.json": "ad713c535112a4b29d0fd6a638509351abeab190cda4b641b85e437281a7b8d3",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-16.json": "c50b27533412a95970c79ab69d23400981fbb16a84570436418f3eaf176c40cd",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-32-alt.json": "509668c186255371490f6819af7e51d99d75d09750610b43a01bacf2cf9f81b9",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-32.json": "37a13ee1497b4d60f97c0ee9874e27330a42c3dcde6f4b9a4130a5e21284a078",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-16-alt.json": "aea2d0fabee4a1b5e64486b8d674330a57d2678bb6c005d3e55cde865ef89760",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-16.json": "33768dc11cdda576f52e9b59631ee0a06be1363ffde11f672130392de7445ca5",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-32-alt.json": "f2925f2ef0b1bd6f8a876e121e107c54fe7b426db23d022f67fe1c39afcd516f",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-32.json": "5445bdef9948e7bccc14c6970457911aa354bc40b26395dcdf0f212e4a3481b3",
+        "models\\backbone\\open_clip\\model_configs\\vit_medium_patch16_gap_256.json": "7944237ff600d62a1ce396123f9ecb3f38a17780d6c818840cd283afe9565f67",
+        "models\\backbone\\open_clip\\model_configs\\vit_relpos_medium_patch16_cls_224.json": "54554cc8d87c5f5ab0608d36bf505d4f375d0db22caa31ebc7cd76b7a305c38b",
+        "models\\backbone\\open_clip\\model_configs\\xlm-roberta-base-ViT-B-32.json": "11e9eb0192ec3cd65fe5faa733246349b55911a2893004a443b3f6d0d11bd5fa",
+        "models\\backbone\\open_clip\\model_configs\\xlm-roberta-large-ViT-H-14.json": "c1644b154e649e56df4836043e87517dd041d95b2c35f43be31d4bd89936240e",
+        "datasets\\btad.py": "4b997dcfc374581aa44ffcfa95170cda15b4e23da35c0163ebd9f2cc543aa9ce",
+        "datasets\\mvtec.py": "79db5e4132fc8a70a28c98bc413efff967bdb65aa1d366c1d744cc240200c104",
+        "datasets\\visa.py": "fcb95676482a07948c3273cd92f5e332c9cc6daa72d3f068a3b2e3572bee8bde",
+        "datasets\\visa_preprocess.py": "24c143c436c07e196321265b30503528b7492f0f6bd7f048b79f251a7878c163",
+        "utils\\load_config.py": "1879b2904bae82272d6d2f4566e53731168e84813d1c8eba70e76ec7f8c0ae45",
+        "utils\\metrics.py": "b5ec3ce3fb7cd63d7a3230cc1d1bbe597bb054b6c08926ff8d61d9e751bda955",
+        "tools\\benchmark.py": "bf7a271002155d147a8019bbf09e9604179e84ecd0736d080dbf746fcf3ce4fe",
+        "tools\\benchmark_deployment.py": "6f0c627b54399b4e67455c730365250626fbc0b9c8999aa8785b24ae53f0db87",
+        "tools\\benchmark_process.py": "77388b85c2d360683efa7f143d39940d1c3d4f42d8b2b79dbc80f81590d8d6d7",
+        "tools\\benchmark_super_fast.py": "b18366e84aa00c7279ea599edf8fa2b16832f8ca56877c7d49b59851fa1dfb2f",
+        "tools\\benchmark_support.py": "b03268e4606730eaf1cc8a427676ec11df725d5f4f6a528e93bb6102a595e862",
+        "tools\\plot_benchmarks.py": "f00eeab4fda1f41b4f1ee60c5cb7f9318c95e72d2ac715ae980a096820d71e3c",
+        "tools\\plot_segmentation_examples.py": "c9d17c0abebbda1c737db2cf9cc980522ae9fea2a6d80bd0735f1ed6b6d6df02",
+        "tools\\plot_segmentation_usefulness.py": "4440345548b1507c88498522d6c629b63d997960f57df259aec268d663bb3f24",
+        "tools\\report_benchmark.py": "960ea273b13b79c1ed0fe2dc0962cc2a4662e49159ca039636a0587aa6328f2f",
+        "tools\\report_deployment.py": "88f708903ec76227f78a49362154bd5934f961ec51b044602ec652c6bd452e1c",
+        "tools\\report_measured_performance.py": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3",
+        "tools\\segmentation_usefulness.py": "0c57adfb2eac494244e19c9609583da8dd82d4b91b847ab44f7617767728328c",
+        "tools\\test_benchmark.py": "350714543281c26e006fa31b7968d33b81b20e3eeff18c1f91e14a781445e679",
+        "tools\\test_deployment.py": "754c811f98ffeb21c1a84059c64f5addbdd256546a1a6068757a3fb60e6d2b25",
+        "tools\\test_segmentation_usefulness.py": "e2fbe4cf2ed74937f6a189e5a2fd38a56fb12aefd429c428b76d31a2c673ccc8",
+        "tools\\test_super_fast.py": "b9f9cd90f66f76b41a661f392bf0be4abcea0b0578a3b2e741e61b2947e84013",
+        "tools\\test_super_fast_benchmark.py": "33cf705d98606a9581cdb6e98bed70c625b390b635a7b868ae773275006d81a6",
+        "tools\\test_worker_process.py": "4fc4555ecab78bbbe8db04945f3de2ddb2db2b3f0e0b19ce670da7a718f232e3",
+        "tools\\verify_release.py": "5b70f5bb5726d453a1a4eeed98dd8f78f0aa08c5c367c465fc6ca181e12b4e85",
+        "configs\\musc.yaml": "c1be44a583fe0e12472cf582c42c577d1b31f5fc4b628793a24531c666f934b7"
+      },
+      "coordinator_status": {
+        "updated": "2026-10-12T09:49:11.212501+00:00",
+        "pid": 239136,
+        "phase": "stopped",
+        "target_speedup": 10.0,
+        "cycle": 1182,
+        "best_full_inference_ratio": 3.836766,
+        "reason": "",
+        "child_pid": null,
+        "experiment": "new_design",
+        "command": null,
+        "elapsed_seconds": 0,
+        "last_verdict": "rejected",
+        "resources": null
+      },
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\dylan\\local_code\\MuSc\\releases\\musc-gpu-publish-segmentation\\tools\\benchmark_super_fast.py\", line 134, in run_plan\n    report['initial_idle_evidence']=benchmark.check_idle(0,'http://127.0.0.1:11435/api/ps')\n                                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dylan\\local_code\\MuSc\\releases\\musc-gpu-publish-segmentation\\tools\\benchmark.py\", line 35, in check_idle\n    processes = inventory()\n  File \"C:\\Users\\dylan\\local_code\\MuSc\\releases\\musc-gpu-publish-segmentation\\tools\\benchmark.py\", line 30, in inventory\n    output = subprocess.check_output(['powershell.exe', '-NoProfile', '-Command', script], text=True)\n  File \"C:\\Users\\dylan\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\subprocess.py\", line 472, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n               **kwargs).stdout\n               ^^^^^^^^^\n  File \"C:\\Users\\dylan\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['powershell.exe', '-NoProfile', '-Command', \"$ErrorActionPreference='Stop'; @(Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'python|powershell|pwsh|ollama|llama|qwen' } | Select-Object ProcessId,Name,CommandLine) | ConvertTo-Json -Compress\"]' returned non-zero exit status 1.\n"
+    },
+    {
+      "status": "blocked_or_failed",
+      "command": [
+        "tools/benchmark_super_fast.py",
+        "--data-path",
+        "C:/Users/dylan/mvtec_anomaly_detection",
+        "--categories",
+        "grid",
+        "cable",
+        "--output",
+        "C:/Users/dylan/local_code/MuSc/experiments/parallel_20261004/super_fast_categories_20261012/comparison",
+        "--coordinator-status",
+        "C:/Users/dylan/local_code/MuSc/experiments/parallel_20261004/staircase_20261011/status.json"
+      ],
+      "scope": "MuSc.make_category_data entry through synchronized pre-metric predictions; includes loading, decoding, preprocessing, transfers, encoding, aggregation, scoring, interpolation, RsCIN and first-use compilation; excludes imports, model loading, metric evaluation and artifact serialization",
+      "protocol": "fresh child process per backend per pair; original/super_fast then super_fast/original; no discarded warmup; metrics and model loading separate; OS file cache not flushed",
+      "approximate": true,
+      "category": "cable",
+      "images": 150,
+      "plan": {
+        "id": "cable-full",
+        "category": "cable",
+        "images": 150,
+        "full_category_images": 150,
+        "complete_pool": true,
+        "selection_seed": 42,
+        "image_manifest": [
+          {
+            "path": "cable/test/bent_wire/000.png",
+            "bytes": 1342041
+          },
+          {
+            "path": "cable/test/bent_wire/001.png",
+            "bytes": 1343763
+          },
+          {
+            "path": "cable/test/bent_wire/002.png",
+            "bytes": 1346958
+          },
+          {
+            "path": "cable/test/bent_wire/003.png",
+            "bytes": 1348014
+          },
+          {
+            "path": "cable/test/bent_wire/004.png",
+            "bytes": 1352231
+          },
+          {
+            "path": "cable/test/bent_wire/005.png",
+            "bytes": 1371066
+          },
+          {
+            "path": "cable/test/bent_wire/006.png",
+            "bytes": 1339536
+          },
+          {
+            "path": "cable/test/bent_wire/007.png",
+            "bytes": 1367133
+          },
+          {
+            "path": "cable/test/bent_wire/008.png",
+            "bytes": 1335270
+          },
+          {
+            "path": "cable/test/bent_wire/009.png",
+            "bytes": 1360267
+          },
+          {
+            "path": "cable/test/bent_wire/010.png",
+            "bytes": 1342341
+          },
+          {
+            "path": "cable/test/bent_wire/011.png",
+            "bytes": 1382579
+          },
+          {
+            "path": "cable/test/bent_wire/012.png",
+            "bytes": 1361712
+          },
+          {
+            "path": "cable/test/cable_swap/000.png",
+            "bytes": 1376513
+          },
+          {
+            "path": "cable/test/cable_swap/001.png",
+            "bytes": 1338748
+          },
+          {
+            "path": "cable/test/cable_swap/002.png",
+            "bytes": 1346429
+          },
+          {
+            "path": "cable/test/cable_swap/003.png",
+            "bytes": 1366916
+          },
+          {
+            "path": "cable/test/cable_swap/004.png",
+            "bytes": 1358261
+          },
+          {
+            "path": "cable/test/cable_swap/005.png",
+            "bytes": 1375056
+          },
+          {
+            "path": "cable/test/cable_swap/006.png",
+            "bytes": 1334736
+          },
+          {
+            "path": "cable/test/cable_swap/007.png",
+            "bytes": 1336390
+          },
+          {
+            "path": "cable/test/cable_swap/008.png",
+            "bytes": 1359677
+          },
+          {
+            "path": "cable/test/cable_swap/009.png",
+            "bytes": 1369377
+          },
+          {
+            "path": "cable/test/cable_swap/010.png",
+            "bytes": 1350041
+          },
+          {
+            "path": "cable/test/cable_swap/011.png",
+            "bytes": 1358974
+          },
+          {
+            "path": "cable/test/combined/000.png",
+            "bytes": 1365753
+          },
+          {
+            "path": "cable/test/combined/001.png",
+            "bytes": 1336888
+          },
+          {
+            "path": "cable/test/combined/002.png",
+            "bytes": 1332151
+          },
+          {
+            "path": "cable/test/combined/003.png",
+            "bytes": 1302709
+          },
+          {
+            "path": "cable/test/combined/004.png",
+            "bytes": 1340488
+          },
+          {
+            "path": "cable/test/combined/005.png",
+            "bytes": 1326950
+          },
+          {
+            "path": "cable/test/combined/006.png",
+            "bytes": 1301368
+          },
+          {
+            "path": "cable/test/combined/007.png",
+            "bytes": 1313425
+          },
+          {
+            "path": "cable/test/combined/008.png",
+            "bytes": 1314227
+          },
+          {
+            "path": "cable/test/combined/009.png",
+            "bytes": 1312858
+          },
+          {
+            "path": "cable/test/combined/010.png",
+            "bytes": 1284777
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/000.png",
+            "bytes": 1378976
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/001.png",
+            "bytes": 1360601
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/002.png",
+            "bytes": 1344283
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/003.png",
+            "bytes": 1359654
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/004.png",
+            "bytes": 1326615
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/005.png",
+            "bytes": 1372316
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/006.png",
+            "bytes": 1338120
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/007.png",
+            "bytes": 1342419
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/008.png",
+            "bytes": 1337686
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/009.png",
+            "bytes": 1349665
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/010.png",
+            "bytes": 1368699
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/011.png",
+            "bytes": 1362603
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/012.png",
+            "bytes": 1362519
+          },
+          {
+            "path": "cable/test/cut_inner_insulation/013.png",
+            "bytes": 1371067
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/000.png",
+            "bytes": 1366475
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/001.png",
+            "bytes": 1357668
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/002.png",
+            "bytes": 1371990
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/003.png",
+            "bytes": 1374872
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/004.png",
+            "bytes": 1361808
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/005.png",
+            "bytes": 1373667
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/006.png",
+            "bytes": 1356558
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/007.png",
+            "bytes": 1349254
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/008.png",
+            "bytes": 1350331
+          },
+          {
+            "path": "cable/test/cut_outer_insulation/009.png",
+            "bytes": 1372459
+          },
+          {
+            "path": "cable/test/good/000.png",
+            "bytes": 1339489
+          },
+          {
+            "path": "cable/test/good/001.png",
+            "bytes": 1339388
+          },
+          {
+            "path": "cable/test/good/002.png",
+            "bytes": 1343402
+          },
+          {
+            "path": "cable/test/good/003.png",
+            "bytes": 1313136
+          },
+          {
+            "path": "cable/test/good/004.png",
+            "bytes": 1336121
+          },
+          {
+            "path": "cable/test/good/005.png",
+            "bytes": 1350665
+          },
+          {
+            "path": "cable/test/good/006.png",
+            "bytes": 1327922
+          },
+          {
+            "path": "cable/test/good/007.png",
+            "bytes": 1337882
+          },
+          {
+            "path": "cable/test/good/008.png",
+            "bytes": 1322167
+          },
+          {
+            "path": "cable/test/good/009.png",
+            "bytes": 1359414
+          },
+          {
+            "path": "cable/test/good/010.png",
+            "bytes": 1343411
+          },
+          {
+            "path": "cable/test/good/011.png",
+            "bytes": 1327723
+          },
+          {
+            "path": "cable/test/good/012.png",
+            "bytes": 1347460
+          },
+          {
+            "path": "cable/test/good/013.png",
+            "bytes": 1336432
+          },
+          {
+            "path": "cable/test/good/014.png",
+            "bytes": 1360511
+          },
+          {
+            "path": "cable/test/good/015.png",
+            "bytes": 1359687
+          },
+          {
+            "path": "cable/test/good/016.png",
+            "bytes": 1347175
+          },
+          {
+            "path": "cable/test/good/017.png",
+            "bytes": 1342837
+          },
+          {
+            "path": "cable/test/good/018.png",
+            "bytes": 1343223
+          },
+          {
+            "path": "cable/test/good/019.png",
+            "bytes": 1337172
+          },
+          {
+            "path": "cable/test/good/020.png",
+            "bytes": 1326354
+          },
+          {
+            "path": "cable/test/good/021.png",
+            "bytes": 1350245
+          },
+          {
+            "path": "cable/test/good/022.png",
+            "bytes": 1358650
+          },
+          {
+            "path": "cable/test/good/023.png",
+            "bytes": 1398179
+          },
+          {
+            "path": "cable/test/good/024.png",
+            "bytes": 1349735
+          },
+          {
+            "path": "cable/test/good/025.png",
+            "bytes": 1354451
+          },
+          {
+            "path": "cable/test/good/026.png",
+            "bytes": 1328252
+          },
+          {
+            "path": "cable/test/good/027.png",
+            "bytes": 1366190
+          },
+          {
+            "path": "cable/test/good/028.png",
+            "bytes": 1341515
+          },
+          {
+            "path": "cable/test/good/029.png",
+            "bytes": 1353481
+          },
+          {
+            "path": "cable/test/good/030.png",
+            "bytes": 1352039
+          },
+          {
+            "path": "cable/test/good/031.png",
+            "bytes": 1354602
+          },
+          {
+            "path": "cable/test/good/032.png",
+            "bytes": 1355253
+          },
+          {
+            "path": "cable/test/good/033.png",
+            "bytes": 1338988
+          },
+          {
+            "path": "cable/test/good/034.png",
+            "bytes": 1353106
+          },
+          {
+            "path": "cable/test/good/035.png",
+            "bytes": 1370499
+          },
+          {
+            "path": "cable/test/good/036.png",
+            "bytes": 1351769
+          },
+          {
+            "path": "cable/test/good/037.png",
+            "bytes": 1313945
+          },
+          {
+            "path": "cable/test/good/038.png",
+            "bytes": 1339030
+          },
+          {
+            "path": "cable/test/good/039.png",
+            "bytes": 1350751
+          },
+          {
+            "path": "cable/test/good/040.png",
+            "bytes": 1344509
+          },
+          {
+            "path": "cable/test/good/041.png",
+            "bytes": 1359739
+          },
+          {
+            "path": "cable/test/good/042.png",
+            "bytes": 1347612
+          },
+          {
+            "path": "cable/test/good/043.png",
+            "bytes": 1401074
+          },
+          {
+            "path": "cable/test/good/044.png",
+            "bytes": 1328859
+          },
+          {
+            "path": "cable/test/good/045.png",
+            "bytes": 1339566
+          },
+          {
+            "path": "cable/test/good/046.png",
+            "bytes": 1340431
+          },
+          {
+            "path": "cable/test/good/047.png",
+            "bytes": 1340580
+          },
+          {
+            "path": "cable/test/good/048.png",
+            "bytes": 1353466
+          },
+          {
+            "path": "cable/test/good/049.png",
+            "bytes": 1365478
+          },
+          {
+            "path": "cable/test/good/050.png",
+            "bytes": 1379730
+          },
+          {
+            "path": "cable/test/good/051.png",
+            "bytes": 1346312
+          },
+          {
+            "path": "cable/test/good/052.png",
+            "bytes": 1294492
+          },
+          {
+            "path": "cable/test/good/053.png",
+            "bytes": 1306810
+          },
+          {
+            "path": "cable/test/good/054.png",
+            "bytes": 1307136
+          },
+          {
+            "path": "cable/test/good/055.png",
+            "bytes": 1356054
+          },
+          {
+            "path": "cable/test/good/056.png",
+            "bytes": 1347109
+          },
+          {
+            "path": "cable/test/good/057.png",
+            "bytes": 1353117
+          },
+          {
+            "path": "cable/test/missing_cable/000.png",
+            "bytes": 1342005
+          },
+          {
+            "path": "cable/test/missing_cable/001.png",
+            "bytes": 1316270
+          },
+          {
+            "path": "cable/test/missing_cable/002.png",
+            "bytes": 1309179
+          },
+          {
+            "path": "cable/test/missing_cable/003.png",
+            "bytes": 1338318
+          },
+          {
+            "path": "cable/test/missing_cable/004.png",
+            "bytes": 1334417
+          },
+          {
+            "path": "cable/test/missing_cable/005.png",
+            "bytes": 1323197
+          },
+          {
+            "path": "cable/test/missing_cable/006.png",
+            "bytes": 1257359
+          },
+          {
+            "path": "cable/test/missing_cable/007.png",
+            "bytes": 1296566
+          },
+          {
+            "path": "cable/test/missing_cable/008.png",
+            "bytes": 1286781
+          },
+          {
+            "path": "cable/test/missing_cable/009.png",
+            "bytes": 1275507
+          },
+          {
+            "path": "cable/test/missing_cable/010.png",
+            "bytes": 1337757
+          },
+          {
+            "path": "cable/test/missing_cable/011.png",
+            "bytes": 1324895
+          },
+          {
+            "path": "cable/test/missing_wire/000.png",
+            "bytes": 1332993
+          },
+          {
+            "path": "cable/test/missing_wire/001.png",
+            "bytes": 1326593
+          },
+          {
+            "path": "cable/test/missing_wire/002.png",
+            "bytes": 1354756
+          },
+          {
+            "path": "cable/test/missing_wire/003.png",
+            "bytes": 1319119
+          },
+          {
+            "path": "cable/test/missing_wire/004.png",
+            "bytes": 1321215
+          },
+          {
+            "path": "cable/test/missing_wire/005.png",
+            "bytes": 1334920
+          },
+          {
+            "path": "cable/test/missing_wire/006.png",
+            "bytes": 1340990
+          },
+          {
+            "path": "cable/test/missing_wire/007.png",
+            "bytes": 1315321
+          },
+          {
+            "path": "cable/test/missing_wire/008.png",
+            "bytes": 1337177
+          },
+          {
+            "path": "cable/test/missing_wire/009.png",
+            "bytes": 1328727
+          },
+          {
+            "path": "cable/test/poke_insulation/000.png",
+            "bytes": 1348056
+          },
+          {
+            "path": "cable/test/poke_insulation/001.png",
+            "bytes": 1311247
+          },
+          {
+            "path": "cable/test/poke_insulation/002.png",
+            "bytes": 1341595
+          },
+          {
+            "path": "cable/test/poke_insulation/003.png",
+            "bytes": 1341778
+          },
+          {
+            "path": "cable/test/poke_insulation/004.png",
+            "bytes": 1344766
+          },
+          {
+            "path": "cable/test/poke_insulation/005.png",
+            "bytes": 1322857
+          },
+          {
+            "path": "cable/test/poke_insulation/006.png",
+            "bytes": 1327939
+          },
+          {
+            "path": "cable/test/poke_insulation/007.png",
+            "bytes": 1337133
+          },
+          {
+            "path": "cable/test/poke_insulation/008.png",
+            "bytes": 1331676
+          },
+          {
+            "path": "cable/test/poke_insulation/009.png",
+            "bytes": 1331514
+          }
+        ],
+        "manifest_sha256": "4229b40e1a131f6b3162e451692449fd0c20cfe6f8e649f21263fde1785ef6c5",
+        "manifest_definition": "SHA256 of ordered relative image paths and byte sizes; not image-content hashes",
+        "estimated_gpu_gib": 14.0,
+        "estimated_output_disk_gib_per_trial": 0.2998754382133484
+      },
+      "complete_pool": true,
+      "pairs": [],
+      "adapter_sha256": "b18366e84aa00c7279ea599edf8fa2b16832f8ca56877c7d49b59851fa1dfb2f",
+      "source_sha256": {
+        "models\\musc.py": "d079ea4cfdee3b291802017ef72c3a259f63ad1e0596ac9d6de02cd3dd0c75f1",
+        "models\\backbone\\dino_vision_transformer.py": "38cc433d006fd6e94b117ff513b6cd4968728b9202a7bf6de547df148451e459",
+        "models\\backbone\\vision_transformer.py": "6327f18145511b35af61497d0c3c64213a74c2608e9b9a08e8652fa1d6500b46",
+        "models\\backbone\\_backbones.py": "f24223f624de5ab346b7b0f3ceb2a459fc4d78b31f6bf6442988041364d45653",
+        "models\\modules\\_aggregation_cache.py": "41cbd5521bdc27e476e102a00b2e4dbdb402acca729661e219290889d22bb829",
+        "models\\modules\\_attention_gpu.py": "28eaa3cdbbc638c7e0cb727a25cb399a668fd6d3fd0bc0294f8faaa5a1aaa242",
+        "models\\modules\\_backend.py": "814a7cb905ca3e9cd1a7092d48a46fd84167c72305857bb7e91c1e67a7278794",
+        "models\\modules\\_cuda_runtime.py": "3f5b98bd41b1eb9af647f4291d79b3c0b7a17e95e33bbb463037e62f914e2acd",
+        "models\\modules\\_encoder_gpu.py": "553a6f937dd2dfd2afcd7a24355e776ea71cfe39ae1452251d1dd8e8d21c0f9a",
+        "models\\modules\\_LNAMD.py": "86971fbfc31c898eea92e2c0790184a4121b9aa01aad473b247ccca820b8c612",
+        "models\\modules\\_loader.py": "7cb951e92fe77273e9fe053c95ffb7e9f42077e5294fcda88764178eed6ec8a7",
+        "models\\modules\\_MSM.py": "1834e84c3a7eec5049d06900f12924f97f4fa8dbc95ad2d2dc30ccf3b3159eab",
+        "models\\modules\\_MSM_gpu.py": "39684c5b7999f5d962442f0568d9dbc8334f2625cbaf9aa91e320a54e367a254",
+        "models\\modules\\_RsCIN.py": "12073ea07839637ddc70a93303a952d610a6f285e4b32d07e52f8c28c0756d33",
+        "models\\modules\\_super_fast.py": "c479b4bdab14510db1f365dbce278fe2cfa84f904eef21ac6a3ed6aa9b13a0fb",
+        "models\\RsCIN_features\\cls_process.py": "316c6b6b4a6ec452b1589987308cbdec576bb959965161573201e04a12de0b29",
+        "models\\RsCIN_features\\RsCIN.py": "9e4f663cfd8b33bfd16dafee85151eb16a209cbdb90316a06b83b87740a18f91",
+        "models\\backbone\\dinov2\\attention.py": "f7c67d57b0871fce8517dd50b55c02f33aa24c20493eff26971d3ec4cca0ec12",
+        "models\\backbone\\dinov2\\block.py": "a7218ff8350794efce37a010ac7d58d212e10a5b84b43a214a7b682cac656a62",
+        "models\\backbone\\dinov2\\dino_head.py": "5e1ca23565a0bcfd2ac1d79bfbe67c845e50582f4efe0bb1df2324bf4d4d98a8",
+        "models\\backbone\\dinov2\\drop_path.py": "27abed4dd9dafa14157c9c7717bdca15fedb62702066f627b314bc91c06a1d53",
+        "models\\backbone\\dinov2\\layer_scale.py": "a79f5b673c3f1fa60173b1905501ecfeb7fe77bed9b5e35881390c12baecbdfa",
+        "models\\backbone\\dinov2\\mlp.py": "9856d7274ca32428ff05dacf7adf8ad10fa81d7bb4e5d299ab57cf421dcc7620",
+        "models\\backbone\\dinov2\\patch_embed.py": "2d949ea0eff33185d829995373c963cac6eaebf77b4808478a72934d89587e42",
+        "models\\backbone\\dinov2\\swiglu_ffn.py": "e1744aa9d29610c57d4fa153ec0aa545ef60da565d2aaac754d318fea0e30d7c",
+        "models\\backbone\\dinov2\\__init__.py": "34312c0841b7ab254915b34b197072ade6984e28e2c718315793bdbaa34339bc",
+        "models\\backbone\\open_clip\\bpe_simple_vocab_16e6.txt.gz": "924691ac288e54409236115652ad4aa250f48203de50a9e4722a6ecd48d6804a",
+        "models\\backbone\\open_clip\\coca_model.py": "b84e02b0df9bec828528c7ac0848a2b55a4d137fcd3c73219b92cbf260156e61",
+        "models\\backbone\\open_clip\\constants.py": "3ca8ebaa471da492bf3109a74ec676a318712079fd02523ecb66a9f3b0674754",
+        "models\\backbone\\open_clip\\factory.py": "377cfdd045b6eb7fc935a814d4de3ca71bcb95da8df4940405a7f4cb650a3387",
+        "models\\backbone\\open_clip\\generation_utils.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "models\\backbone\\open_clip\\hf_configs.py": "5115244c0c204dfe4d8ef8b79956d1c617a7aa4004c9eef9bda52671a3905c01",
+        "models\\backbone\\open_clip\\hf_model.py": "1c70050313293c5a8e7e6a145ea0f098e5c0c5f69895a4927b9050db3043301c",
+        "models\\backbone\\open_clip\\loss.py": "f327ee000e74b693cb4790e90395ba1114b542cb5682d4f1c5e3da177d3ab9bf",
+        "models\\backbone\\open_clip\\model.py": "2a52b92e1b0d90b98df7aafc9b1088f2d4de00c53e0e271af6e3e1d9f453f91c",
+        "models\\backbone\\open_clip\\modified_resnet.py": "46d3ae03bd33c34094d8374d1f6facf164ab28fa5984ce2833893e4f7a5295ab",
+        "models\\backbone\\open_clip\\openai.py": "6ff98884e627fe6f9c22b29a34459ef1feb5b2f2148335a1a22be7699945cea1",
+        "models\\backbone\\open_clip\\pretrained.py": "934ab36893b4842022f6a935876125475117b22e1fad1989126d4b0d47c3c8c4",
+        "models\\backbone\\open_clip\\push_to_hf_hub.py": "60dae9720c0b00b07498d8d68e678c098a215df349d1327ae574d3ad109b81f7",
+        "models\\backbone\\open_clip\\timm_model.py": "28eb2ef0de9c99f462d59223a79cd083569267a7e78c991d5bbe2120938c6334",
+        "models\\backbone\\open_clip\\tokenizer.py": "9db02c592fd058641b527f7eb4c4de562e5ca0dbd6120e98f449a7bbef251e6c",
+        "models\\backbone\\open_clip\\transform.py": "1e328bb2888e2b70f7f01629d274acfffd189c100f77861b4d3d03c2b3bcd63c",
+        "models\\backbone\\open_clip\\transformer.py": "dbbd3b54d26265f1183a85a0621b7642af1ff8b7a13598eedea40f1f8186ed95",
+        "models\\backbone\\open_clip\\utils.py": "6d294e71cc14a01ad19771dbf227d511854d774ea8ddba4d03d5b85feb905213",
+        "models\\backbone\\open_clip\\version.py": "62f53f28c1ca8c83b44bc2d4cc4df49c161fe369fa4bff1d0d879157832098ae",
+        "models\\backbone\\open_clip\\__init__.py": "cd75fdcab2924d1a6ff4486c23e1c114485ca4a5f3d9578aba85b110088ab87e",
+        "models\\backbone\\open_clip\\model_configs\\coca_base.json": "845f78b584be2baa98c242b25e462736877386dcb218045ae20e00f5fab89448",
+        "models\\backbone\\open_clip\\model_configs\\coca_roberta-ViT-B-32.json": "4d54816398a541f5cd253d66070c62e0c3a06eaa758c50788aa01dfe4fc1decf",
+        "models\\backbone\\open_clip\\model_configs\\coca_ViT-B-32.json": "23778133bea128244176ef14dd5b8e35a469c0e28f52e97e69ff4d395b660dc0",
+        "models\\backbone\\open_clip\\model_configs\\coca_ViT-L-14.json": "991ede91a3b52cb2bd6c68af15cd31494f805278ee72596b49e078e305c9d9df",
+        "models\\backbone\\open_clip\\model_configs\\convnext_base.json": "d6b4dc0b852fb24994f22b83c70a68a919b4acd849a531b03c88216836633487",
+        "models\\backbone\\open_clip\\model_configs\\convnext_base_w.json": "5cc7efe6bc377a71c47dad18aa7a59bed951a7e0b4a918be927291cf7cfe3c8b",
+        "models\\backbone\\open_clip\\model_configs\\convnext_base_w_320.json": "3e9581125bad0051cb003582e28b7e5468150e9a48041ff45ab999e52b2917e3",
+        "models\\backbone\\open_clip\\model_configs\\convnext_large.json": "3c457676002497abc758baa8cc2cc6504546a276ea78add3f8da0b4357169442",
+        "models\\backbone\\open_clip\\model_configs\\convnext_large_d.json": "66b184953f9e9b87b54fc956572ff6e239ae1a0aef87682de9ad971b591bde47",
+        "models\\backbone\\open_clip\\model_configs\\convnext_large_d_320.json": "19b9562d40b35a298aa932c475efa46a46a494a9cce5b00bd2a70f89e3349bde",
+        "models\\backbone\\open_clip\\model_configs\\convnext_small.json": "90a80c2685369c2dbf04b07027a0484f051e0e47c36bb9ba8f62bc1d82a9b8c5",
+        "models\\backbone\\open_clip\\model_configs\\convnext_tiny.json": "bbe28de7d3b3199b6334ef3d18ac3aae01d269a96c01c89aec0695267df8ef1b",
+        "models\\backbone\\open_clip\\model_configs\\convnext_xlarge.json": "00626430876b91b4fc026103d312a7e3a25771697e18d0861c6de41321c07418",
+        "models\\backbone\\open_clip\\model_configs\\convnext_xxlarge.json": "70f74aad6e2ed25d398bba3644c08ab96d1458827e8d173833560cb97ca57214",
+        "models\\backbone\\open_clip\\model_configs\\convnext_xxlarge_320.json": "942e44277758564c21b5c05c8528bc43836a2e9dba22f8b7c8dc55d5e36cd2f8",
+        "models\\backbone\\open_clip\\model_configs\\mt5-base-ViT-B-32.json": "d30f4a0fb5f427de8edd97c9651f385f43e26de5f480c4ce2f0074a9a8b14fc6",
+        "models\\backbone\\open_clip\\model_configs\\mt5-xl-ViT-H-14.json": "27ab249db8b442da85398ab2cc54c5f7f58c9998fc56d109f530a9c049012cb7",
+        "models\\backbone\\open_clip\\model_configs\\RN101-quickgelu.json": "1895e4421bf7542c352c33c95c227a8bf9ddb1c3c20990aadb3f06a32acc5e41",
+        "models\\backbone\\open_clip\\model_configs\\RN101.json": "d390d7fcde3fb20a8ce08644be16436d792d4607975438cd2821bc3a6186fd1a",
+        "models\\backbone\\open_clip\\model_configs\\RN50-quickgelu.json": "30862c227260adb2b1ca7bca5e5f2859bc0da426d8e439df8fc1ab06d82a3416",
+        "models\\backbone\\open_clip\\model_configs\\RN50.json": "42c9eff3beb3a3647281052aebb34d26f0a83728c68292dbfbf545467d1f4496",
+        "models\\backbone\\open_clip\\model_configs\\RN50x16.json": "982df3e887b54cf6aca01653f9e36a3910f01d9f1f26152ed44eb51ee93c84bc",
+        "models\\backbone\\open_clip\\model_configs\\RN50x4.json": "571a23e419a6394d516f54fc14e7293193b6fb78995cc538edc3048a519a881d",
+        "models\\backbone\\open_clip\\model_configs\\RN50x64.json": "ae4462a8a043e10d80d0425318fb06c21d620305f39eff10cd0eed9c688a6255",
+        "models\\backbone\\open_clip\\model_configs\\roberta-ViT-B-32.json": "9c689fc6e16c740e7e3555ea28675bc43a0e2b54589ae26ddc8b389c5f62b414",
+        "models\\backbone\\open_clip\\model_configs\\swin_base_patch4_window7_224.json": "3e7aab3a3a0154b3167dbdffb229dfbe6f3d28eaecd89e4aaa122bd1020784db",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-16-plus-240.json": "7d1fe400810cffb2297dd4818518c11e0d5d9f8c863cd721b9230a2682f8728d",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-16-plus.json": "bffc7adff78cd5e4d6ef5584dabaa7a256207777843027a117e8f3e700a07c3f",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-16.json": "c7ff171b1300a7bdb49f47145bab4811cd360b60864235c07524a672e28fedf3",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-32-plus-256.json": "b1d67cf7bbb87a736a0117cf4f5dedc709e735a265b10193535495886e8e3029",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-32-quickgelu.json": "6821a4d6fc6e2a60925dc170e828b700e9fd51a461ce12fcd1f3863623e94b16",
+        "models\\backbone\\open_clip\\model_configs\\ViT-B-32.json": "1248b16441adaa5eb719c4376c9e2f59435fbc13a7d730c1867a2e639cfe8866",
+        "models\\backbone\\open_clip\\model_configs\\ViT-bigG-14.json": "5b6fb994e09f75a9f934bde0343aeebd00d156565c24befb9d8508708ea00940",
+        "models\\backbone\\open_clip\\model_configs\\ViT-e-14.json": "4462d30fab4d13eef11e72ea4cad651696bf25b6c1b3913b2ac7ea8c30d7396a",
+        "models\\backbone\\open_clip\\model_configs\\ViT-g-14.json": "97003fcaf39f72ae09c7b311a9a8a6cd5f19bd26d258da38477109db9e389c11",
+        "models\\backbone\\open_clip\\model_configs\\ViT-H-14.json": "63f6653068b7b913ccf6c2043d8a1b1b8f043751e0714e5ce1f593e0977e9b09",
+        "models\\backbone\\open_clip\\model_configs\\ViT-H-16.json": "82a2c20c9fb3d597e363132fa8d83526dbf35bf8f2e997504a4aeb658bba8d26",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-14-280.json": "c5f5464432b05059d932d3039e6bee123523ca3ac01ec8a3691ca570f7bff4c7",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-14-336.json": "2918beaa3b5844eeb08c316b69f62e30b7a04c42dcb3cc629f36c74405f045bd",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-14.json": "171cfafd089dfcdcec7df80b6628582e6e78937932799bf748b32503d6a5fa8b",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-16-320.json": "c4cad9300d8be2a02fccc385172a71f4c344ff5fa9075a2c49224cc435708785",
+        "models\\backbone\\open_clip\\model_configs\\ViT-L-16.json": "b5cc42c848a4e4215de720274575bd10f91cfde12a783e7ef6b623dc7ba15b89",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-16-alt.json": "ad713c535112a4b29d0fd6a638509351abeab190cda4b641b85e437281a7b8d3",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-16.json": "c50b27533412a95970c79ab69d23400981fbb16a84570436418f3eaf176c40cd",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-32-alt.json": "509668c186255371490f6819af7e51d99d75d09750610b43a01bacf2cf9f81b9",
+        "models\\backbone\\open_clip\\model_configs\\ViT-M-32.json": "37a13ee1497b4d60f97c0ee9874e27330a42c3dcde6f4b9a4130a5e21284a078",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-16-alt.json": "aea2d0fabee4a1b5e64486b8d674330a57d2678bb6c005d3e55cde865ef89760",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-16.json": "33768dc11cdda576f52e9b59631ee0a06be1363ffde11f672130392de7445ca5",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-32-alt.json": "f2925f2ef0b1bd6f8a876e121e107c54fe7b426db23d022f67fe1c39afcd516f",
+        "models\\backbone\\open_clip\\model_configs\\ViT-S-32.json": "5445bdef9948e7bccc14c6970457911aa354bc40b26395dcdf0f212e4a3481b3",
+        "models\\backbone\\open_clip\\model_configs\\vit_medium_patch16_gap_256.json": "7944237ff600d62a1ce396123f9ecb3f38a17780d6c818840cd283afe9565f67",
+        "models\\backbone\\open_clip\\model_configs\\vit_relpos_medium_patch16_cls_224.json": "54554cc8d87c5f5ab0608d36bf505d4f375d0db22caa31ebc7cd76b7a305c38b",
+        "models\\backbone\\open_clip\\model_configs\\xlm-roberta-base-ViT-B-32.json": "11e9eb0192ec3cd65fe5faa733246349b55911a2893004a443b3f6d0d11bd5fa",
+        "models\\backbone\\open_clip\\model_configs\\xlm-roberta-large-ViT-H-14.json": "c1644b154e649e56df4836043e87517dd041d95b2c35f43be31d4bd89936240e",
+        "datasets\\btad.py": "4b997dcfc374581aa44ffcfa95170cda15b4e23da35c0163ebd9f2cc543aa9ce",
+        "datasets\\mvtec.py": "79db5e4132fc8a70a28c98bc413efff967bdb65aa1d366c1d744cc240200c104",
+        "datasets\\visa.py": "fcb95676482a07948c3273cd92f5e332c9cc6daa72d3f068a3b2e3572bee8bde",
+        "datasets\\visa_preprocess.py": "24c143c436c07e196321265b30503528b7492f0f6bd7f048b79f251a7878c163",
+        "utils\\load_config.py": "1879b2904bae82272d6d2f4566e53731168e84813d1c8eba70e76ec7f8c0ae45",
+        "utils\\metrics.py": "b5ec3ce3fb7cd63d7a3230cc1d1bbe597bb054b6c08926ff8d61d9e751bda955",
+        "tools\\benchmark.py": "bf7a271002155d147a8019bbf09e9604179e84ecd0736d080dbf746fcf3ce4fe",
+        "tools\\benchmark_deployment.py": "6f0c627b54399b4e67455c730365250626fbc0b9c8999aa8785b24ae53f0db87",
+        "tools\\benchmark_process.py": "77388b85c2d360683efa7f143d39940d1c3d4f42d8b2b79dbc80f81590d8d6d7",
+        "tools\\benchmark_super_fast.py": "b18366e84aa00c7279ea599edf8fa2b16832f8ca56877c7d49b59851fa1dfb2f",
+        "tools\\benchmark_support.py": "b03268e4606730eaf1cc8a427676ec11df725d5f4f6a528e93bb6102a595e862",
+        "tools\\plot_benchmarks.py": "f00eeab4fda1f41b4f1ee60c5cb7f9318c95e72d2ac715ae980a096820d71e3c",
+        "tools\\plot_segmentation_examples.py": "c9d17c0abebbda1c737db2cf9cc980522ae9fea2a6d80bd0735f1ed6b6d6df02",
+        "tools\\plot_segmentation_usefulness.py": "4440345548b1507c88498522d6c629b63d997960f57df259aec268d663bb3f24",
+        "tools\\report_benchmark.py": "960ea273b13b79c1ed0fe2dc0962cc2a4662e49159ca039636a0587aa6328f2f",
+        "tools\\report_deployment.py": "88f708903ec76227f78a49362154bd5934f961ec51b044602ec652c6bd452e1c",
+        "tools\\report_measured_performance.py": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3",
+        "tools\\segmentation_usefulness.py": "0c57adfb2eac494244e19c9609583da8dd82d4b91b847ab44f7617767728328c",
+        "tools\\test_benchmark.py": "350714543281c26e006fa31b7968d33b81b20e3eeff18c1f91e14a781445e679",
+        "tools\\test_deployment.py": "754c811f98ffeb21c1a84059c64f5addbdd256546a1a6068757a3fb60e6d2b25",
+        "tools\\test_segmentation_usefulness.py": "e2fbe4cf2ed74937f6a189e5a2fd38a56fb12aefd429c428b76d31a2c673ccc8",
+        "tools\\test_super_fast.py": "b9f9cd90f66f76b41a661f392bf0be4abcea0b0578a3b2e741e61b2947e84013",
+        "tools\\test_super_fast_benchmark.py": "33cf705d98606a9581cdb6e98bed70c625b390b635a7b868ae773275006d81a6",
+        "tools\\test_worker_process.py": "4fc4555ecab78bbbe8db04945f3de2ddb2db2b3f0e0b19ce670da7a718f232e3",
+        "tools\\verify_release.py": "5b70f5bb5726d453a1a4eeed98dd8f78f0aa08c5c367c465fc6ca181e12b4e85",
+        "configs\\musc.yaml": "c1be44a583fe0e12472cf582c42c577d1b31f5fc4b628793a24531c666f934b7"
+      },
+      "coordinator_status": {
+        "updated": "2026-10-12T09:49:11.212501+00:00",
+        "pid": 239136,
+        "phase": "stopped",
+        "target_speedup": 10.0,
+        "cycle": 1182,
+        "best_full_inference_ratio": 3.836766,
+        "reason": "",
+        "child_pid": null,
+        "experiment": "new_design",
+        "command": null,
+        "elapsed_seconds": 0,
+        "last_verdict": "rejected",
+        "resources": null
+      },
+      "error": "Traceback (most recent call last):\n  File \"C:\\Users\\dylan\\local_code\\MuSc\\releases\\musc-gpu-publish-segmentation\\tools\\benchmark_super_fast.py\", line 134, in run_plan\n    report['initial_idle_evidence']=benchmark.check_idle(0,'http://127.0.0.1:11435/api/ps')\n                                    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dylan\\local_code\\MuSc\\releases\\musc-gpu-publish-segmentation\\tools\\benchmark.py\", line 35, in check_idle\n    processes = inventory()\n  File \"C:\\Users\\dylan\\local_code\\MuSc\\releases\\musc-gpu-publish-segmentation\\tools\\benchmark.py\", line 30, in inventory\n    output = subprocess.check_output(['powershell.exe', '-NoProfile', '-Command', script], text=True)\n  File \"C:\\Users\\dylan\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\subprocess.py\", line 472, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n               **kwargs).stdout\n               ^^^^^^^^^\n  File \"C:\\Users\\dylan\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\subprocess.py\", line 577, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['powershell.exe', '-NoProfile', '-Command', \"$ErrorActionPreference='Stop'; @(Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'python|powershell|pwsh|ollama|llama|qwen' } | Select-Object ProcessId,Name,CommandLine) | ConvertTo-Json -Compress\"]' returned non-zero exit status 1.\n"
+    }
+  ]
+}

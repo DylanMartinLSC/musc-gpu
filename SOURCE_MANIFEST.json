@@ -562,7 +562,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "6f384c812028c5ee6e3078c0b43ccb20835bb7f18a8524705d442778b768ac8a",
+    "packaged_sha256": "d70cab97b880efcc82c3a3fb1b1374c894d6eb61073bda61ab9dcd4d6bbc48a9",
     "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
@@ -827,7 +827,7 @@
   },
   "benchmarks/super_fast/REPORT.md": {
     "source": "super_fast release addition",
-    "packaged_sha256": "4f23972c8d6646c630523d93d2477ae50a3d6e75a37eb22bdcb1fc72d9ea7719",
+    "packaged_sha256": "37e7695fadd0b00f420987e0c2f5c3bc6863e2f53f9676c116a58a5137451726",
     "previous_packaged_sha256": "7a50d1e07b952fe1c867adb053f480d974a310724aefa4f091262801abdddda1"
   },
   "benchmarks/super_fast/integration.json": {
@@ -844,11 +844,13 @@
   },
   "tools/benchmark_super_fast.py": {
     "source": "super_fast release addition",
-    "packaged_sha256": "9dbe315b590a3037b39b5bb5c0f7e6ffeb2eefbf1b431ea8ed43e1ba303c8d5c"
+    "packaged_sha256": "b18366e84aa00c7279ea599edf8fa2b16832f8ca56877c7d49b59851fa1dfb2f",
+    "previous_packaged_sha256": "9dbe315b590a3037b39b5bb5c0f7e6ffeb2eefbf1b431ea8ed43e1ba303c8d5c"
   },
   "tools/test_super_fast_benchmark.py": {
     "source": "super_fast release addition",
-    "packaged_sha256": "886e6b5e40b9418b1cfcfd5603682556508eacd2cf3c24f7d213f63d6f9225aa"
+    "packaged_sha256": "33cf705d98606a9581cdb6e98bed70c625b390b635a7b868ae773275006d81a6",
+    "previous_packaged_sha256": "886e6b5e40b9418b1cfcfd5603682556508eacd2cf3c24f7d213f63d6f9225aa"
   },
   "benchmarks/super_fast/blocked_comparison.json": {
     "source": "super_fast release addition",
@@ -880,5 +882,10 @@
     "source": "benchmarks/super_fast/measured_performance.svg",
     "source_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169",
     "packaged_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169"
+  },
+  "benchmarks/super_fast/blocked_categories.json": {
+    "source": "benchmarks/super_fast/blocked_categories.json",
+    "source_sha256": "ed6a1a8cea0ab5ca0af7b6c2c5e2e9529866d4f305b1d803223c9a3d2dc76ed8",
+    "packaged_sha256": "ed6a1a8cea0ab5ca0af7b6c2c5e2e9529866d4f305b1d803223c9a3d2dc76ed8"
   }
 }

@@ -195,3 +195,16 @@ All completed GPU work was serialized with coordination/unload checks. No
 dataset or historical report was altered. No original-contract10x achievement,
 fresh paired original-relative result, or other-category accuracy qualification
 is claimed by this report.
+
+## Grid and cable follow-up attempt
+
+The complete grid78 and cable150 pools were planned for two alternating fresh-process
+original/super-fast pairs each. Both coordinators failed the required Windows process
+inventory (`Get-CimInstance Win32_Process`: access unavailable) before CUDA,
+mutex acquisition or any timed worker. Neither pool has new latency, memory or
+accuracy measurements. The graph therefore retains its missing-data labels.
+
+[Authoritative failed-attempt receipt](blocked_categories.json).
+The runner now accepts `--categories bottle grid cable` and keeps each category
+as a separate complete reference pool. The graph must only be replaced after
+successful measured trials; no timings are extrapolated from bottle.
