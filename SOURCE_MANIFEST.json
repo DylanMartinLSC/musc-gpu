@@ -562,7 +562,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "b190fe9381ad4f2280e3c4fca6950de3f48d1a081b3f1718da41cb2179123754",
+    "packaged_sha256": "5e613cd409ee0227da42554e703e1761a894fbd751f3ba87e20832e6262e3a17",
     "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
@@ -865,5 +865,20 @@
   "benchmarks/super_fast/comparison.svg": {
     "source": "super_fast release addition",
     "packaged_sha256": "f5d0d95f7f10598db8438c45e8bd382e636e55bad07f845d97b2da28d0e3a8bf"
+  },
+  "tools/report_measured_performance.py": {
+    "source": "tools/report_measured_performance.py",
+    "source_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3",
+    "packaged_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3"
+  },
+  "benchmarks/super_fast/measured_performance.png": {
+    "source": "benchmarks/super_fast/measured_performance.png",
+    "source_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a",
+    "packaged_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a"
+  },
+  "benchmarks/super_fast/measured_performance.svg": {
+    "source": "benchmarks/super_fast/measured_performance.svg",
+    "source_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169",
+    "packaged_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169"
   }
 }

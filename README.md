@@ -189,13 +189,24 @@ image warmup; OS filesystem caches are not flushed.
 | grid | 78 | 31.71 s | 8.05 s | **3.94×** | 6.80 GiB |
 | cable | 150 | 102.34 s | 23.55 s | **4.35×** | 11.64 GiB |
 
-![musc-gpu uses 23–27% of original inference time across bottle, grid and cable, with 3.74–4.35× speedup](benchmarks/representative/speedup.png)
+**Optional `super_fast` (approximate, bottle83 only):** two resident-model
+research sweeps measured **3.61 / 3.37 s**, median **3.49 s**, versus default
+GPU **9.50 / 9.11 s** in the same sweeps: **2.63–2.70× faster**. Peak allocated
+memory fell from **7.14 to 3.17 GiB**. Pixel AP increased **6.64 percentage
+points** and AUPRO decreased **0.20 points**. These Oct 12 profile sweeps use
+a different process/setup protocol from the Oct 7 original/GPU pairs above;
+a fresh paired comparison against original MuSc remains pending. Super fast
+does not preserve the numerical agreement contract below, and grid/cable
+have not been tested with this preset. See the [option](#optional-super-fast-backend)
+and [full report](benchmarks/super_fast/REPORT.md).
+
+![Measured complete-pool inference time for original MuSc, musc-gpu and bottle-only super fast, with separate protocols labeled](benchmarks/super_fast/measured_performance.png)
 
 The ratio of summed category medians is **4.13×**. This covers these three
 categories, not all of MVTec AD or other GPUs/backbones. Pool throughput is
 not independent single-image latency.
 
-**Numerical agreement:** every full-resolution map and image score passes the
+**Original versus default GPU numerical agreement:** every full-resolution map and image score passes the
 **2e-5 absolute tolerance**. Maximum map errors are 4.315e-6 (bottle), 1.636e-6
 (grid) and 1.738e-6 (cable). Image AUROC/AP/F1 agree in these runs; pixel
 AUROC/AP/F1/AUPRO remain close, with exact deltas in the raw JSON. Agreement
