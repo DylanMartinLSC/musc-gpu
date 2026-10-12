@@ -3,9 +3,14 @@
 **GPU-accelerated MuSc for zero-shot industrial anomaly detection and segmentation.**
 
 Score a pool of unlabeled images and locate anomalies without task-specific
-training. This independently maintained implementation measures **3.74–4.35×
-faster complete-pool inference** than original MuSc on bottle, grid and cable
-from MVTec AD, using an NVIDIA RTX 3090. The original backend remains selectable.
+training. On an NVIDIA RTX 3090, the default backend measures **3.74–4.35×
+faster complete-pool inference** than original MuSc on MVTec AD bottle, grid
+and cable. The optional approximate **`super_fast` backend measures a further
+2.63–2.70× speedup over default GPU on bottle83**, reaching a **3.49 s median**.
+Its fresh paired speedup against original MuSc is still pending; the historical
+original bottle83 median is **35.01 s** under a different timing protocol.
+See [measured performance](#measured-performance) for scope and accuracy tradeoffs.
+The original backend remains selectable.
 
 [Quick start](#quick-start) · [What changed](#changes-from-original-musc) ·
 [Benchmarks](#measured-performance) ·
