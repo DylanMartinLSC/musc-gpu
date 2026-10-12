@@ -31,9 +31,9 @@ def main():
     colors = {'original':'#64748b', 'gpu':'#2563eb', 'super_fast':'#16a34a'}
     fig, axes = plt.subplots(1, 2, figsize=(13, 5.6), gridspec_kw={'width_ratios':[1.2,1]})
     ax = axes[0]
-    for offset, backend, label in [(-.26,'original','Original (Oct 12 paired trials)'),
-                                    (0,'gpu','Default GPU (Oct 7 prior trials)'),
-                                    (.26,'super_fast','Super fast (Oct 12, approximate)')]:
+    for offset, backend, label in [(-.26,'original','Original (paired trials)'),
+                                    (0,'gpu','Default GPU (prior benchmark)'),
+                                    (.26,'super_fast','Super fast (approximate)')]:
         values = [historical[w['category']]['summary']['median_inference_seconds']['gpu']
                   if backend == 'gpu' else w['summary']['median_inference_seconds'][backend] for w in rows]
         bars = ax.bar(x+offset, values, .24, color=colors[backend], label=label,
@@ -44,8 +44,8 @@ def main():
     ax.set_ylim(0, max(w['summary']['median_inference_seconds']['original'] for w in rows)*1.22)
     ax.legend(loc='upper left',frameon=False,fontsize=8)
     ax = axes[1]
-    for offset, backend, label in [(-.14,'gpu','Default GPU / original (Oct 7)'),
-                                  (.14,'super_fast','Super fast / original (Oct 12)')]:
+    for offset, backend, label in [(-.14,'gpu','Default GPU / original'),
+                                  (.14,'super_fast','Super fast / original')]:
         values = [historical[w['category']]['summary']['speedup'] if backend == 'gpu'
                   else w['summary']['speedup'] for w in rows]
         bars = ax.bar(x+offset, values, .26, color=colors[backend],label=label,
@@ -75,6 +75,7 @@ def main():
     plt.close(fig)
     render_backend_accuracy(rows,historical,out)
     render_accuracy_deltas(rows,out)
+    render_profile_context(out)
 
 def render_backend_accuracy(rows,historical,out):
     keys=['image_auroc','image_ap','image_f1_max','pixel_auroc','pixel_ap','pixel_f1_max','pixel_aupro']
@@ -82,9 +83,9 @@ def render_backend_accuracy(rows,historical,out):
     x=np.arange(len(keys))
     fig,axes=plt.subplots(3,1,figsize=(13,10.5),sharex=True,sharey=True)
     for ax,w in zip(axes,rows):
-        for offset,backend,label,color in [(-.25,'original','Original MuSc (Oct 12)','#64748b'),
-                                          (0,'gpu','Default GPU (Oct 7)','#2563eb'),
-                                          (.25,'super_fast','Super fast (Oct 12, approximate)','#16a34a')]:
+        for offset,backend,label,color in [(-.25,'original','Original MuSc','#64748b'),
+                                          (0,'gpu','Default GPU','#2563eb'),
+                                          (.25,'super_fast','Super fast (approximate)','#16a34a')]:
             metrics=({key:statistics.median(p['gpu']['metrics']['values'][key]
                        for p in historical[w['category']]['pairs']) for key in keys}
                      if backend=='gpu' else w['summary']['metrics'][backend])
@@ -103,7 +104,7 @@ def render_backend_accuracy(rows,historical,out):
     handles,legend_labels=axes[0].get_legend_handles_labels()
     fig.legend(handles,legend_labels,loc='upper center',bbox_to_anchor=(.5,.965),ncol=3,frameon=False)
     fig.suptitle('Measured accuracy · all three backends · higher is better',fontsize=16,y=.995)
-    fig.text(.07,.035,'Medians from two repeated trials per backend and pool. Original / super fast: Oct 12; default GPU: Oct 7.\n'
+    fig.text(.07,.035,'Medians from two repeated trials per backend and pool. Original / super fast: paired comparison; default GPU: prior benchmark.\n'
              'Labels rounded to 0.1%; original and default GPU agree closely. F1 maximized over evaluation thresholds; AUPRO at FPR < 0.3.',fontsize=9)
     fig.tight_layout(rect=(0,.095,1,.93))
     for extension in ('png','svg'):
@@ -132,6 +133,45 @@ def render_accuracy_deltas(rows,out):
                     metadata={'Date':None} if extension == 'svg' else None)
         if extension == 'svg':
             path=out / 'category_accuracy.svg'
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n',encoding='utf-8',newline='\n')
+    plt.close(fig)
+
+def render_profile_context(out):
+    original=json.loads((out/'historical_context.json').read_text())['original']
+    variants=json.loads((out/'tradeoff_summary.json').read_text())['variants']
+    default=next(v for v in variants if v['id']=='default')
+    fast=next(v for v in variants if v['id']=='grid28_r3_layer5')
+    labels=['Original','GPU default','Super fast']
+    colors=['#64748b','#2563eb','#0d9488']
+    fig,axes=plt.subplots(1,3,figsize=(14,4.8))
+    for ax,values,title,unit in [(axes[0],[v['median_seconds'] for v in [original,default,fast]],'Full-pool inference','seconds'),
+                                (axes[1],[v['peak_allocated_mib']/1024 for v in [original,default,fast]],'Peak allocated GPU memory','GiB')]:
+        bars=ax.bar(labels,values,color=colors,width=.65)
+        ax.set_title(title,fontsize=12)
+        ax.set_ylabel(unit)
+        ax.set_ylim(0,max(values)*1.2)
+        ax.bar_label(bars,fmt='%.2f',padding=4)
+        ax.spines[['top','right']].set_visible(False)
+        ax.grid(axis='y',alpha=.15)
+        ax.set_axisbelow(True)
+    x=np.arange(2)
+    for index,v in enumerate([original,default,fast]):
+        bars=axes[2].bar(x+(index-1)*.24,[100*v['metrics'][k] for k in ['pixel_ap','pixel_aupro']],
+                         width=.24,color=colors[index],label=labels[index])
+        axes[2].bar_label(bars,fmt='%.2f',padding=4,fontsize=8)
+    axes[2].set_xticks(x,['Pixel AP','Region AUPRO'])
+    axes[2].set_ylim(0,110)
+    axes[2].set_title('Full-resolution accuracy',fontsize=12)
+    axes[2].set_ylabel('%')
+    axes[2].legend(loc='lower right',fontsize=8)
+    axes[2].spines[['top','right']].set_visible(False)
+    fig.suptitle('Bottle83 on RTX3090: historical comparison',fontsize=16,y=.98)
+    fig.text(.5,.035,'Original and resident-model profile experiments have different protocols; these timings are historical context.',ha='center',fontsize=10,color='#475569')
+    fig.tight_layout(rect=(0,.08,1,.92))
+    for extension in ['png','svg']:
+        path=out/f'comparison.{extension}'
+        fig.savefig(path,dpi=180,metadata={'Date':None} if extension=='svg' else None)
+        if extension=='svg':
             path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n',encoding='utf-8',newline='\n')
     plt.close(fig)
 

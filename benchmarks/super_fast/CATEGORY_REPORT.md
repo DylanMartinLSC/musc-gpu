@@ -1,6 +1,6 @@
 # Super fast: complete category measurements
 
-Two alternating fresh-process original/super-fast pairs on each complete bottle83, grid78 and cable150 pool, measured 2026-10-12. **12 full inference calls completed.**
+Two alternating fresh-process original/super-fast pairs on each complete bottle83, grid78 and cable150 pool. **12 full inference calls completed.**
 
 **Verdict:** super fast is substantially faster and uses less allocated GPU memory. Only bottle meets the provisional one-percentage-point loss limit across all seven metrics. Grid and cable fail it. The preset is approximate and does not preserve the original numerical contract.
 
@@ -18,14 +18,14 @@ Speedup is the ratio of the two measured medians for that category. Allocated/re
 
 ![Paired measured speedups and inference times](measured_performance.png)
 
-The blue default-GPU bars come from the separate Oct 7 original/default benchmark. Each speedup uses its own paired original baseline; no cross-run default-versus-super-fast ratio is claimed.
+The blue default-GPU bars come from the separate original/default benchmark. Each speedup uses its own paired original baseline; no cross-run default-versus-super-fast ratio is claimed.
 
 ## Accuracy tradeoffs
 
 ![All seven accuracy metrics for original MuSc, default GPU and super fast](backend_accuracy.png)
 
-This graph compares original and super fast from the Oct 12 trials with default
-GPU from the Oct 7 representative trials. Values are medians of two measurements
+This graph compares original and super fast from the paired trials with default
+GPU from the separate representative benchmark. Values are medians of two measurements
 per backend and pool; labels are rounded to 0.1 percentage points. Original and
 default GPU agree closely. The raw JSON retains full precision.
 

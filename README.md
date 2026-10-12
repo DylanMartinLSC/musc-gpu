@@ -193,7 +193,7 @@ image warmup; OS filesystem caches are not flushed.
 | grid | 78 | 31.71 s | 8.05 s | **3.94×** | 6.80 GiB |
 | cable | 150 | 102.34 s | 23.55 s | **4.35×** | 11.64 GiB |
 
-**Optional approximate `super_fast`, measured Oct 12 with the same fresh-process
+**Optional approximate `super_fast`, with the same fresh-process
 scope and two alternating pairs per complete pool:**
 
 | Category | Original median | Super fast median | Speedup | Fast peak allocated | Pixel AP change | AUPRO change |
@@ -204,8 +204,8 @@ scope and two alternating pairs per complete pool:**
 
 Super fast changes predictions. Bottle passes the provisional ≤1pp loss limit
 across seven accuracy metrics; **grid and cable fail**, including image AUROC
-losses of 17.04pp and 5.02pp respectively. The graph labels the earlier Oct 7
-default-GPU measurements separately; each speedup uses its own paired original
+losses of 17.04pp and 5.02pp respectively. The graph labels the prior
+default-GPU benchmark separately; each speedup uses its own paired original
 baseline. See the [option](#optional-super-fast-backend) and
 [complete paired report](benchmarks/super_fast/CATEGORY_REPORT.md).
 
@@ -222,8 +222,8 @@ AUROC/AP/F1/AUPRO remain close, with exact deltas in the raw JSON. Agreement
 within tolerance does not imply bitwise identity or accuracy guarantees elsewhere.
 
 The accuracy graph compares **all three backends** across all seven metrics.
-Original and super fast use the Oct 12 paired trials; default GPU uses its Oct 7
-measurements. Original and default GPU agree closely; super fast's grid and cable
+Original and super fast use the paired trials; default GPU uses its separate
+benchmark. Original and default GPU agree closely; super fast's grid and cable
 losses are visible alongside its pixel AP improvements on bottle and cable.
 
 ![All seven accuracy metrics for original MuSc, default GPU and super fast on bottle, grid and cable](benchmarks/super_fast/backend_accuracy.png)

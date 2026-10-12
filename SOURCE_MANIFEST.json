@@ -562,7 +562,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "bee97a7cec3e4e0a1efa00fef441cafd14a0e32c39d00e2ffeac7aba395207bb",
+    "packaged_sha256": "dc48b31bb9da3053f9774ff39be4cf524bb01650d77c38636a26574971d84a65",
     "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
@@ -862,28 +862,28 @@
   },
   "benchmarks/super_fast/comparison.png": {
     "source": "super_fast release addition",
-    "packaged_sha256": "283be92fea3e1d3107c755edbdf4a78176eb5caca067cdaf5844a173278d7158"
+    "packaged_sha256": "9a6db8c83a1762c889756c2a8bb5cd1944103605f3ba70d9d34b9c4011efa00c"
   },
   "benchmarks/super_fast/comparison.svg": {
     "source": "super_fast release addition",
-    "packaged_sha256": "f5d0d95f7f10598db8438c45e8bd382e636e55bad07f845d97b2da28d0e3a8bf"
+    "packaged_sha256": "0c4788f4153b607e87e45763e9dd8a73cb115d2470a401df7c56be2c8402ceba"
   },
   "tools/report_measured_performance.py": {
     "source": "tools/report_measured_performance.py",
     "source_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3",
-    "packaged_sha256": "4017dd4bbce41122c6399683fd71a5774f33704fd0356d19d1edbf89d81d88e4",
+    "packaged_sha256": "6c8c331eb4abfdd44e4a2eece69b64e8ccb52fef09b71d2aa303b9f2bdd6ab20",
     "previous_packaged_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3"
   },
   "benchmarks/super_fast/measured_performance.png": {
     "source": "benchmarks/super_fast/measured_performance.png",
     "source_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a",
-    "packaged_sha256": "d26be5518c1d99a5536afb00a8d657392062ae7eaf6e32355afa4ad55cab510a",
+    "packaged_sha256": "44a32201c9676d6c77692c5119e8cb6d5de270124472f9d12f7d4374d894e596",
     "previous_packaged_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a"
   },
   "benchmarks/super_fast/measured_performance.svg": {
     "source": "benchmarks/super_fast/measured_performance.svg",
     "source_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169",
-    "packaged_sha256": "f505f6b510bda512dace541070eca83619f8c2d691a3272024d1f4e5c113ff20",
+    "packaged_sha256": "977361c3692872a4e7d7e1bd882797cb0d1a26505fbcda64f3b2e189dc9d7f4f",
     "previous_packaged_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169"
   },
   "benchmarks/super_fast/blocked_categories.json": {
@@ -894,7 +894,7 @@
   "benchmarks/super_fast/CATEGORY_REPORT.md": {
     "source": "benchmarks/super_fast/CATEGORY_REPORT.md",
     "source_sha256": "8fbbb43342db8539587e7ef9310cd717e4e2e5a20e725d36fce8c792b5678dde",
-    "packaged_sha256": "1ba7b592c074add2590675fac528af648dc8d19ad2bee2a46e506c526322a74e"
+    "packaged_sha256": "c25b1421e68c7e3cb2e8d65edccec59301a57091c14d98df2cf441c587f82791"
   },
   "benchmarks/super_fast/category_results.json": {
     "source": "benchmarks/super_fast/category_results.json",
@@ -909,16 +909,16 @@
   "benchmarks/super_fast/category_accuracy.svg": {
     "source": "benchmarks/super_fast/category_accuracy.svg",
     "source_sha256": "50d2473f2d326f11db427c9c64ecf77c1778f84b4cca260b48536c6d7b00012a",
-    "packaged_sha256": "af24d9bec168a186612972bcb4e578c84ed3a62393dd9a36389d947d0bbce7ab"
+    "packaged_sha256": "d6fe161da96c2d8c4b538eedd01d2a0b38fc3c53f192da014ec799072b0f1d4d"
   },
   "benchmarks/super_fast/backend_accuracy.png": {
     "source": "benchmarks/super_fast/backend_accuracy.png",
     "source_sha256": "f105a9bbb8c7c3b03b2f8ab5d7621fb8c7343b5941ad9c140cfb0b6c78171287",
-    "packaged_sha256": "f105a9bbb8c7c3b03b2f8ab5d7621fb8c7343b5941ad9c140cfb0b6c78171287"
+    "packaged_sha256": "2d1f3750a51579255b2267f950d2f666c36f50b756f84dcadfbd317b79fedc5e"
   },
   "benchmarks/super_fast/backend_accuracy.svg": {
     "source": "benchmarks/super_fast/backend_accuracy.svg",
     "source_sha256": "8969f6352f7af16fa14915787fc75a522be851529286732f46c48a29ae5551ae",
-    "packaged_sha256": "8969f6352f7af16fa14915787fc75a522be851529286732f46c48a29ae5551ae"
+    "packaged_sha256": "2e52e88e80cbc5de9312cfc6ad3a820d04de3321df533f10a618a587cb0aa15b"
   }
 }
