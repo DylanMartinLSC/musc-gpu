@@ -5,7 +5,7 @@ datasets:
   img_resize: 518
   divide_num: 1
 models:
-  inference_backend: 'gpu'  # use 'original' for the unchanged comparison pipeline
+  inference_backend: 'gpu'  # original, gpu (default), or approximate super_fast
   backbone_name: 'ViT-L-14-336'
   pretrained: 'openai'
   batch_size: 4

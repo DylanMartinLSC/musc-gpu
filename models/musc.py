@@ -30,9 +30,11 @@ warnings.filterwarnings("ignore")
 
 class MuSc():
     def __init__(self, cfg, seed=0):
-        self.cfg = cfg
         self.seed = seed
         self.device = torch.device("cuda:{}".format(cfg['device']) if torch.cuda.is_available() else "cpu")
+        from models.modules._backend import configure_backend
+        cfg = configure_backend(cfg, self.device.type)
+        self.cfg = cfg
 
         self.path = cfg['datasets']['data_path']
         self.dataset = cfg['datasets']['dataset_name']
@@ -60,8 +62,8 @@ class MuSc():
         self.divide_num = cfg['datasets']['divide_num']
         self.r_list = cfg['models']['r_list']
         self.inference_backend = cfg['models'].get('inference_backend', 'original')
-        if self.inference_backend not in ('original', 'gpu'):
-            raise ValueError('inference_backend must be original or gpu')
+        if self.inference_backend not in ('original', 'gpu', 'super_fast'):
+            raise ValueError('inference_backend must be original, gpu or super_fast')
         self.output_dir = os.path.join(cfg['testing']['output_dir'], self.dataset, self.model_name, 'imagesize{}'.format(self.image_size))
         os.makedirs(self.output_dir, exist_ok=True)
         self.load_backbone()
@@ -131,12 +133,16 @@ class MuSc():
         print(category)
         from models.modules._backend import select_backend
         selected_backend, fallback_reason = select_backend(self.inference_backend, self.device.type)
-        gpu_pipeline = selected_backend == 'gpu'
+        gpu_pipeline = selected_backend in ('gpu', 'super_fast')
         if fallback_reason:
             print('MuSc: using original backend (' + fallback_reason + ').')
         if gpu_pipeline:
             from models.modules._MSM_gpu import MSM as gpu_msm
             from models.modules._encoder_gpu import encode_image as gpu_encode
+            if selected_backend == 'super_fast':
+                from models.modules._super_fast import encode_image as gpu_encode
+                print('MuSc: super_fast uses layer[5], r_list=[3] and28x28 scoring patches '
+                      '(approximate; accuracy evaluated on bottle83 only).')
             scoring = getattr(self, 'msm_override', gpu_msm)
             encoding = getattr(self, 'encode_image_override', gpu_encode)
             aggregation = getattr(encoding, 'aggregate_features', None)

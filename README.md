@@ -23,7 +23,7 @@ See the [original repository](https://github.com/xrli-U/MuSc),
 
 ## Changes from original MuSc
 
-The acceleration changes how inference is executed. It preserves the model
+The default `gpu` acceleration changes how inference is executed. It preserves the model
 weights, input resolution, selected feature layers, aggregation radii and
 complete reference pool used in the comparison.
 
@@ -105,6 +105,56 @@ can add substantial time beyond the inference timings below.
 Defaults are in [configs/musc.yaml](configs/musc.yaml). The published comparison
 uses batch size 4, one complete reference pool, feature indices 5/11/17/23 and
 radii 1/3/5. No labels or masks enter anomaly scoring; evaluation uses them.
+
+### Optional super fast backend
+
+```powershell
+.venv/Scripts/python.exe examples/musc_main.py --data_path C:/path/to/mvtec_anomaly_detection --class_name bottle --inference_backend super_fast
+```
+
+`super_fast` selects an **approximate preset**: feature layer `[5]` (zero-based),
+`r_list=[3]`, and a **28×28 scoring grid** instead of 37×37. It retains the 518px
+encoder and the complete image/reference pool. The preset overrides feature-layer
+and radius settings; the printed effective configuration shows `[5]` and `[3]`.
+The default remains `gpu`.
+
+On the complete bottle83 pool, two research passes measured **3.61s / 3.37s**
+(median **3.49s**) versus default GPU **9.50s / 9.11s**: within-sweep gains of
+**2.63× / 2.70× over default GPU**. Image AUROC was 100%, pixel AUROC 99.28%,
+pixel AP 89.68%, and region AUPRO 95.91%. Region AUPRO fell 0.20 percentage
+points versus default; the other measured metrics improved. Peak allocated
+memory fell from **7.14 GiB to 3.17 GiB** in those profile trials.
+Packaged dispatch was separately checked against those saved predictions.
+See [super fast evidence and limits](benchmarks/super_fast/REPORT.md).
+
+![Historical bottle83 inference, memory and accuracy comparison; original and profile trials were separate runs](benchmarks/super_fast/comparison.png)
+
+The report also includes historical original MuSc measurements: **35.01s**,
+**6.29 GiB** peak allocated memory, pixel AP **83.04%** and region AUPRO
+**96.10%**. Original and super-fast timings came from separate runs and timing
+protocols. **A fresh paired original/super-fast comparison is still pending**:
+the attempted run was blocked by process-inventory and model-check permissions.
+No paired original-relative or exact-contract 10× claim is made.
+
+These results apply to **bottle83 on the RTX 3090**. This mode changes maps/scores
+and does not preserve the default 2e-5 numerical agreement contract; evaluate
+your category and recalibrate thresholds before using it. The configuration
+requires ViT-L-14-336/OpenAI, 518px, batch4 and one complete reference pool
+(`divide_num=1`). All 24 encoder blocks still run for the pooled class features.
+On unsupported platforms or without CUDA, it selects the original backend with
+the caller's original layer/radius settings. Runtime CUDA errors remain explicit.
+
+To reproduce the fresh-process original/super-fast comparison with normal
+benchmark permissions, use a new output directory:
+
+```powershell
+.venv/Scripts/python.exe tools/benchmark_super_fast.py --data-path C:/path/to/mvtec_anomaly_detection --output output/super_fast_comparison
+```
+
+This runs two alternating pairs on bottle83, recording full-resolution accuracy,
+peak allocated/reserved memory, first-use setup and repeatability. It retains
+process/model checks and does not apply the exact-output gate to this approximate
+profile. Model loading and metric evaluation are reported separately.
 
 ### Original backend and troubleshooting
 

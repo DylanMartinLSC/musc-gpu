@@ -476,7 +476,8 @@
   "models/musc.py": {
     "source": "models/musc.py",
     "source_sha256": "fd26657079f2c7f3d4b5bb475c367b89d091eafc78ddf120e1dda5d186b2efc7",
-    "packaged_sha256": "60eab8c910bb72152e1a8f6ba1a5c26de9a490d9d94b6ea59957d0512754060c"
+    "packaged_sha256": "d079ea4cfdee3b291802017ef72c3a259f63ad1e0596ac9d6de02cd3dd0c75f1",
+    "previous_packaged_sha256": "60eab8c910bb72152e1a8f6ba1a5c26de9a490d9d94b6ea59957d0512754060c"
   },
   "models/RsCIN_features/cls_process.py": {
     "source": "models/RsCIN_features/cls_process.py",
@@ -526,12 +527,14 @@
   "examples/musc_main.py": {
     "source": "examples/musc_main.py",
     "source_sha256": "fa75d8d779d893ec2049558e715a48f896e74384c102be4be6eb5cf1dfc179cc",
-    "packaged_sha256": "fa75d8d779d893ec2049558e715a48f896e74384c102be4be6eb5cf1dfc179cc"
+    "packaged_sha256": "9738d4baf776a997361b7e0ffcf2b5b3c849cd4ebdf393b62c3e6e47eca157ed",
+    "previous_packaged_sha256": "fa75d8d779d893ec2049558e715a48f896e74384c102be4be6eb5cf1dfc179cc"
   },
   "configs/musc.yaml": {
     "source": "configs/musc.yaml",
     "source_sha256": "a7370e59763a8eed61e3e5be5cdd1e7e857ca5848591492957a2c4fce6f961d0",
-    "packaged_sha256": "ce123ed29bd1f47ab7fef7bf9544b357713131ffa13dd0b5dde3e289af296eb4"
+    "packaged_sha256": "c1be44a583fe0e12472cf582c42c577d1b31f5fc4b628793a24531c666f934b7",
+    "previous_packaged_sha256": "ce123ed29bd1f47ab7fef7bf9544b357713131ffa13dd0b5dde3e289af296eb4"
   },
   "models/modules/_cuda_runtime.py": {
     "source": "experiments/research/cuda_runtime.py",
@@ -559,7 +562,8 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
+    "packaged_sha256": "b190fe9381ad4f2280e3c4fca6950de3f48d1a081b3f1718da41cb2179123754",
+    "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
     "source": "release addition",
@@ -595,11 +599,13 @@
   },
   "tools/verify_release.py": {
     "source": "release addition",
-    "packaged_sha256": "f54860ecb812f457ad407a863c08d4d7b4ebb17fe323e450b60518c54fadf84b"
+    "packaged_sha256": "5b70f5bb5726d453a1a4eeed98dd8f78f0aa08c5c367c465fc6ca181e12b4e85",
+    "previous_packaged_sha256": "f54860ecb812f457ad407a863c08d4d7b4ebb17fe323e450b60518c54fadf84b"
   },
   "models/modules/_backend.py": {
     "source": "release addition",
-    "packaged_sha256": "bc37d235be1e5566001f0634aff255b679e0624f43137cd511a38e89c07d589e"
+    "packaged_sha256": "814a7cb905ca3e9cd1a7092d48a46fd84167c72305857bb7e91c1e67a7278794",
+    "previous_packaged_sha256": "bc37d235be1e5566001f0634aff255b679e0624f43137cd511a38e89c07d589e"
   },
   "docs/figures/agreement.png": {
     "source": "release addition",
@@ -810,5 +816,54 @@
     "source": "benchmarks/deployment/deployment.svg",
     "source_sha256": "975b4441ac9199e49275ad42f8c2e0b145ba0b4c45beba932dbf4167baa150e5",
     "packaged_sha256": "975b4441ac9199e49275ad42f8c2e0b145ba0b4c45beba932dbf4167baa150e5"
+  },
+  "models/modules/_super_fast.py": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "c479b4bdab14510db1f365dbce278fe2cfa84f904eef21ac6a3ed6aa9b13a0fb"
+  },
+  "tools/test_super_fast.py": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "b9f9cd90f66f76b41a661f392bf0be4abcea0b0578a3b2e741e61b2947e84013"
+  },
+  "benchmarks/super_fast/REPORT.md": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "4f23972c8d6646c630523d93d2477ae50a3d6e75a37eb22bdcb1fc72d9ea7719",
+    "previous_packaged_sha256": "7a50d1e07b952fe1c867adb053f480d974a310724aefa4f091262801abdddda1"
+  },
+  "benchmarks/super_fast/integration.json": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "bd22d7701d0009e1f09c284ffac673660d8932dd5e1642c03993926217fbd6fa"
+  },
+  "benchmarks/super_fast/tradeoff_results.json": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "fe18989b1b73b6b2ee55c6a2038433319cbcc02214019fcf25adcd5ab3c9fdea"
+  },
+  "benchmarks/super_fast/tradeoff_summary.json": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "32c53cc9b89bc6e0ca6267bb1e7f9116b03abad5bd34dc9284f7d1fb3a5ec5f6"
+  },
+  "tools/benchmark_super_fast.py": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "9dbe315b590a3037b39b5bb5c0f7e6ffeb2eefbf1b431ea8ed43e1ba303c8d5c"
+  },
+  "tools/test_super_fast_benchmark.py": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "886e6b5e40b9418b1cfcfd5603682556508eacd2cf3c24f7d213f63d6f9225aa"
+  },
+  "benchmarks/super_fast/blocked_comparison.json": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "59f60fc664b44a00eb677969483d4a16bbb6c593f9591d4c3934a613ccba5c91"
+  },
+  "benchmarks/super_fast/historical_context.json": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "9dacb0942387643172f1a0756b15a829f226889c4c99e4c690ae3fab0fd623a7"
+  },
+  "benchmarks/super_fast/comparison.png": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "283be92fea3e1d3107c755edbdf4a78176eb5caca067cdaf5844a173278d7158"
+  },
+  "benchmarks/super_fast/comparison.svg": {
+    "source": "super_fast release addition",
+    "packaged_sha256": "f5d0d95f7f10598db8438c45e8bd382e636e55bad07f845d97b2da28d0e3a8bf"
   }
 }

@@ -24,6 +24,9 @@ backend = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(backend)
 assert backend.select_backend('original', 'cuda', 'nt') == ('original', None)
 assert backend.select_backend('gpu', 'cuda', 'nt') == ('gpu', None)
+assert backend.select_backend('super_fast', 'cuda', 'nt') == ('super_fast', None)
+assert backend.select_backend('super_fast', 'cpu', 'nt')[0] == 'original'
+assert backend.select_backend('super_fast', 'cuda', 'posix')[0] == 'original'
 assert backend.select_backend('gpu', 'cpu', 'nt')[0] == 'original'
 assert backend.select_backend('gpu', 'cuda', 'posix')[0] == 'original'
 try:
@@ -45,6 +48,15 @@ for name in ('latency', 'memory', 'agreement'):
     for suffix in ('png', 'svg'):
         assert (ROOT / 'docs/figures' / f'{name}.{suffix}').is_file()
 representative = json.loads((ROOT/'benchmarks/representative/results.json').read_text())
+integration = json.loads((ROOT/'benchmarks/super_fast/integration.json').read_text())
+assert integration['status'] == 'pass' and len(integration['image_paths']) == 83
+assert [r['backend'] for r in integration['runs']] == ['gpu','super_fast','super_fast']
+assert all(r['pass'] and all(c['max_abs'] <= 2e-5 for c in r['agreement'].values())
+           for r in integration['runs'])
+assert integration['runs'][-1]['repeat_map_max_abs'] == 0
+assert integration['runs'][-1]['repeat_score_max_abs'] == 0
+for relative, expected in integration['source_sha256'].items():
+    assert hashlib.sha256((ROOT/relative).read_bytes()).hexdigest() == expected, relative
 assert representative['status'] == 'pass' and len(representative['workloads']) == 3
 for workload in representative['workloads']:
     assert workload['complete_pool'] and len(workload['pairs']) == 2
@@ -55,7 +67,15 @@ for workload in representative['workloads']:
         assert pair['agreement']['scores']['max_absolute_error'] <= 2e-5
 for relative, expected in representative['source_sha256'].items():
     if relative.replace('\\','/').startswith(('models/','datasets/','utils/')):
-        assert hashlib.sha256((ROOT/relative.replace('\\','/')).read_bytes()).hexdigest() == expected, relative
+        normalized = relative.replace('\\','/')
+        actual = hashlib.sha256((ROOT/normalized).read_bytes()).hexdigest()
+        if actual != expected:
+            # Historical receipts remain immutable. Only the caller/selector
+            # may change, with original packaged hash plus fresh default/fast
+            # output equivalence retained by the integration receipt above.
+            assert normalized in ('models/musc.py','models/modules/_backend.py'), relative
+            assert manifest[normalized]['previous_packaged_sha256'] == expected, relative
+            assert integration['source_sha256'][normalized] == actual, relative
 smoke=json.loads((ROOT/'benchmarks/harness_validation/small_pool_results.json').read_text())
 assert smoke['status']=='pass' and not smoke['workloads'][0]['complete_pool']
 assert all(p['agreement']['ground_truth_identical'] for p in smoke['workloads'][0]['pairs'])
@@ -69,5 +89,5 @@ if failures:
     raise SystemExit('\n'.join(failures))
 print(f'PASS: {len(manifest)} source/evidence hashes, all Python syntax, local README links,')
 print('backend selection, deployed AST equivalence, aggregation factory, evidence tolerances and figures.')
-print('New full-category evidence, unchanged inference hashes, final harness smoke and process-tree receipts also pass.')
+print('Historical full-category evidence, unchanged kernels, super_fast/default integration, harness smoke and process-tree receipts also pass.')
 print('CPU-only verification; no CUDA trials or new performance claims.')

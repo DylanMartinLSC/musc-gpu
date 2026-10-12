@@ -1,0 +1,29 @@
+{
+  "status": "historical comparison from separate experiments; not a fresh paired original/super_fast result",
+  "original": {
+    "name": "Original MuSc",
+    "date": "2026-10-07",
+    "source": "../representative/results.json",
+    "inference_seconds": [
+      35.10195779998321,
+      34.92524620005861
+    ],
+    "median_seconds": 35.01360200002091,
+    "peak_allocated_mib": 6443.1201171875,
+    "peak_reserved_mib": 7794.0,
+    "metrics": {
+      "image_auroc": 0.9992063492063492,
+      "image_ap": 0.999751984126984,
+      "image_f1_max": 0.9921259842519685,
+      "pixel_auroc": 0.9847747822473977,
+      "pixel_ap": 0.8304129887858885,
+      "pixel_f1_max": 0.7916378744260095,
+      "pixel_aupro": 0.9610271757335944
+    }
+  },
+  "source_sha256": {
+    "../representative/results.json": "e736b67d01c7881362b9c1443f9ed772dcac0aecbfde5aa6b8e50e5eaaa57479",
+    "tradeoff_results.json": "fe18989b1b73b6b2ee55c6a2038433319cbcc02214019fcf25adcd5ab3c9fdea"
+  },
+  "no_original_relative_speedup_claim": true
+}

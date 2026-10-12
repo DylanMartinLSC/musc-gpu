@@ -26,8 +26,8 @@ def get_args():
     parser.add_argument('--img_resize', type=int, default=None, help='image size')
     parser.add_argument('--batch_size', type=int, default=None, help='batch size')
     parser.add_argument('--divide_num', type=int, default=None, help='the number of divided subsets')
-    parser.add_argument('--inference_backend', choices=['original','gpu'], default=None,
-                        help='original pipeline or optimized GPU pipeline; both score the entire image group')
+    parser.add_argument('--inference_backend', choices=['original','gpu','super_fast'], default=None,
+                        help='original, GPU, or approximate super_fast preset (layer5, r3,28x28 patches); entire image pool')
     args = parser.parse_args()
     return args
 
@@ -85,9 +85,9 @@ if __name__ == "__main__":
     args = get_args()
     cfg = load_yaml(args.config)
     cfg = load_args(cfg, args)
-    print(cfg)
     seed = 42
     model = MuSc(cfg, seed=seed)
+    print(model.cfg)
     model.main()
 
 
