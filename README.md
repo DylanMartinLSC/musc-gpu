@@ -3,12 +3,11 @@
 **GPU-accelerated MuSc for zero-shot industrial anomaly detection and segmentation.**
 
 Score a pool of unlabeled images and locate anomalies without task-specific
-training. On an NVIDIA RTX 3090, the default backend measures **3.74–4.35×
-faster complete-pool inference** than original MuSc on MVTec AD bottle, grid
-and cable. The optional approximate **`super_fast` backend measures a further
-2.63–2.70× speedup over default GPU on bottle83**, reaching a **3.49 s median**.
-Its fresh paired speedup against original MuSc is still pending; the historical
-original bottle83 median is **35.01 s** under a different timing protocol.
+training. Complete-pool inference measures **3.74–15.00× faster than original
+MuSc on an RTX 3090**, across MVTec AD bottle, grid and cable: **3.74–4.35×**
+with the default `gpu` backend and **8.43–15.00×** with approximate `super_fast`.
+Super fast preserves accuracy well on bottle in these trials, but causes
+substantial accuracy losses on grid and cable.
 See [measured performance](#measured-performance) for scope and accuracy tradeoffs.
 The original backend remains selectable.
 
@@ -123,25 +122,25 @@ encoder and the complete image/reference pool. The preset overrides feature-laye
 and radius settings; the printed effective configuration shows `[5]` and `[3]`.
 The default remains `gpu`.
 
-On the complete bottle83 pool, two research passes measured **3.61s / 3.37s**
-(median **3.49s**) versus default GPU **9.50s / 9.11s**: within-sweep gains of
-**2.63× / 2.70× over default GPU**. Image AUROC was 100%, pixel AUROC 99.28%,
-pixel AP 89.68%, and region AUPRO 95.91%. Region AUPRO fell 0.20 percentage
-points versus default; the other measured metrics improved. Peak allocated
-memory fell from **7.14 GiB to 3.17 GiB** in those profile trials.
-Packaged dispatch was separately checked against those saved predictions.
-See [super fast evidence and limits](benchmarks/super_fast/REPORT.md).
+Two alternating fresh-process pairs on each complete pool measured **8.50×**
+original speed on bottle83, **8.43×** on grid78 and **15.00×** on cable150.
+Bottle inference was **4.30s median**, including first-use setup. Image AUROC
+was 100%, pixel AUROC 99.28%, pixel AP 89.68%, and region AUPRO 95.91%.
+Relative to original, bottle pixel AP improved 6.64 percentage points and AUPRO
+fell 0.20 points; it passes the provisional ≤1pp loss limit across all seven metrics.
 
-![Historical bottle83 inference, memory and accuracy comparison; original and profile trials were separate runs](benchmarks/super_fast/comparison.png)
+**Grid and cable fail that accuracy tolerance.** Grid image AUROC fell
+17.04 points and AUPRO fell 14.53 points; cable image AUROC fell 5.02 points
+and AUPRO fell 9.21 points, despite improved cable pixel AP. This preset needs
+category-specific validation. See [all timings, memory and accuracy metrics](benchmarks/super_fast/CATEGORY_REPORT.md).
 
-The report also includes historical original MuSc measurements: **35.01s**,
-**6.29 GiB** peak allocated memory, pixel AP **83.04%** and region AUPRO
-**96.10%**. Original and super-fast timings came from separate runs and timing
-protocols. **A fresh paired original/super-fast comparison is still pending**:
-the attempted run was blocked by process-inventory and model-check permissions.
-No paired original-relative or exact-contract 10× claim is made.
+Earlier resident-model bottle profile sweeps measured 3.49s median and
+2.63–2.70× versus default GPU. Those sweeps use a different setup protocol;
+the fresh-process results above supersede them for original-relative speed claims.
+[Profile selection and packaged output checks](benchmarks/super_fast/REPORT.md)
+remain available.
 
-These results apply to **bottle83 on the RTX 3090**. This mode changes maps/scores
+These results apply to **three complete pools on the RTX 3090**. This mode changes maps/scores
 and does not preserve the default 2e-5 numerical agreement contract; evaluate
 your category and recalibrate thresholds before using it. The configuration
 requires ViT-L-14-336/OpenAI, 518px, batch4 and one complete reference pool
@@ -156,7 +155,7 @@ benchmark permissions, use a new output directory:
 .venv/Scripts/python.exe tools/benchmark_super_fast.py --data-path C:/path/to/mvtec_anomaly_detection --categories bottle grid cable --output output/super_fast_comparison
 ```
 
-This runs two alternating pairs on bottle83, recording full-resolution accuracy,
+This runs two alternating pairs per complete category pool, recording full-resolution accuracy,
 peak allocated/reserved memory, first-use setup and repeatability. It retains
 process/model checks and does not apply the exact-output gate to this approximate
 profile. Model loading and metric evaluation are reported separately.
@@ -194,20 +193,25 @@ image warmup; OS filesystem caches are not flushed.
 | grid | 78 | 31.71 s | 8.05 s | **3.94×** | 6.80 GiB |
 | cable | 150 | 102.34 s | 23.55 s | **4.35×** | 11.64 GiB |
 
-**Optional `super_fast` (approximate, bottle83 only):** two resident-model
-research sweeps measured **3.61 / 3.37 s**, median **3.49 s**, versus default
-GPU **9.50 / 9.11 s** in the same sweeps: **2.63–2.70× faster**. Peak allocated
-memory fell from **7.14 to 3.17 GiB**. Pixel AP increased **6.64 percentage
-points** and AUPRO decreased **0.20 points**. These Oct 12 profile sweeps use
-a different process/setup protocol from the Oct 7 original/GPU pairs above;
-a fresh paired comparison against original MuSc remains pending. Super fast
-does not preserve the numerical agreement contract below, and grid/cable
-have not been tested with this preset. See the [option](#optional-super-fast-backend)
-and [full report](benchmarks/super_fast/REPORT.md).
+**Optional approximate `super_fast`, measured Oct 12 with the same fresh-process
+scope and two alternating pairs per complete pool:**
 
-![Measured complete-pool inference time for original MuSc, musc-gpu and bottle-only super fast, with separate protocols labeled](benchmarks/super_fast/measured_performance.png)
+| Category | Original median | Super fast median | Speedup | Fast peak allocated | Pixel AP change | AUPRO change |
+|---|---:|---:|---:|---:|---:|---:|
+| bottle (83) | 36.58 s | 4.30 s | **8.50×** | 3.17 GiB | +6.64 pp | −0.20 pp |
+| grid (78) | 31.91 s | 3.79 s | **8.43×** | 3.07 GiB | −9.07 pp | −14.53 pp |
+| cable (150) | 103.72 s | 6.91 s | **15.00×** | 4.45 GiB | +10.08 pp | −9.21 pp |
 
-The ratio of summed category medians is **4.13×**. This covers these three
+Super fast changes predictions. Bottle passes the provisional ≤1pp loss limit
+across seven accuracy metrics; **grid and cable fail**, including image AUROC
+losses of 17.04pp and 5.02pp respectively. The graph labels the earlier Oct 7
+default-GPU measurements separately; each speedup uses its own paired original
+baseline. See the [option](#optional-super-fast-backend) and
+[complete paired report](benchmarks/super_fast/CATEGORY_REPORT.md).
+
+![Measured inference latency and paired original-relative speedups for default GPU and super fast on bottle, grid and cable](benchmarks/super_fast/measured_performance.png)
+
+The ratio of summed category medians for **default GPU** is **4.13×**. This covers these three
 categories, not all of MVTec AD or other GPUs/backbones. Pool throughput is
 not independent single-image latency.
 
@@ -324,6 +328,7 @@ Check release integrity without weights, torch imports or CUDA trials:
 | [Implementation and verification](docs/IMPLEMENTATION.md) | GPU scoring, pooling, loading, normalization reuse, attention and historical qualification |
 | [Benchmark protocol](docs/BENCHMARK.md) | Reproducible comparisons, timing scope and numerical gates |
 | [Representative results](benchmarks/representative/REPORT.md) | Measured speed, quality and memory for three complete pools |
+| [Super fast paired results](benchmarks/super_fast/CATEGORY_REPORT.md) | Twelve complete-pool calls; speed, memory, all seven accuracy metrics and repeatability |
 | [Source manifest](SOURCE_MANIFEST.json) | Packaged source and evidence hashes |
 | [Issue tracker](https://github.com/DylanMartinLSC/musc-gpu/issues) | Bug reports and feature requests |
 

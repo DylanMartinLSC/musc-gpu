@@ -1,5 +1,4 @@
-"""Render the README comparison from preserved measured JSON; no inference."""
-import hashlib
+"""Generate README charts from complete paired measurements, without CUDA."""
 import json
 from pathlib import Path
 
@@ -10,51 +9,89 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 
+def load_results(root):
+    current = json.loads((root / 'benchmarks/super_fast/category_results.json').read_text())
+    historical = json.loads((root / 'benchmarks/representative/results.json').read_text())
+    if current['status'] != 'complete approximate comparison':
+        raise ValueError('Complete measured category comparisons are required')
+    rows = current['workloads']
+    if [(w['category'], w['images']) for w in rows] != [('bottle',83), ('grid',78), ('cable',150)]:
+        raise ValueError('Expected complete bottle83, grid78 and cable150 pools')
+    for w in rows:
+        if len(w['pairs']) != 2 or not all(p['same_inputs'] for p in w['pairs']):
+            raise ValueError('Two matched pairs are required')
+        if not all(c['pass'] for checks in w['repeat_checks'].values() for c in checks.values()):
+            raise ValueError('Repeated predictions must agree')
+    return rows, {w['category']: w for w in historical['workloads']}
+
 def main():
-    historical = json.loads((ROOT / 'benchmarks/representative/results.json').read_text())
-    study = json.loads((ROOT / 'benchmarks/super_fast/tradeoff_summary.json').read_text())
-    fast = next(v for v in study['variants'] if v['id'] == 'grid28_r3_layer5')
-    pools = historical['workloads']
-    x = np.arange(len(pools))
-    fig, ax = plt.subplots(figsize=(10, 5.5))
-    for offset, backend, label, color in [(-.26, 'original', 'Original MuSc (Oct 7)', '#64748b'),
-                                         (0, 'gpu', 'musc-gpu (Oct 7)', '#2563eb')]:
-        values = [w['summary']['median_inference_seconds'][backend] for w in pools]
-        bars = ax.bar(x + offset, values, .24, label=label, color=color)
-        ax.bar_label(bars, labels=[f'{v:.2f}s' for v in values], padding=4, fontsize=10)
-    bottle = next(i for i, w in enumerate(pools) if w['category'] == 'bottle')
-    bar = ax.bar([bottle + .26], [fast['median_seconds']], .24,
-                 label='super_fast, approximate (Oct 12)', color='#16a34a', hatch='//')
-    ax.bar_label(bar, labels=[f"{fast['median_seconds']:.2f}s"], padding=4, fontsize=10)
-    for i, w in enumerate(pools):
-        if w['category'] != 'bottle':
-            ax.text(i + .26, 2, 'Not tested', rotation=90, ha='center', va='bottom', fontsize=9)
-    ax.set_xticks(x, [f"{w['category']} ({w['images']} images)" for w in pools])
-    ax.set_ylabel('Complete-pool inference time (seconds; lower is better)')
-    ax.set_title('Measured inference performance · RTX 3090')
-    ax.set_ylim(0, max(w['summary']['median_inference_seconds']['original'] for w in pools) * 1.23)
-    ax.legend(loc='upper left', frameon=False)
-    ax.spines[['top', 'right']].set_visible(False)
-    ax.yaxis.grid(True, alpha=.18)
-    ax.set_axisbelow(True)
-    fig.text(.08, .065, 'Oct 7: fresh-process original/GPU pairs. Oct 12: resident-model profile sweeps.\n'
-             'Super fast: 2.63–2.70× vs default GPU in its own study; fresh original pairing pending.', fontsize=10)
-    fig.tight_layout(rect=(0, .14, 1, 1))
+    rows, historical = load_results(ROOT)
+    x = np.arange(len(rows))
+    colors = {'original':'#64748b', 'gpu':'#2563eb', 'super_fast':'#16a34a'}
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5.6), gridspec_kw={'width_ratios':[1.2,1]})
+    ax = axes[0]
+    for offset, backend, label in [(-.26,'original','Original (Oct 12 paired trials)'),
+                                    (0,'gpu','Default GPU (Oct 7 prior trials)'),
+                                    (.26,'super_fast','Super fast (Oct 12, approximate)')]:
+        values = [historical[w['category']]['summary']['median_inference_seconds']['gpu']
+                  if backend == 'gpu' else w['summary']['median_inference_seconds'][backend] for w in rows]
+        bars = ax.bar(x+offset, values, .24, color=colors[backend], label=label,
+                      hatch='//' if backend == 'super_fast' else None)
+        ax.bar_label(bars, labels=[f'{v:.2f}s' for v in values], padding=4, fontsize=9)
+    ax.set_title('Complete-pool inference latency')
+    ax.set_ylabel('Seconds (lower is better)')
+    ax.set_ylim(0, max(w['summary']['median_inference_seconds']['original'] for w in rows)*1.22)
+    ax.legend(loc='upper left',frameon=False,fontsize=8)
+    ax = axes[1]
+    for offset, backend, label in [(-.14,'gpu','Default GPU / original (Oct 7)'),
+                                  (.14,'super_fast','Super fast / original (Oct 12)')]:
+        values = [historical[w['category']]['summary']['speedup'] if backend == 'gpu'
+                  else w['summary']['speedup'] for w in rows]
+        bars = ax.bar(x+offset, values, .26, color=colors[backend],label=label,
+                      hatch='//' if backend == 'super_fast' else None)
+        ax.bar_label(bars, labels=[f'{v:.2f}×' for v in values],padding=4,fontsize=10)
+    ax.set_title('Speedup against each trial’s original baseline')
+    ax.set_ylabel('Ratio of medians (higher is better)')
+    ax.set_ylim(0, max(w['summary']['speedup'] for w in rows)*1.28)
+    ax.legend(loc='upper left',frameon=False,fontsize=8)
+    for ax in axes:
+        ax.set_xticks(x,[f"{w['category']}\n({w['images']} images)" for w in rows])
+        ax.spines[['top','right']].set_visible(False)
+        ax.yaxis.grid(True,alpha=.18)
+        ax.set_axisbelow(True)
+    fig.suptitle('Measured inference performance · RTX 3090',fontsize=15)
+    failed = ', '.join(w['category'] for w in rows if not w['summary']['all_metrics_within_provisional_1pp'])
+    fig.text(.06,.04,'Two alternating fresh-process pairs per category; first-use setup included; model loading and metrics separate.\n'
+             f'Super fast changes predictions. Categories failing the provisional 1pp accuracy tolerance: {failed or "none"}. See the full report.',fontsize=9)
+    fig.tight_layout(rect=(0,.13,1,.94))
     out = ROOT / 'benchmarks/super_fast'
-    fig.savefig(out / 'measured_performance.png', dpi=180)
-    fig.savefig(out / 'measured_performance.svg')
+    for extension in ('png','svg'):
+        fig.savefig(out / f'measured_performance.{extension}',dpi=180,
+                    metadata={'Date':None} if extension == 'svg' else None)
+        if extension == 'svg':
+            path=out / 'measured_performance.svg'
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n',encoding='utf-8',newline='\n')
     plt.close(fig)
-    manifest_path = ROOT / 'SOURCE_MANIFEST.json'
-    manifest = json.loads(manifest_path.read_text())
-    for relative in ['README.md', 'tools/report_measured_performance.py',
-                     'benchmarks/super_fast/measured_performance.png',
-                     'benchmarks/super_fast/measured_performance.svg']:
-        digest = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
-        if relative in manifest:
-            manifest[relative]['packaged_sha256'] = digest
-        else:
-            manifest[relative] = {'source': relative, 'source_sha256': digest, 'packaged_sha256': digest}
-    manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8', newline='\n')
+    keys = ['image_auroc','image_ap','image_f1_max','pixel_auroc','pixel_ap','pixel_f1_max','pixel_aupro']
+    values = np.array([[w['summary']['metric_deltas_pp'][key] for key in keys] for w in rows])
+    fig, ax = plt.subplots(figsize=(11,3.6))
+    bound = max(1,float(np.abs(values).max()))
+    ax.imshow(values,cmap='RdYlGn',vmin=-bound,vmax=bound,aspect='auto')
+    ax.set_xticks(range(7),['Image AUROC','Image AP','Image F1','Pixel AUROC','Pixel AP','Pixel F1','AUPRO'])
+    ax.set_yticks(range(3),[w['category'] for w in rows])
+    for i in range(3):
+        for j in range(7):
+            ax.text(j,i,f'{values[i,j]:+.2f}',ha='center',va='center',fontsize=11)
+    ax.set_title('Super fast accuracy change versus paired original (percentage points)')
+    fig.text(.08,.04,'Positive means higher accuracy; F1 maximized over evaluation thresholds. Provisional tolerance: no metric below −1pp.',fontsize=9)
+    fig.tight_layout(rect=(0,.12,1,1))
+    for extension in ('png','svg'):
+        fig.savefig(out / f'category_accuracy.{extension}',dpi=180,
+                    metadata={'Date':None} if extension == 'svg' else None)
+        if extension == 'svg':
+            path=out / 'category_accuracy.svg'
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n',encoding='utf-8',newline='\n')
+    plt.close(fig)
 
 if __name__ == '__main__':
     main()

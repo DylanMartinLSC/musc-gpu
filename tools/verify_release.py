@@ -81,6 +81,26 @@ assert smoke['status']=='pass' and not smoke['workloads'][0]['complete_pool']
 assert all(p['agreement']['ground_truth_identical'] for p in smoke['workloads'][0]['pairs'])
 process_checks=json.loads((ROOT/'benchmarks/harness_validation/process_tree_tests.json').read_text())
 assert all(p['pass'] and not p['worker_alive_after'] and not p['descendant_alive_after'] for p in process_checks)
+fast_categories=json.loads((ROOT/'benchmarks/super_fast/category_results.json').read_text())
+assert fast_categories['status']=='complete approximate comparison'
+assert [(w['category'],w['images']) for w in fast_categories['workloads']]==[('bottle',83),('grid',78),('cable',150)]
+for workload in fast_categories['workloads']:
+    assert workload['complete_pool'] and len(workload['pairs'])==2
+    assert [p['order'] for p in workload['pairs']]==[['original','super_fast'],['super_fast','original']]
+    assert all(c['pass'] for checks in workload['repeat_checks'].values() for c in checks.values())
+    for pair in workload['pairs']:
+        assert pair['same_inputs']
+        for name in ('original','super_fast'):
+            trial=pair[name]
+            assert trial['status']=='pass' and trial['images']==workload['images']
+            assert len(trial['image_paths'])==workload['images'] and not trial['metrics']['errors']
+            assert len(trial['metrics']['values'])==7
+            for relative,expected in trial['source_sha256'].items():
+                if relative.replace('\\','/').startswith(('models/','datasets/','utils/','configs/')):
+                    assert hashlib.sha256((ROOT/relative).read_bytes()).hexdigest()==expected,relative
+        assert pair['super_fast']['effective_config']['models']['feature_layers']==[5]
+        assert pair['super_fast']['effective_config']['models']['r_list']==[3]
+assert [w['summary']['all_metrics_within_provisional_1pp'] for w in fast_categories['workloads']]==[True,False,False]
 for path in ROOT.rglob('*.md'):
     for target in re.findall(r'\]\(([^)]+)\)', path.read_text()):
         if not target.startswith(('http:', 'https:', '#')):
@@ -90,4 +110,5 @@ if failures:
 print(f'PASS: {len(manifest)} source/evidence hashes, all Python syntax, local README links,')
 print('backend selection, deployed AST equivalence, aggregation factory, evidence tolerances and figures.')
 print('Historical full-category evidence, unchanged kernels, super_fast/default integration, harness smoke and process-tree receipts also pass.')
-print('CPU-only verification; no CUDA trials or new performance claims.')
+print('Twelve fresh original/super_fast calls, matched complete pools, repeatability, metrics and inference source hashes also pass.')
+print('CPU-only artifact verification; no additional CUDA trials.')

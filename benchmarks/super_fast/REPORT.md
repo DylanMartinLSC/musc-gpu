@@ -1,4 +1,11 @@
-# Super fast backend: full bottle83 report
+# Super fast backend: historical bottle83 profile-selection report
+
+**Superseded measurement status:** the earlier blocked attempts documented below
+were followed by successful fresh-process measurements of bottle83, grid78 and
+cable150. See the [current complete category report](CATEGORY_REPORT.md) and
+[paired results](category_results.json) for measured original-relative speedups,
+memory and all seven accuracy metrics. Grid and cable fail the provisional
+accuracy tolerance. The profile-selection evidence below remains historical.
 
 ## Result and evidence status
 

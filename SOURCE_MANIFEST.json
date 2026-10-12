@@ -562,7 +562,7 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "d70cab97b880efcc82c3a3fb1b1374c894d6eb61073bda61ab9dcd4d6bbc48a9",
+    "packaged_sha256": "70a84750365153f62c21a35a2e1716b045fad60da984950621dc644a7a67f70f",
     "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
   },
   "requirements-dev.txt": {
@@ -599,7 +599,7 @@
   },
   "tools/verify_release.py": {
     "source": "release addition",
-    "packaged_sha256": "5b70f5bb5726d453a1a4eeed98dd8f78f0aa08c5c367c465fc6ca181e12b4e85",
+    "packaged_sha256": "5a9a384818dae4c8e8258ad783ee7786e3538a778b871375927ffa3f85a530a5",
     "previous_packaged_sha256": "f54860ecb812f457ad407a863c08d4d7b4ebb17fe323e450b60518c54fadf84b"
   },
   "models/modules/_backend.py": {
@@ -827,7 +827,7 @@
   },
   "benchmarks/super_fast/REPORT.md": {
     "source": "super_fast release addition",
-    "packaged_sha256": "37e7695fadd0b00f420987e0c2f5c3bc6863e2f53f9676c116a58a5137451726",
+    "packaged_sha256": "c9554b2823c0534bf2e18551779964339a7500f3be0783bf5f55f136dc35e339",
     "previous_packaged_sha256": "7a50d1e07b952fe1c867adb053f480d974a310724aefa4f091262801abdddda1"
   },
   "benchmarks/super_fast/integration.json": {
@@ -871,21 +871,44 @@
   "tools/report_measured_performance.py": {
     "source": "tools/report_measured_performance.py",
     "source_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3",
-    "packaged_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3"
+    "packaged_sha256": "00c8c47f729b20ccd5e3fc6df5854c83d875e6c244a61ed51656b20eeed4bd24",
+    "previous_packaged_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3"
   },
   "benchmarks/super_fast/measured_performance.png": {
     "source": "benchmarks/super_fast/measured_performance.png",
     "source_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a",
-    "packaged_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a"
+    "packaged_sha256": "d26be5518c1d99a5536afb00a8d657392062ae7eaf6e32355afa4ad55cab510a",
+    "previous_packaged_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a"
   },
   "benchmarks/super_fast/measured_performance.svg": {
     "source": "benchmarks/super_fast/measured_performance.svg",
     "source_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169",
-    "packaged_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169"
+    "packaged_sha256": "f505f6b510bda512dace541070eca83619f8c2d691a3272024d1f4e5c113ff20",
+    "previous_packaged_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169"
   },
   "benchmarks/super_fast/blocked_categories.json": {
     "source": "benchmarks/super_fast/blocked_categories.json",
     "source_sha256": "ed6a1a8cea0ab5ca0af7b6c2c5e2e9529866d4f305b1d803223c9a3d2dc76ed8",
     "packaged_sha256": "ed6a1a8cea0ab5ca0af7b6c2c5e2e9529866d4f305b1d803223c9a3d2dc76ed8"
+  },
+  "benchmarks/super_fast/CATEGORY_REPORT.md": {
+    "source": "benchmarks/super_fast/CATEGORY_REPORT.md",
+    "source_sha256": "8fbbb43342db8539587e7ef9310cd717e4e2e5a20e725d36fce8c792b5678dde",
+    "packaged_sha256": "8fbbb43342db8539587e7ef9310cd717e4e2e5a20e725d36fce8c792b5678dde"
+  },
+  "benchmarks/super_fast/category_results.json": {
+    "source": "benchmarks/super_fast/category_results.json",
+    "source_sha256": "0f31c7a79059441394b88753fbb179e0a26d754ee10aead9e6055d333155885b",
+    "packaged_sha256": "0f31c7a79059441394b88753fbb179e0a26d754ee10aead9e6055d333155885b"
+  },
+  "benchmarks/super_fast/category_accuracy.png": {
+    "source": "benchmarks/super_fast/category_accuracy.png",
+    "source_sha256": "26db780875b78ec79aca5578a701808a6ff82e8287df8f43b6022dd06b9553f1",
+    "packaged_sha256": "26db780875b78ec79aca5578a701808a6ff82e8287df8f43b6022dd06b9553f1"
+  },
+  "benchmarks/super_fast/category_accuracy.svg": {
+    "source": "benchmarks/super_fast/category_accuracy.svg",
+    "source_sha256": "50d2473f2d326f11db427c9c64ecf77c1778f84b4cca260b48536c6d7b00012a",
+    "packaged_sha256": "af24d9bec168a186612972bcb4e578c84ed3a62393dd9a36389d947d0bbce7ab"
   }
 }
