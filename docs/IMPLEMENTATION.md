@@ -8,6 +8,20 @@
   image directions. Centered distance certificates screen candidates, and
   original FP32 features refine distances. Per-reference-image Euclidean
   minima, self exclusion, and trimmed ranks are preserved; scores are FP64.
+- **Trimmed-rank deferred refinement:** screening records, for every
+  (query patch, reference image) pair, an upper bound on its evaluated minimum,
+  a lower bound over all patches, and the candidate patches whose lower bound
+  does not exceed the anchor's upper bound. The per-query threshold is the b-th
+  smallest upper bound (b = trimmed rank count). A pair whose lower bound
+  exceeds it is strictly outside the selected ranks and stores that lower bound;
+  inside kept pairs, patches above the threshold or failing the original
+  survivor rule are skipped. Remaining anchors and candidates use the original
+  FP32 warp distance, so every selected value and score is bitwise unchanged.
+  Candidate records are bounded (4 per pair); overflowing pairs are refined in
+  place while their dot tile is resident. Reverse screening assigns one lane per
+  query for coalesced reads, deferred anchors keep the query row in registers,
+  and the screened path compiles only its own kernels. Rank bookkeeping adds
+  about 16 bytes per pair plus up to 48 bytes of candidate records per pair.
 - **Direct spatial pooling:** replaces expanded Unfold intermediates while
   preserving normalization and padding behavior.
 - **Ordered threaded loading:** four workers preserve image order and batch4

@@ -463,10 +463,11 @@
   },
   "models/modules/_MSM_gpu.py": {
     "source": "models/modules/_MSM_gpu.py",
-    "source_sha256": "7fca26cfce5af50e468731e9245896b30fc9def567a37fd91f3b669608b04232",
-    "packaged_sha256": "39684c5b7999f5d962442f0568d9dbc8334f2625cbaf9aa91e320a54e367a254",
-    "normalized_ast_sha256": "3414eb45686f11726b1b10e026bb3fe171f922baff11089f3bb26e34e4c0a190",
-    "allowed_change": "CUDA runtime import relocation only"
+    "source_sha256": "5e6a66b7e5991b0cc0f61ba2b5acebe0edad7e40aafd3e14e75d9c79a84fcf70",
+    "packaged_sha256": "b91277b530b15cb2a0ebd3cd55738032807732be8d7e0526f9c61a080c9021bc",
+    "normalized_ast_sha256": "7fb98ca9b0f4174cfaa78a9a120dd405775516df242ed8a194bf5e97f72457d7",
+    "allowed_change": "CUDA runtime import relocation only (trimmed-rank deferred scoring)",
+    "previous_packaged_sha256": "39684c5b7999f5d962442f0568d9dbc8334f2625cbaf9aa91e320a54e367a254"
   },
   "models/modules/_RsCIN.py": {
     "source": "models/modules/_RsCIN.py",
@@ -562,8 +563,8 @@
   },
   "README.md": {
     "source": "release addition",
-    "packaged_sha256": "4726ae4a0545b9c48af2a3620c8fa9c38324811b71090024f567041851348a69",
-    "previous_packaged_sha256": "119b95f973ca9211ccc0ca593fc07d587b4e4d5173a42c48fef44c58bcffe8f2"
+    "packaged_sha256": "11fc5e26593dbdcf691d62140d922c67a8ae408fcce142a4a3ae3ad303a60e4c",
+    "previous_packaged_sha256": "4726ae4a0545b9c48af2a3620c8fa9c38324811b71090024f567041851348a69"
   },
   "requirements-dev.txt": {
     "source": "release addition",
@@ -599,8 +600,8 @@
   },
   "tools/verify_release.py": {
     "source": "release addition",
-    "packaged_sha256": "5a9a384818dae4c8e8258ad783ee7786e3538a778b871375927ffa3f85a530a5",
-    "previous_packaged_sha256": "f54860ecb812f457ad407a863c08d4d7b4ebb17fe323e450b60518c54fadf84b"
+    "packaged_sha256": "addaafa51d9b7411f685c5cd2a5acbac6671e35d289b7466201a65b2d76aabe4",
+    "previous_packaged_sha256": "5a9a384818dae4c8e8258ad783ee7786e3538a778b871375927ffa3f85a530a5"
   },
   "models/modules/_backend.py": {
     "source": "release addition",
@@ -725,7 +726,8 @@
   },
   "docs/IMPLEMENTATION.md": {
     "source": "release addition",
-    "packaged_sha256": "ed9b25a804116d998c52e6ecfd8ee057dd9f5d6a9f15334088ef77cd09374d50"
+    "packaged_sha256": "27592e98f089f5ec2dc6ccb0bcc88fb0da968b213c5a4a401080eb994eea0638",
+    "previous_packaged_sha256": "ed9b25a804116d998c52e6ecfd8ee057dd9f5d6a9f15334088ef77cd09374d50"
   },
   "tools/segmentation_usefulness.py": {
     "packaged_sha256": "0c57adfb2eac494244e19c9609583da8dd82d4b91b847ab44f7617767728328c",
@@ -871,20 +873,20 @@
   "tools/report_measured_performance.py": {
     "source": "tools/report_measured_performance.py",
     "source_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3",
-    "packaged_sha256": "6c8c331eb4abfdd44e4a2eece69b64e8ccb52fef09b71d2aa303b9f2bdd6ab20",
-    "previous_packaged_sha256": "6636f7699baaa68983bcae918be5e5f972cce8f2398c90d8fadb616dda659fc3"
+    "packaged_sha256": "32f9b94e49a5758a8b6232507075eb858ec1593f5bbee7aa54a5a7ec655f5785",
+    "previous_packaged_sha256": "6c8c331eb4abfdd44e4a2eece69b64e8ccb52fef09b71d2aa303b9f2bdd6ab20"
   },
   "benchmarks/super_fast/measured_performance.png": {
     "source": "benchmarks/super_fast/measured_performance.png",
     "source_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a",
-    "packaged_sha256": "44a32201c9676d6c77692c5119e8cb6d5de270124472f9d12f7d4374d894e596",
-    "previous_packaged_sha256": "8b3f5a5d1099c34e5180858993453fe1879502a389768a51d7f1b6c9d798a19a"
+    "packaged_sha256": "907094f112bf99f0c0b820d5f17203b985d776033199244922ac1f1f66664f86",
+    "previous_packaged_sha256": "44a32201c9676d6c77692c5119e8cb6d5de270124472f9d12f7d4374d894e596"
   },
   "benchmarks/super_fast/measured_performance.svg": {
     "source": "benchmarks/super_fast/measured_performance.svg",
     "source_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169",
-    "packaged_sha256": "977361c3692872a4e7d7e1bd882797cb0d1a26505fbcda64f3b2e189dc9d7f4f",
-    "previous_packaged_sha256": "7e0b625bde706e696f7921ad2246b7a8b962bb2e42478cf0792623cfd946d169"
+    "packaged_sha256": "c2f128ac77beeb6514fe3564164acb3744f96be562bd0673c143794e42a4ccdb",
+    "previous_packaged_sha256": "977361c3692872a4e7d7e1bd882797cb0d1a26505fbcda64f3b2e189dc9d7f4f"
   },
   "benchmarks/super_fast/blocked_categories.json": {
     "source": "benchmarks/super_fast/blocked_categories.json",
@@ -920,5 +922,21 @@
     "source": "benchmarks/super_fast/backend_accuracy.svg",
     "source_sha256": "8969f6352f7af16fa14915787fc75a522be851529286732f46c48a29ae5551ae",
     "packaged_sha256": "2e52e88e80cbc5de9312cfc6ad3a820d04de3321df533f10a618a587cb0aa15b"
+  },
+  "benchmarks/rank_deferred/results.json": {
+    "source": "release addition",
+    "packaged_sha256": "528423ae4f3ae9e21f7c6deefdeb14e5d0e5434b69283004a763d483e6c4d962"
+  },
+  "benchmarks/rank_deferred/cable_gpu_check.json": {
+    "source": "release addition",
+    "packaged_sha256": "0bd46874a04a6fe8532998ca33b98dd4c9b93239394dc28349baa302b185e612"
+  },
+  "benchmarks/rank_deferred/super_fast_results.json": {
+    "source": "release addition",
+    "packaged_sha256": "ede65e6a3772590b856a0e214b92156f4d94f39fbcd99a92886551e4abd12b4c"
+  },
+  "benchmarks/rank_deferred/REPORT.md": {
+    "source": "release addition",
+    "packaged_sha256": "530acaa29555dad28ceb065bd94007a9e5cef7f07c82d9a3bf6f5856d9eae9be"
   }
 }

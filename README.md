@@ -3,10 +3,13 @@
 **GPU-accelerated MuSc for zero-shot industrial anomaly detection and segmentation.**
 
 Score a pool of unlabeled images and locate defects without task-specific training.
-On an RTX 3090, the default GPU backend measures **3.74–4.35× faster inference**
-than original MuSc. Optional approximate super fast measures **8.43–15.00×**,
-with substantial accuracy losses on grid and cable. These measurements cover
-three complete MVTec AD category pools; see [performance](#measured-performance).
+On an RTX 3090, the default GPU backend measures **4.22× (bottle) and 4.27×
+(grid) faster inference** than original MuSc, with predictions within 2e-5 of
+original. On cable the previous release measured 4.35×; the current scoring is a
+further 1.16× faster there with bitwise identical outputs. Optional approximate
+super fast measures **8.37–15.08×**, with substantial accuracy losses on grid and
+cable. These measurements cover three complete MVTec AD category pools; see
+[performance](#measured-performance).
 
 [Quick start](#quick-start) · [Choose a backend](#choose-a-backend) ·
 [Performance](#measured-performance) · [What changed](#changes-from-original-musc) ·
@@ -126,29 +129,37 @@ Default GPU versus original:
 
 | Category | Images | Original median | Default GPU median | Speedup |
 |---|---:|---:|---:|---:|
-| bottle | 83 | 35.01 s | 9.36 s | **3.74×** |
-| grid | 78 | 31.71 s | 8.05 s | **3.94×** |
-| cable | 150 | 102.34 s | 23.55 s | **4.35×** |
+| bottle | 83 | 37.48 s | 8.88 s | **4.22×** |
+| grid | 78 | 31.84 s | 7.45 s | **4.27×** |
+| cable | 150 | 102.34 s | 23.55 s | **4.35×**¹ |
+
+¹ Measured with the previous scoring module. The cable original-backend run did
+not complete under the capped measurement job, so the current scoring was compared
+GPU-only against the previous scoring: **1.16× faster** with bitwise identical maps
+and scores. See the [scoring update report](benchmarks/rank_deferred/REPORT.md).
 
 Super fast versus original, measured in a separate paired comparison:
 
 | Category | Images | Original median | Super fast median | Speedup |
 |---|---:|---:|---:|---:|
-| bottle | 83 | 36.58 s | 4.30 s | **8.50×** |
-| grid | 78 | 31.91 s | 3.79 s | **8.43×** |
-| cable | 150 | 103.72 s | 6.91 s | **15.00×** |
+| bottle | 83 | 36.09 s | 3.99 s | **9.05×** |
+| grid | 78 | 31.84 s | 3.81 s | **8.37×** |
+| cable | 150 | 103.09 s | 6.84 s | **15.08×** |
 
 ![Measured inference latency and paired original-relative speedups for default GPU and super fast on bottle, grid and cable](benchmarks/super_fast/measured_performance.png)
 
-Each speedup uses its own paired original baseline. Default GPU's ratio of summed
-category medians is **4.13×**. Results apply to these pools and this hardware;
-pool throughput is not independent single-image latency.
+Each speedup uses its own paired original baseline. For bottle and grid, default
+GPU's ratio of summed category medians is **4.24×**. Super fast was re-measured
+with the current scoring; all seven accuracy metrics are identical to the previous
+release's. Results apply to these pools and this hardware; pool throughput is not
+independent single-image latency.
 
 ### Accuracy
 
 **Default GPU:** every full-resolution map and image score agrees with original
 within **2e-5 absolute tolerance**. Maximum map errors are 4.315e-6 (bottle),
-1.636e-6 (grid) and 1.738e-6 (cable). This is numerical agreement, not bitwise
+1.636e-6 (grid) and 1.738e-6 (cable; current scoring is bitwise identical to the
+previous scoring measured there). This is numerical agreement, not bitwise
 identity or an accuracy guarantee on other data.
 
 **Super fast:** bottle meets a provisional limit of no more than one percentage
@@ -192,21 +203,30 @@ less in these trials. Measured peak allocated tensor memory:
 
 | Category | Images | Original | Default GPU | Super fast |
 |---|---:|---:|---:|---:|
-| bottle | 83 | 6.29 GiB | 7.14 GiB | 3.17 GiB |
-| grid | 78 | 6.26 GiB | 6.80 GiB | 3.07 GiB |
-| cable | 150 | 6.64 GiB | 11.64 GiB | 4.45 GiB |
+| bottle | 83 | 6.29 GiB | 7.49 GiB | 3.47 GiB |
+| grid | 78 | 6.26 GiB | 7.11 GiB | 3.35 GiB |
+| cable | 150 | 6.64 GiB | 12.92 GiB² | 5.27 GiB |
+
+² GPU-only scoring comparison; the previous scoring measured 11.64 GiB. Default
+GPU bottle/grid and super fast figures are from the [scoring update](benchmarks/rank_deferred/REPORT.md).
 
 These are tensor allocations, not total device usage or minimum VRAM requirements.
-Reserved memory is reported separately; allow additional headroom. Larger pools
-need their own capacity assessment.
+Reserved memory is reported separately; allow additional headroom. The current
+scoring's per-pair bookkeeping grows with images² × patches (about +1.3 GiB at
+150 images), so larger pools need their own capacity assessment.
 
-[Default GPU report](benchmarks/representative/REPORT.md) ·
-[Super fast report](benchmarks/super_fast/CATEGORY_REPORT.md) ·
-[Default GPU raw JSON](benchmarks/representative/results.json) ·
-[Super fast raw JSON](benchmarks/super_fast/category_results.json)
+[Scoring update report](benchmarks/rank_deferred/REPORT.md) ·
+[Default GPU raw JSON](benchmarks/rank_deferred/results.json) ·
+[Super fast raw JSON](benchmarks/rank_deferred/super_fast_results.json) ·
+[Previous default GPU report](benchmarks/representative/REPORT.md) ·
+[Previous super fast report](benchmarks/super_fast/CATEGORY_REPORT.md)
 
 <details>
 <summary>Additional diagnostics: batch throughput and fixed-threshold segmentation</summary>
+
+These diagnostics were measured with the previous scoring module. Segmentation
+uses the same predictions; throughput figures are conservative for the current
+scoring.
 
 ### Batch inspection capacity
 
@@ -284,6 +304,13 @@ complete reference pool used in the comparison.
   distances that can determine a minimum are refined using the original FP32
   features. Per-reference-image Euclidean minima, self exclusion and trimmed
   ranks are preserved, with FP64 score outputs.
+- **Trimmed-rank deferred refinement:** each patch score averages only its
+  smallest per-image minima (24 of 82 for an 83-image pool). Exact FP32 work
+  is therefore deferred until every pair has certified bounds: pairs and
+  candidate patches that provably cannot enter the selected ranks are skipped,
+  and the selected values, hence scores and maps, are bitwise identical to
+  refining every pair. Reverse-direction screening reads tiles coalesced, and
+  only the kernels used by the supported shape are compiled.
 - **Direct neighborhood pooling:** replaces expanded `Unfold` neighborhoods
   and their subsequent averaging with spatial average pooling for supported
   shapes. This avoids materializing large intermediate tensors while preserving
@@ -349,7 +376,8 @@ Check release integrity without weights, torch imports or CUDA trials:
 |---|---|
 | [Implementation and verification](docs/IMPLEMENTATION.md) | GPU scoring, pooling, loading, normalization reuse, attention and historical qualification |
 | [Benchmark protocol](docs/BENCHMARK.md) | Reproducible comparisons, timing scope and numerical gates |
-| [Representative results](benchmarks/representative/REPORT.md) | Measured speed, quality and memory for three complete pools |
+| [Scoring update results](benchmarks/rank_deferred/REPORT.md) | Trimmed-rank deferred scoring: bottle/grid original pairs, cable bitwise GPU comparison, memory |
+| [Representative results](benchmarks/representative/REPORT.md) | Previous-scoring speed, quality and memory for three complete pools |
 | [Super fast paired results](benchmarks/super_fast/CATEGORY_REPORT.md) | Twelve complete-pool calls; speed, memory, all seven accuracy metrics and repeatability |
 | [Source manifest](SOURCE_MANIFEST.json) | Packaged source and evidence hashes |
 | [Issue tracker](https://github.com/DylanMartinLSC/musc-gpu/issues) | Bug reports and feature requests |

@@ -11,8 +11,13 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 
 def load_results(root):
-    current = json.loads((root / 'benchmarks/super_fast/category_results.json').read_text())
+    current = json.loads((root / 'benchmarks/rank_deferred/super_fast_results.json').read_text())
+    # Default GPU values come from the latest original/default receipt where its paired
+    # category passed (bottle, grid); cable keeps the previous representative receipt.
+    latest = json.loads((root / 'benchmarks/rank_deferred/results.json').read_text())
     historical = json.loads((root / 'benchmarks/representative/results.json').read_text())
+    passed = {w['category']: w for w in latest['workloads'] if w['summary']['status'] == 'pass'}
+    historical['workloads'] = [passed.get(w['category'], w) for w in historical['workloads']]
     if current['status'] != 'complete approximate comparison':
         raise ValueError('Complete measured category comparisons are required')
     rows = current['workloads']
@@ -32,7 +37,7 @@ def main():
     fig, axes = plt.subplots(1, 2, figsize=(13, 5.6), gridspec_kw={'width_ratios':[1.2,1]})
     ax = axes[0]
     for offset, backend, label in [(-.26,'original','Original (paired trials)'),
-                                    (0,'gpu','Default GPU (prior benchmark)'),
+                                    (0,'gpu','Default GPU (separate paired benchmark; cable: previous scoring)'),
                                     (.26,'super_fast','Super fast (approximate)')]:
         values = [historical[w['category']]['summary']['median_inference_seconds']['gpu']
                   if backend == 'gpu' else w['summary']['median_inference_seconds'][backend] for w in rows]
