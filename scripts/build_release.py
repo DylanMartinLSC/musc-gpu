@@ -1,9 +1,11 @@
-from release_common import *
+import sys
+import shutil
+import tempfile
+from release_common import ROOT, run, archive
 run(sys.executable, '-m', 'build')
 wheel = next((ROOT / 'dist').glob('*.whl'))
 run(sys.executable, '-m', 'pip', 'install', '--force-reinstall', '--no-deps', wheel)
 # Run outside the checkout so source files cannot mask missing wheel contents.
-import tempfile
 with tempfile.TemporaryDirectory() as directory:
     run(sys.executable, '-c', 'import musc_gpu; from musc_gpu.cli import main; main()',
         '--help', cwd=directory)

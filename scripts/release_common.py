@@ -1,7 +1,6 @@
 """Release helpers. Fail on a failed command, smoke check, or oversized asset."""
 from pathlib import Path
 import os
-import shutil
 import subprocess
 import sys
 import time
