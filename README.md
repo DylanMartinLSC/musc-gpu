@@ -1,5 +1,15 @@
 # musc-gpu
 
+GPU-accelerated MuSc for zero-shot industrial anomaly detection and segmentation.
+
+<!-- TODO: Record the real app using media/GIF_SHOTLIST.md and drop the file at media/demo.gif. -->
+![musc-gpu demo](media/demo.gif)
+
+[![Download pip package](https://img.shields.io/badge/Download_pip_package-download-238636)](https://github.com/DylanMartinLSC/musc-gpu/releases/latest/download/musc-gpu-python.zip)
+
+Install the documented torch/torchvision pair first, then `python -m pip install <downloaded-wheel.whl>` and run `musc-gpu --help`. Model weights and datasets are separate. No EXE or PyPI publication is provided by this workflow.
+
+
 **GPU-accelerated MuSc for zero-shot industrial anomaly detection and segmentation.**
 
 Score a pool of unlabeled images and locate defects without task-specific training.

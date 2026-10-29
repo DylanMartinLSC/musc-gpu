@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "musc-gpu"
+version = "0.1.0"
+description = "MuSc whole-pool anomaly detection with a native Windows CUDA backend"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dynamic = ["dependencies"]
+
+[project.scripts]
+musc-gpu = "musc_gpu.cli:main"
+
+[tool.setuptools]
+packages = ["musc_gpu"]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.cmdclass]
+build_py = "_build_package.RuntimeBuild"
