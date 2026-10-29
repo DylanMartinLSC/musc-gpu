@@ -8,7 +8,8 @@ def main():
     args = sys.argv[1:]
     if '--config' not in args and not any(x.startswith('--config=') for x in args):
         args = ['--config', str(root / 'configs' / 'musc.yaml'), *args]
-    sys.path.insert(0, str(root))
+    # The vendored OpenCLIP also imports itself as top-level open_clip.
+    sys.path[0:0] = [str(root), str(root / 'models' / 'backbone')]
     sys.argv = [str(root / 'examples' / 'musc_main.py'), *args]
     runpy.run_path(sys.argv[0], run_name='__main__')
 
