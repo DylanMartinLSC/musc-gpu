@@ -2,8 +2,9 @@
 
 GPU-accelerated MuSc for zero-shot industrial anomaly detection and segmentation.
 
-<!-- TODO: Record the real app using media/GIF_SHOTLIST.md and drop the file at media/demo.gif. -->
 ![musc-gpu demo](media/demo.gif)
+
+<sub>Recorded saved benchmark outputs; this is not live inference. [Recording details](media/DEMO.md).</sub>
 
 [![Download pip package](https://img.shields.io/badge/Download_pip_package-download-238636)](https://github.com/DylanMartinLSC/musc-gpu/releases/latest/download/musc-gpu-python.zip)
 
