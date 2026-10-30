@@ -1,0 +1,7 @@
+include _build_package.py requirements.txt LICENSE THIRD_PARTY_NOTICES.md
+recursive-include models *.py *.json *.gz
+recursive-include datasets *.py
+recursive-include utils *.py
+recursive-include configs *.yaml
+recursive-include examples *.py
+recursive-include licenses *.txt

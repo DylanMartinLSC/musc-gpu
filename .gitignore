@@ -8,3 +8,11 @@ output/
 benchmarks/runs/
 *.npy
 *.npz
+
+# Portable build outputs
+build/
+dist/
+release/
+*.spec
+*.egg-info/
+.demo-recording/
